@@ -1,0 +1,108 @@
+const AngelInfo = () => {
+  return (
+    <section className="container-padded text-slate-700">
+      <article className="max-w-4xl">
+        <h3 className="font-extrabold text-4xl uppercase mb-4 mt-6">
+          Who we are
+        </h3>
+        <p className="leading-relaxed">
+          Our hearts go out to everyone impacted by the collapse of $UST. The
+          ripple effects of this type of loss are significant, personally and
+          professionally, and we stand with everyone in recognizing that pain.
+          Angel Protocol flourished due to the genuine kindness and passion of
+          the crypto community. The significant contributions, amplification,
+          and support raised over $6 million dollars in donations to more than:{" "}
+        </p>
+        <ul className="font-semibold list-disc my-4 pl-4 md:pl-8 text-lg">
+          <li className="mb-4">
+            <a
+              className="text-sky-600 hover:text-sky-500 active:text-sky-400"
+              href="https://www.angelprotocol.io/app/leaderboard"
+              target="_blank"
+            >
+              160 charities{" "}
+            </a>
+            with $1.5M raised to fight{" "}
+            <a
+              className="text-sky-600 hover:text-sky-500 active:text-sky-400"
+              href="https://restore-earth.angelprotocol.io/"
+              target="_blank"
+            >
+              climate change
+            </a>
+          </li>
+          <li className="mb-4">
+            $500k in humanitarian relief for those impacted by{" "}
+            <a
+              className="text-sky-600 hover:text-sky-500 active:text-sky-400"
+              href="https://www.youtube.com/watch?v=h3wLfQLb8_4"
+              target="_blank"
+            >
+              Typhoon Rai
+            </a>
+          </li>
+          <li className="mb-4">
+            over $200k to support{" "}
+            <a
+              className="text-sky-600 hover:text-sky-500 active:text-sky-400"
+              href="https://ukraine.angelprotocol.io/"
+              target="_blank"
+            >
+              Ukrainian refugees.
+            </a>
+          </li>
+        </ul>
+        <p className="leading-relaxed mb-4 font-semibold text-sky-900/70">
+          It is deeply saddening that these $UST denominated funds were also
+          slashed during the de-peg event.
+        </p>
+        <p className="leading-relaxed">
+          Unfortunately, charity funds indexed for a post de-peg $LUNA airdrop
+          were never received. This would have provided $1.4M ( 74,936 LUNA at
+          opening price of $18.80 ) earmarked for endowment reimbursement. TFL
+          is currently reviewing issues with the indexing, but there is no quick
+          resolution expected.
+        </p>
+        <p className="leading-relaxed my-8 font-semibold text-sky-900/70">
+          We understand most people cannot be made whole from the $UST collapse,
+          and we do not seek any special treatment for Angel Protocol itself.
+        </p>
+        <p className="leading-relaxed">
+          However, the NGOs on our platform are all registered charitable
+          organizations with public endowment balances that can easily be
+          checked on-chain. They were not seeking risk and the sums raised
+          already potentially assured the future of many of these charities.
+        </p>
+        <p className="my-8 text-sky-900/70 font-semibold">
+          Charities exist as a safety net for causes that fall through the
+          cracks of society. Please do not let the charities themselves fall
+          through the cracks as well.
+        </p>
+        <p className="leading-relaxed">
+          Funds donated here will be apportioned to each charity in line with
+          the totals received prior to the $UST collapse. 100% of every donation
+          will be sent to the charities. In the very near future, we shall be
+          relaunching the charity marketplace, and then you will also be able to
+          donate to charities individually.
+        </p>
+        <p className="my-8 text-lg text-sky-600 font-semibold">
+          Thank you for your time, and for any support you can provide for the
+          charities.
+        </p>
+      </article>
+      <article className="max-w-4xl mb-8">
+        <h3 className="font-extrabold text-4xl uppercase mb-3 mt-6">
+          Our Mission
+        </h3>
+        <p className="leading-relaxed">
+          Angel Protocol’s mission is to democratize access to endowments so any
+          organization or inidual can achieve a more secure financial future. We
+          generate social impact by leveraging decentralized finance to align a
+          global community around shared incentives; win and help win.
+        </p>
+      </article>
+    </section>
+  );
+};
+
+export default AngelInfo;
