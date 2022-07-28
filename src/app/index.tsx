@@ -4,8 +4,8 @@ import DonateForm from "../components/DonateForm/DonateForm";
 import DonationHeader from "./DonationHeader";
 import DonationMetrics from "./DonationMetrics";
 import Footer from "./Footer";
-import donateImage from "assets/images/charitable_giving.jpeg";
 import Hero from "./Hero";
+import { copyAndImages } from "constants/constants";
 
 export default function App() {
   return (
@@ -15,7 +15,7 @@ export default function App() {
       <div className="grid md:grid-cols-[3fr_4fr]  container-padded gap-4 my-16">
         <img
           className="h-60 md:h-96 w-full object-cover rounded"
-          src={donateImage}
+          src={copyAndImages.donation_image}
         />
         <DonateForm />
       </div>

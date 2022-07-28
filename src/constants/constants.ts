@@ -22,3 +22,11 @@ export const angelSocials = {
   telegram: "https://t.me/angelprotocoI",
   discord: "https://discord.com/invite/RhqA652ySA",
 };
+
+export const copyAndImages = {
+  hero_video: process.env.REACT_APP_HERO_VIDEO ?? "", //for placeholders, 
+  hero_title: process.env.REACT_APP_HERO_TITLE ?? "",
+  donation_image: process.env.REACT_APP_DONATION_IMAGE ?? "",
+  donation_title: process.env.REACT_APP_DONATION_TITLE ?? "",
+  donation_subtitle: process.env.REACT_APP_DONATION_SUBTITLE ?? "",
+}
