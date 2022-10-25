@@ -55,7 +55,7 @@ function Share() {
     <>
       <div className="">
         <button
-          className="bg-sky-600 mt-2 p-2 uppercase text-slate-50 text-xs font-extrabold rounded mb-4"
+          className="bg-sky-600 mt-2 p-2 uppercase text-slate-50 text-xs font-extrabold rounded-md mb-4"
           onClick={() => window.location.reload()}
         >
           Go Back

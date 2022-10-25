@@ -25,7 +25,7 @@ export default DonationMetrics;
 
 function Metric(props: { name: string; value: string }) {
   return (
-    <div className="grid gap-4 place-items-center text-slate-50 p-8 border rounded border-slate-50/40">
+    <div className="grid gap-4 place-items-center text-slate-50 p-8 border rounded-md border-slate-50/40">
       <p className="text-xl font-semibold">{props.name}</p>
       <p className="text-3xl font-bold">{props.value}</p>
     </div>

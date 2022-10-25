@@ -4,14 +4,14 @@ import { copyAndImages } from "constants/constants";
 
 export default function Hero() {
   return (
-    <div className="relative container-padded bg-sky-400/30 rounded rounded-t-none">
+    <div className="relative container-padded bg-sky-400/30 rounded-md rounded-t-none">
       <Nav />
       <video
         autoPlay
         loop
         muted
         playsInline
-        className="absolute object-cover h-full w-full inset-0 z-[-1] brightness-50 rounded rounded-t-none"
+        className="absolute object-cover h-full w-full inset-0 z-[-1] brightness-50 rounded-md rounded-t-none"
       >
         <source src={copyAndImages.hero_video} type="video/mp4" />
       </video>
@@ -20,7 +20,7 @@ export default function Hero() {
           {copyAndImages.hero_title}
         </h1>
         <a
-          className="rounded px-4 py-2 my-8 bg-amber-500 hover:bg-amber-400 active:bg-amber-100 active:text-slate-600 uppercase font-bold text-slate-50"
+          className="rounded-md px-4 py-2 my-8 bg-amber-500 hover:bg-amber-400 active:bg-amber-100 active:text-slate-600 uppercase font-bold text-slate-50"
           href="#donate_now"
         >
           Donate Now

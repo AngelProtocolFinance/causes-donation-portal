@@ -9,7 +9,7 @@ import {
 
 const Footer = () => {
   return (
-    <footer className="container-padded bg-sky-600 p-16 text-slate-50 rounded rounded-b-none">
+    <footer className="container-padded bg-sky-600 p-16 text-slate-50 rounded-md rounded-b-none">
       <div className="flex gap-4 items-center mb-4">
         <a
           className="hover:text-amber-300"

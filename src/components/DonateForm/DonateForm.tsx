@@ -58,7 +58,7 @@ const DonateForm = (): JSX.Element => {
       <TxModal step={txStep} txHash={txHash} resetTx={resetTx} />
 
       <div
-        className="grid justify-items-left border border-slate-500/30 rounded p-4 text-slate-600"
+        className="grid justify-items-left border border-slate-500/30 rounded-md p-4 text-slate-600"
         id="donate_now"
       >
         <p className="">Supported Wallets: MetaMask, Binance Wallet, xDefi</p>

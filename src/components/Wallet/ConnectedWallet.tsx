@@ -23,7 +23,7 @@ const ConnectedWallet = () => {
     <Popover className="relative text-slate-600">
       <Popover.Button
         disabled={isWalletLoading}
-        className="bg-slate-50 py-2 px-3 rounded flex items-center gap-2"
+        className="bg-slate-50 py-2 px-3 rounded-md flex items-center gap-2"
       >
         <span>{sliced(address, 5, -3)}</span>
         {isWalletLoading ? (
@@ -39,7 +39,7 @@ const ConnectedWallet = () => {
         )}
       </Popover.Button>
 
-      <Popover.Panel className="absolute right-0 z-20 w-full min-w-max bg-slate-50 mt-2 rounded px-3 py-2">
+      <Popover.Panel className="absolute right-0 z-20 w-full min-w-max bg-slate-50 mt-2 rounded-md px-3 py-2">
         <p className="mb-2 uppercase font-extrabold text-sky-600">
           {displayCoin.chain_name}
         </p>

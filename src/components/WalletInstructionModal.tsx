@@ -10,7 +10,7 @@ function WalletInstruction({ open, setOpen }: any) {
       {/* The backdrop */}
       <div className="fixed inset-0 bg-black/30" aria-hidden="true" />
 
-      <Dialog.Panel className="bg-slate-50 fixed-center p-4 rounded text-slate-700 max-w-md max-h-[80vh] overflow-y-auto">
+      <Dialog.Panel className="bg-slate-50 fixed-center p-4 rounded-md text-slate-700 max-w-md max-h-[80vh] overflow-y-auto">
         <Dialog.Title className="font-semibold text-lg uppercase mb-4">
           Wallet Instructions
         </Dialog.Title>
