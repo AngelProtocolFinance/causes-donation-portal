@@ -58,7 +58,7 @@ const DonateForm = (): JSX.Element => {
       <TxModal step={txStep} txHash={txHash} resetTx={resetTx} />
 
       <div
-        className="grid justify-items-left border border-slate-500/30 rounded p-4 text-slate-600"
+        className="grid justify-items-left border border-slate-500/30 rounded-md p-4 text-slate-600"
         id="donate_now"
       >
         <p className="">Supported Wallets: MetaMask, Binance Wallet, xDefi</p>
@@ -110,6 +110,15 @@ const DonateForm = (): JSX.Element => {
         >
           {donateText}
         </button>
+        {isWalletConnected && (
+          <p className="text-sm text-zinc-400 text-center mt-3">
+            If you would prefer to donate through a DAF or other method, please
+            reach out to{" "}
+            <a className="text-sky-400" href="mailto: support@angelprotocol.io">
+              support@angelprotocol.io
+            </a>
+          </p>
+        )}
       </div>
     </>
   );
