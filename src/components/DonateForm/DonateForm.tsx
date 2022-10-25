@@ -110,6 +110,15 @@ const DonateForm = (): JSX.Element => {
         >
           {donateText}
         </button>
+        {isWalletConnected && (
+          <p className="text-sm text-zinc-400 text-center mt-3">
+            If you would prefer to donate through a DAF or other method, please
+            reach out to{" "}
+            <a className="text-sky-400" href="mailto: support@angelprotocol.io">
+              support@angelprotocol.io
+            </a>
+          </p>
+        )}
       </div>
     </>
   );
