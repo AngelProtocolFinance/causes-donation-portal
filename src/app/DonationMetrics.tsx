@@ -9,7 +9,7 @@ const DonationMetrics = () => {
   return (
     <section className="bg-sky-600 grid grid-cols-1 md:grid-cols-3 gap-16 items-center container-padded p-8 my-16 rounded">
       <Metric
-        name="Total donated"
+        name="Total Donated"
         value={toCurrency(+data.totalUsd, 3) + " USDC"}
       />
       <Metric
