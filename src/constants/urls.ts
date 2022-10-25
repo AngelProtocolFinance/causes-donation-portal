@@ -9,7 +9,7 @@ export const terraLcdUrl = IS_TEST
   : "https://phoenix-lcd.terra.dev";
 
 export const ethereumRpcUrl = IS_TEST
-  ? "https://kovan.infura.io/v3/a2be88395e1b49ecb831d4dfd5fb0f75"
+  ? "https://goerli.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161"
   : "https://rpc.ankr.com/eth";
 export const binanceRpcUrl = IS_TEST
   ? "https://data-seed-prebsc-2-s2.binance.org:8545"

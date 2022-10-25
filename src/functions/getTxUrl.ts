@@ -6,8 +6,8 @@ export default function getTxUrl(txhash: string, chainId?: string) {
       return `https://finder.terra.money/mainnet/tx/${txhash}`;
     case chainIDs.terra_test:
       return `https://finder.terra.money/testnet/tx/${txhash}`;
-    case chainIDs.eth_kovan:
-      return `https://kovan.etherscan.io/tx/${txhash}`;
+    case chainIDs.eth_goerli:
+      return `https://goerli.etherscan.io/tx/${txhash}`;
     case chainIDs.eth_main:
       return `https://etherscan.io/tx/${txhash}`;
     case chainIDs.bnb_test:
