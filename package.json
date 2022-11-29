@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "build": "react-app-rewired build",
-    "start": "react-app-rewired start",
+    "start": "GENERATE_SOURCEMAP=false react-app-rewired start",
     "test": "react-app-rewired test --colors",
     "coverage": "react-app-rewired test --coverage",
     "precommit": "lint-staged",
@@ -50,6 +50,9 @@
     "react-share": "^4.4.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.20.5",
+    "@babel/plugin-syntax-flow": "^7.18.6",
+    "@babel/plugin-transform-react-jsx": "^7.19.0",
     "@testing-library/jest-dom": "^5.15.0",
     "@types/jest": "^27.0.2",
     "@types/jsonwebtoken": "^8.5.8",
@@ -70,5 +73,9 @@
     "typescript": "^4.4.4",
     "util": "^0.12.4"
   },
-  "packageManager": "yarn@3.2.1"
+  "resolutions": {
+    "loader-utils@^2.0.0": "2.0.4",
+    "loader-utils@^3.2.0": "3.2.1"
+  },
+  "packageManager": "yarn@3.3.0"
 }
