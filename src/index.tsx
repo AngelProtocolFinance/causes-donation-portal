@@ -4,7 +4,7 @@ import { store } from "store";
 import { Provider } from "react-redux";
 
 import "./index.css";
-import App from "app";
+import App from "App";
 import { initTheme } from "helpers/theme";
 import { chainOptions } from "chainOptions";
 
