@@ -38,8 +38,8 @@
   "dependencies": {
     "@headlessui/react": "^1.6.5",
     "@reduxjs/toolkit": "^1.8.2",
-    "@terra-money/terra.js": "^3.0.7",
-    "@terra-money/wallet-provider": "^3.8.0",
+    "@terra-money/terra.js": "^3.1.7",
+    "@terra-money/wallet-provider": "^3.11.2",
     "ethers": "^5.5.4",
     "jsonwebtoken": "^8.5.1",
     "react": "^18.2.0",
@@ -47,7 +47,7 @@
     "react-dom": "^18.2.0",
     "react-icons": "^4.3.1",
     "react-redux": "^8.0.2",
-    "react-share": "^4.4.0"
+    "react-share": "^4.4.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.5",

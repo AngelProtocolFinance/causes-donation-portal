@@ -1,5 +1,4 @@
 import Nav from "components/Nav";
-import heroVideo from "assets/videos/holdinghands.mp4";
 import { copyAndImages } from "constants/constants";
 
 export default function Hero() {
