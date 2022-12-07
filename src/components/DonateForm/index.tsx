@@ -52,10 +52,7 @@ const DonateForm = (): JSX.Element => {
         open={isWalletTutorialOpen}
         setOpen={setIsWalletTutorialOpen}
       />
-      <WalletSelection
-        isSelectionOpen={isWalletSelectionOpen}
-        setIsSelectionOpen={setIsWalletSelectionOpen}
-      />
+
       <TxModal step={txStep} txHash={txHash} resetTx={resetTx} />
 
       <div

@@ -39,48 +39,31 @@ const initialState: State = {
 };
 
 export default function WalletContext(props: PropsWithChildren<{}>) {
-  const {
-    isLoading: isMetamaskLoading, //requesting permission, attaching event listeners
-    connection: metamaskConnection,
-    disconnect: disconnectMetamask,
-    providerInfo: metamaskInfo,
-  } = useInjectedProvider("metamask");
+  // const {
+  //   isLoading: isMetamaskLoading, //requesting permission, attaching event listeners
+  //   connection: metamaskConnection,
+  //   disconnect: disconnectMetamask,
+  //   providerInfo: metamaskInfo,
+  // } = useInjectedProvider("metamask");
 
-  const {
-    isLoading: isBinanceWalletLoading,
-    connection: binanceWalletConnection,
-    disconnect: disconnectBinanceWallet,
-    providerInfo: binanceWalletInfo,
-  } = useInjectedProvider("binance-wallet");
+  // const {
+  //   isLoading: isBinanceWalletLoading,
+  //   connection: binanceWalletConnection,
+  //   disconnect: disconnectBinanceWallet,
+  //   providerInfo: binanceWalletInfo,
+  // } = useInjectedProvider("binance-wallet");
 
-  const {
-    isLoading: isXdefiLoading,
-    connection: xdefiConnection,
-    disconnect: disconnectXdefi,
-    providerInfo: xdefiEVMinfo,
-  } = useInjectedProvider("xdefi-evm", undefined, "Xdefi Ethereum");
+  // const {
+  //   isLoading: isXdefiLoading,
+  //   connection: xdefiConnection,
+  //   disconnect: disconnectXdefi,
+  //   providerInfo: xdefiEVMinfo,
+  // } = useInjectedProvider("xdefi-evm", undefined, "Xdefi Ethereum");
 
   const { isTerraLoading, terraConnections, disconnectTerra, terraInfo } =
     useTerra();
 
-  const providerStatuses: ProviderStatuses = [
-    {
-      providerInfo: binanceWalletInfo,
-      isLoading: isBinanceWalletLoading,
-    },
-    {
-      providerInfo: metamaskInfo,
-      isLoading: isMetamaskLoading,
-    },
-    {
-      providerInfo: xdefiEVMinfo,
-      isLoading: isXdefiLoading,
-    },
-    {
-      providerInfo: terraInfo,
-      isLoading: isTerraLoading,
-    },
-  ];
+  const providerStatuses: ProviderStatuses = [];
 
   const isProviderLoading = providerStatuses.reduce(
     (status, curr) => status || curr.isLoading,
@@ -111,26 +94,7 @@ export default function WalletContext(props: PropsWithChildren<{}>) {
     }
   }, [activeProviderInfo, coinWithBalances]);
 
-  const disconnect = () => {
-    switch (activeProviderInfo?.providerId) {
-      case "metamask":
-        disconnectMetamask();
-        break;
-      case "binance-wallet":
-        disconnectBinanceWallet();
-        break;
-      case "xdefi-evm":
-        disconnectXdefi();
-        break;
-      case "xdefi-wallet":
-      case "station":
-      case "walletconnect":
-        disconnectTerra();
-        break;
-      default:
-        throw new Error("no wallet is connected");
-    }
-  };
+  const disconnect = () => {};
 
   return (
     <getContext.Provider
@@ -142,12 +106,7 @@ export default function WalletContext(props: PropsWithChildren<{}>) {
     >
       <setContext.Provider
         value={{
-          connections: [
-            xdefiConnection,
-            metamaskConnection,
-            ...terraConnections,
-            binanceWalletConnection,
-          ],
+          connections: [],
           disconnect,
         }}
       >

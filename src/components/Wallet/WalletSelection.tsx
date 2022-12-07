@@ -1,25 +1,18 @@
 import { Dialog } from "@headlessui/react";
-import {
-  useSetWallet,
-  useGetWallet,
-} from "contexts/WalletContext/WalletContext";
-import { Connection } from "contexts/WalletContext";
-import { WalletError } from "errors";
-import { useEffect } from "react";
+import { DisconnectedWallet } from "contexts/WalletContext";
 
 type Props = {
+  wallets: DisconnectedWallet[];
   isSelectionOpen: boolean;
   setIsSelectionOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const WalletSelection = ({ isSelectionOpen, setIsSelectionOpen }: Props) => {
-  const { wallet } = useGetWallet();
-  const { connections } = useSetWallet();
-
-  useEffect(() => {
-    if (wallet) setIsSelectionOpen(false);
-  }, [wallet]);
-
+const WalletSelection = ({
+  isSelectionOpen,
+  setIsSelectionOpen,
+  wallets,
+}: Props) => {
+  console.log(wallets);
   return (
     <Dialog
       className="relative"
@@ -34,8 +27,21 @@ const WalletSelection = ({ isSelectionOpen, setIsSelectionOpen }: Props) => {
           Connect to a wallet
         </Dialog.Title>
         <div className="grid">
-          {connections.map((connection) => (
-            <Connector key={connection.name} {...connection} />
+          {wallets.map(({ logo, connect, id, name }) => (
+            <button
+              key={id}
+              className="flex items-center gap-2 p-4 border-b border-gray-d1 dark:border-bluegray hover:text-blue hover:dark:text-orange-l1"
+              onClick={() => {
+                connect();
+              }}
+            >
+              <img
+                className="w-6 h-6 rounded-full object-contain"
+                src={logo}
+                alt=""
+              />
+              {name}
+            </button>
           ))}
         </div>
       </Dialog.Panel>
@@ -44,32 +50,3 @@ const WalletSelection = ({ isSelectionOpen, setIsSelectionOpen }: Props) => {
 };
 
 export default WalletSelection;
-
-function Connector(props: Connection) {
-  async function handleConnect() {
-    try {
-      await props.connect();
-    } catch (_err: any) {
-      let errorMsg: string;
-      if (_err instanceof WalletError) {
-        errorMsg = _err.message;
-      } else {
-        errorMsg = "Unknown error occured";
-      }
-      alert(errorMsg);
-    }
-  }
-  return (
-    <button
-      className="flex items-center gap-2 p-4 border-b border-gray-d1 dark:border-bluegray hover:text-blue hover:dark:text-orange-l1"
-      onClick={handleConnect}
-    >
-      <img
-        className="w-6 h-6 rounded-full object-contain"
-        src={props.logo}
-        alt=""
-      />
-      {props.name.toUpperCase()}
-    </button>
-  );
-}

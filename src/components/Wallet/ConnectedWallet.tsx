@@ -8,25 +8,25 @@ import { WithBalance } from "types";
 import { supportedChainIds } from "constants/chainIDs";
 import SupportedNetworksMenu from "./SupportedNetworksMenu";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { ConnectedWallet as TConnectedWallet } from "contexts/WalletContext";
 
-const ConnectedWallet = () => {
-  const { wallet, isWalletLoading } = useGetWallet();
-  const { disconnect } = useSetWallet();
+const ConnectedWallet = ({ wallet }: { wallet: TConnectedWallet }) => {
+  // const { address, displayCoin, coins, chainId } = wallet!; //this component only renders when wallet is connected
 
-  const { address, displayCoin, coins, chainId } = wallet!; //this component only renders when wallet is connected
-
-  if (!supportedChainIds.includes(chainId)) {
-    return <SupportedNetworksMenu />;
-  }
+  // if (!supportedChainIds.includes(chainId)) {
+  //   return <SupportedNetworksMenu />;
+  // }
 
   return (
     <Popover className="isolate relative">
       <Popover.Button
-        disabled={isWalletLoading}
+        // disabled={isWalletLoading}
         className="btn-orange text-sm py-2 px-3 rounded-md flex items-center gap-2"
       >
-        <span>{sliced(address, 5, -3)}</span>
-        {isWalletLoading ? (
+        <span>
+          {wallet.chainId} {sliced(wallet.address, 5, -3)}
+        </span>
+        {/* {isWalletLoading ? (
           <AiOutlineLoading3Quarters size={15} className="animate-spin" />
         ) : (
           <>
@@ -36,24 +36,25 @@ const ConnectedWallet = () => {
             </span>
             <span className="hidden sm:block"> {displayCoin.symbol}</span>
           </>
-        )}
+        )} */}
       </Popover.Button>
 
       <Popover.Panel className="absolute border right-0 z-20 px-3 py-2 border-prim bg-white dark:bg-blue-d7 w-full min-w-max mt-2 rounded-md shadow-lg">
         <p className="mb-2 uppercase font-extrabold text-blue-d1">
-          {displayCoin.chain_name}
+          Chain name
+          {/* {displayCoin.chain_name} */}
         </p>
         <p className="text-sm uppercase border-b border-prim mb-2 pb-1">
           Balances
         </p>
-        <div className="grid gap-1 mb-4">
+        {/* <div className="grid gap-1 mb-4">
           {coins.map((coin) => (
             <Token key={coin.denom} {...coin} />
           ))}
-        </div>
+        </div> */}
         <button
           className="uppercase text-sm font-extrabold hover:text-orange dark:hover:text-orange-l2 text-right w-full"
-          onClick={() => disconnect()}
+          onClick={wallet.disconnect}
         >
           Disconnect
         </button>

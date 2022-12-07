@@ -7,10 +7,12 @@ import Footer from "./Footer";
 import Header from "./Header";
 import { copyAndImages } from "constants/constants";
 import Hero from "./Hero";
+import WalletCtx from "contexts/WalletContext/WalletCtx";
 
 export default function App() {
   return (
-    <WalletContext>
+    <WalletCtx>
+      {/* <WalletContext> */}
       <div className="grid min-h-screen bg-gray-l5 dark:bg-blue-d5">
         <Header classes="-mb-[5.439rem] z-10 sticky top-0" />
         <Hero />
@@ -26,6 +28,7 @@ export default function App() {
         <AngelInfo />
         <Footer />
       </div>
-    </WalletContext>
+      {/* </WalletContext> */}
+    </WalletCtx>
   );
 }

@@ -14,6 +14,19 @@ import { providerIcons } from "./constants";
 import { retrieveUserAction, saveUserAction } from "./helpers/prefActions";
 import { isMobile } from "constants/env";
 
+type Connected = {
+  status: "connected";
+  address: string;
+  chainId: string;
+  disconnect(): void;
+};
+type Disconnected = { status: "disconnected"; connect(): void };
+type Loading = { status: "loading" };
+
+type Status = Connected | Disconnected | Loading;
+
+type Wallet = { logo: string; type: string; id: string } & Status;
+
 export default function useInjectedProvider(
   providerId: ProviderId,
   connectorLogo?: string,
@@ -62,6 +75,8 @@ export default function useInjectedProvider(
       removeAllListeners(providerId);
     }
   };
+
+  function _connect() {}
 
   const requestAccess = async (isNewConnection = false) => {
     try {

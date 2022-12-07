@@ -1,8 +1,13 @@
 import { useState } from "react";
 import WalletSelection from "./WalletSelection";
 import { AiOutlineWallet } from "react-icons/ai";
+import { DisconnectedWallet } from "contexts/WalletContext";
 
-const WalletSelectionOpener = () => {
+const WalletSelectionOpener = ({
+  wallets,
+}: {
+  wallets: DisconnectedWallet[];
+}) => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -15,7 +20,11 @@ const WalletSelectionOpener = () => {
         <span className="hidden sm:block">Connect Wallet</span>
       </button>
 
-      <WalletSelection setIsSelectionOpen={setOpen} isSelectionOpen={open} />
+      <WalletSelection
+        setIsSelectionOpen={setOpen}
+        isSelectionOpen={open}
+        wallets={wallets}
+      />
     </>
   );
 };
