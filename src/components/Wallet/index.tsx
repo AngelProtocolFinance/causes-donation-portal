@@ -3,7 +3,7 @@ import WalletSelectionOpener from "./WalletSelectionOpener";
 import ConnectedButton from "./ConnectedWallet";
 import InitializingButton from "./InitializingButton";
 
-const WalletButton = () => {
+const Wallet = () => {
   const { wallet, isProviderLoading } = useGetWallet();
   if (isProviderLoading) return <InitializingButton />;
   if (!wallet) return <WalletSelectionOpener />;
@@ -11,4 +11,4 @@ const WalletButton = () => {
   return <ConnectedButton />;
 };
 
-export default WalletButton;
+export default Wallet;

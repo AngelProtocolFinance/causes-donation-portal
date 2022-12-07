@@ -1,10 +1,8 @@
-import Nav from "components/Nav";
 import { copyAndImages } from "constants/constants";
 
 export default function Hero() {
   return (
-    <div className="relative container-padded bg-sky-400/30 rounded-md rounded-t-none">
-      <Nav />
+    <header className="grid justify-items-center gap-4 relative container-padded h-80 border border-prim">
       <video
         autoPlay
         loop
@@ -14,17 +12,16 @@ export default function Hero() {
       >
         <source src={copyAndImages.hero_video} type="video/mp4" />
       </video>
-      <header className="grid justify-items-center gap-4">
-        <h1 className="text-slate-50 text-3xl sm:text-4xl sm:leading-relaxed my-6 font-extrabold uppercase text-center">
-          {copyAndImages.hero_title}
-        </h1>
-        <a
-          className="rounded-md px-4 py-2 my-8 bg-amber-500 hover:bg-amber-400 active:bg-amber-100 active:text-slate-600 uppercase font-bold text-slate-50"
-          href="#donate_now"
-        >
-          Donate Now
-        </a>
-      </header>
-    </div>
+
+      <h1 className="text-3xl sm:text-4xl sm:leading-relaxed mt-40 font-extrabold uppercase text-center">
+        {copyAndImages.hero_title}
+      </h1>
+      <a
+        className="rounded-md px-4 py-2 my-8 btn-orange uppercase font-bold"
+        href="#donate_now"
+      >
+        Donate Now
+      </a>
+    </header>
   );
 }

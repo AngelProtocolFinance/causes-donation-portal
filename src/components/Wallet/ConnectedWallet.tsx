@@ -20,7 +20,7 @@ const ConnectedWallet = () => {
   }
 
   return (
-    <Popover className="relative text-slate-600">
+    <Popover className="relative">
       <Popover.Button
         disabled={isWalletLoading}
         className="bg-slate-50 py-2 px-3 rounded-md flex items-center gap-2"

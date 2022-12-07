@@ -1,10 +1,14 @@
 import angelLogo from "assets/icons/AP-Beta-logo.svg";
 import Wallet from "components/Wallet";
+import ThemeToggle from "./ThemeToggle";
 
-const Nav = () => {
+export default function Header({ classes = "" }) {
   return (
-    <nav className="flex items-center justify-between p-4">
+    <div
+      className={`flex relative items-center container-padded rounded-md rounded-t-none ${classes} py-3 bg-transparent`}
+    >
       <a
+        className="mr-auto"
         href="https://www.angelprotocol.io/"
         target="_blank"
         rel="noopener noreferrer"
@@ -12,8 +16,7 @@ const Nav = () => {
         <img src={angelLogo} className="w-32 object-contain" />
       </a>
       <Wallet />
-    </nav>
+      <ThemeToggle />
+    </div>
   );
-};
-
-export default Nav;
+}

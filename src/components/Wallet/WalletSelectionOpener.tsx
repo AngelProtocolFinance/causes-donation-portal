@@ -8,13 +8,10 @@ const WalletSelectionOpener = () => {
   return (
     <>
       <button
-        className="sm:bg-slate-50 p-0 sm:py-2 sm:px-3 rounded"
+        className="p-0 sm:py-2 sm:px-3 rounded bg-orange uppercase text-sm font-bold"
         onClick={() => setOpen(true)}
       >
-        <AiOutlineWallet
-          size={35}
-          className="sm:hidden text-slate-50 hover:text-sky-400 active:text-sky-500"
-        />
+        <AiOutlineWallet size={35} className="sm:hidden" />
         <span className="hidden sm:block">Connect Wallet</span>
       </button>
 
