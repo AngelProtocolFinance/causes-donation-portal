@@ -4,6 +4,7 @@ import binanceWalletIcon from "assets/icons/wallets/binance.png";
 import metamaskIcon from "assets/icons/wallets/metamask.png";
 
 import useInjectedWallet from "./useInjectedWallet";
+import useTerra2 from "./useTerra2";
 
 export default function WalletCtx(props: PropsWithChildren<{}>) {
   const metamask = useInjectedWallet({
@@ -18,7 +19,9 @@ export default function WalletCtx(props: PropsWithChildren<{}>) {
     type: "evm",
     name: "Binance wallet",
   });
-  const wallets = [metamask, binance];
+  const terraWallets = useTerra2();
+
+  const wallets = [metamask, binance, ...terraWallets];
 
   const connectedWallet = wallets.find((w) => w.status === "connected") as
     | ConnectedWallet
