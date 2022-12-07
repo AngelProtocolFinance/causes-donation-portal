@@ -1,3 +1,5 @@
+import React, { PropsWithChildren } from "react";
+
 const AngelInfo = () => {
   return (
     <section className="container-padded">
@@ -15,44 +17,28 @@ const AngelInfo = () => {
         </p>
         <ul className="list-disc my-4 pl-4 md:pl-8">
           <li className="mb-1">
-            <a
-              className="text-blue-d1 hover:text-orange"
-              href="https://www.angelprotocol.io/app/leaderboard"
-              target="_blank"
-            >
+            <Anc href="https://www.angelprotocol.io/app/leaderboard">
               160 charities{" "}
-            </a>
+            </Anc>
             with $1.5M raised to fight{" "}
-            <a
-              className="text-blue-d1 hover:text-orange"
-              href="https://restore-earth.angelprotocol.io/"
-              target="_blank"
-            >
+            <Anc href="https://restore-earth.angelprotocol.io/">
               climate change
-            </a>
+            </Anc>
           </li>
           <li className="mb-1">
             $500k in humanitarian relief for those impacted by{" "}
-            <a
-              className="text-blue-d1 hover:text-orange"
-              href="https://www.youtube.com/watch?v=h3wLfQLb8_4"
-              target="_blank"
-            >
+            <Anc href="https://www.youtube.com/watch?v=h3wLfQLb8_4">
               Typhoon Rai
-            </a>
+            </Anc>
           </li>
           <li className="mb-1">
             over $200k to support{" "}
-            <a
-              className="text-blue-d1 hover:text-orange"
-              href="https://ukraine.angelprotocol.io/"
-              target="_blank"
-            >
+            <Anc href="https://ukraine.angelprotocol.io/">
               Ukrainian refugees.
-            </a>
+            </Anc>
           </li>
         </ul>
-        <p className="leading-relaxed mb-4 font-medium text-black dark:text-white">
+        <p className="leading-relaxed mb-1 font-medium">
           It is deeply saddening that these $UST denominated funds were also
           slashed during the de-peg event.
         </p>
@@ -63,7 +49,7 @@ const AngelInfo = () => {
           is currently reviewing issues with the indexing, but there is no quick
           resolution expected.
         </p>
-        <p className="leading-relaxed my-8 font-medium text-black dark:text-white">
+        <p className="leading-relaxed mt-8 mb-1 font-medium">
           We understand most people cannot be made whole from the $UST collapse,
           and we do not seek any special treatment for Angel Protocol itself.
         </p>
@@ -73,7 +59,7 @@ const AngelInfo = () => {
           checked on-chain. They were not seeking risk and the sums raised
           already potentially assured the future of many of these charities.
         </p>
-        <p className="my-8 font-medium text-black dark:text-white">
+        <p className="mt-8 mb-1 font-medium">
           Charities exist as a safety net for causes that fall through the
           cracks of society. Please do not let the charities themselves fall
           through the cracks as well.
@@ -106,3 +92,19 @@ const AngelInfo = () => {
 };
 
 export default AngelInfo;
+
+function Anc({
+  children,
+  ...props
+}: Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, "rel" | "target">) {
+  return (
+    <a
+      {...props}
+      className="text-blue dark:text-orange-l1 hover:text-orange hover:dark:text-orange-l2"
+      target="_blank"
+      rel="noreferrer noopener"
+    >
+      {children}
+    </a>
+  );
+}

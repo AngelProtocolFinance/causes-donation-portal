@@ -117,7 +117,10 @@ const DonateForm = (): JSX.Element => {
           <p className="text-sm text-gray-d1 dark:text-gray text-center mt-3">
             If you would prefer to donate through a DAF or other method, please
             reach out to{" "}
-            <a className="text-sky-400" href="mailto: support@angelprotocol.io">
+            <a
+              className="text-blue dark:text-blue-l2"
+              href="mailto: support@angelprotocol.io"
+            >
               support@angelprotocol.io
             </a>
           </p>

@@ -29,7 +29,7 @@ const WalletSelection = ({ isSelectionOpen, setIsSelectionOpen }: Props) => {
       {/**backdrop */}
       <div className="fixed inset-0 bg-black/60" aria-hidden="true" />
 
-      <Dialog.Panel className="z-20 bg-slate-50 fixed-center p-8 rounded-md min-w-max bg-white dark:bg-blue-d7 border border-prim">
+      <Dialog.Panel className="z-20 fixed-center p-8 rounded-md min-w-max bg-white dark:bg-blue-d7 border border-prim">
         <Dialog.Title className="uppercase font-extrabold mb-2">
           Connect to a wallet
         </Dialog.Title>

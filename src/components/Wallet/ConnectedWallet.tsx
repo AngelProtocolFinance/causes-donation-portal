@@ -43,7 +43,7 @@ const ConnectedWallet = () => {
         <p className="mb-2 uppercase font-extrabold text-sky-600">
           {displayCoin.chain_name}
         </p>
-        <p className="text-sm uppercase border-b border-slate-600/2 mb-2 pb-1">
+        <p className="text-sm uppercase border-b border-prim mb-2 pb-1">
           Balances
         </p>
         <div className="grid gap-1 mb-4">
