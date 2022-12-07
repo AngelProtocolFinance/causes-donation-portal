@@ -57,7 +57,7 @@ const Footer = () => {
         >
           DOWNLOAD LITEPAPER
         </a>
-        <p className="text-xs">
+        <p className="text-xs text-gray-d1 dark:text-gray">
           COPYRIGHT 2022 ANGEL PROTOCOL. ALL RIGHTS RESERVED.
         </p>
       </div>
