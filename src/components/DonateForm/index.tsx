@@ -8,6 +8,7 @@ import { placeHolderBalances } from "services/web3/constants";
 import toCurrency from "helpers/toCurrency";
 import WalletSelection from "components/Wallet/WalletSelection";
 import CurrencyDropdown from "./CurrencyDropdown";
+import { FaInfoCircle } from "react-icons/fa";
 
 const DonateForm = (): JSX.Element => {
   const { wallet } = useGetWallet();
@@ -58,17 +59,18 @@ const DonateForm = (): JSX.Element => {
       <TxModal step={txStep} txHash={txHash} resetTx={resetTx} />
 
       <div
-        className="grid justify-items-left border border-slate-500/30 rounded-md p-4 text-slate-600"
+        className="grid justify-items-left border border-prim bg-white dark:bg-blue-d6 rounded-md p-4"
         id="donate_now"
       >
         <p className="">Supported Wallets: MetaMask, Binance Wallet, xDefi</p>
         <button
-          className="text-left text-sm underline text-slate-600/60 justify-self-start"
+          className="text-left text-sm text-gray-d1 dark:text-gray justify-self-start hover:text-orange hover:dark:text-orange-l2"
           onClick={() => setIsWalletTutorialOpen(true)}
         >
+          <FaInfoCircle className="inline relative bottom-px mr-1" />
           Wallet Instructions
         </button>
-        <p className="text-lg md:text-xl uppercase font-extrabold mt-6 mb-2 text-xl">
+        <p className="font-heading text-lg md:text-xl uppercase font-extrabold mt-6 mb-2">
           Currency
         </p>
         <CurrencyDropdown
@@ -78,9 +80,9 @@ const DonateForm = (): JSX.Element => {
         />
         <label
           htmlFor="__donate_amount"
-          className="flex justify-between items-baseline mt-6"
+          className="flex justify-between items-baseline mt-6 mb-2"
         >
-          <span className="text-lg md:text-xl uppercase font-extrabold uppercase slashed-zero">
+          <span className="font-heading text-lg md:text-xl font-extrabold uppercase">
             Amount
           </span>
           <div className="text-sm flex gap-1 items-baseline">
@@ -96,22 +98,23 @@ const DonateForm = (): JSX.Element => {
         <input
           id="__donate_amount"
           type="text"
+          placeholder="0.0000"
           onChange={(e: ChangeEvent<HTMLInputElement>) =>
             setAmount(e.target.value)
           }
           value={amount}
-          className="text-2xl w-full text-left pl-2 pb-1 mb-4 focus:outline-none border-b-2 border-slate-500/40 focus:border-sky-500/40"
+          className="w-full text-left mb-4 p-3 focus:outline-none border border-prim rounded focus:border-gray-d2 focus:dark:border-blue bg-orange-l6 dark:bg-blue-d7"
         />
 
         <button
           disabled={isDonateDisabled}
-          className="self-end bg-sky-500 hover:bg-sky-400 active:bg-sky-600 disabled:bg-slate-300 w-full p-2 uppercase leading-relaxed font-extrabold text-slate-50 rounded"
+          className="justify-self-end btn-orange py-2 w-full uppercase leading-relaxed font-extrabold rounded"
           onClick={() => donateOrConnect()}
         >
           {donateText}
         </button>
         {isWalletConnected && (
-          <p className="text-sm text-zinc-400 text-center mt-3">
+          <p className="text-sm text-gray-d1 dark:text-gray text-center mt-3">
             If you would prefer to donate through a DAF or other method, please
             reach out to{" "}
             <a className="text-sky-400" href="mailto: support@angelprotocol.io">

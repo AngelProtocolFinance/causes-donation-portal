@@ -1,6 +1,6 @@
 import WalletContext from "contexts/WalletContext";
 import AngelInfo from "./AngelInfo";
-import DonateForm from "../components/DonateForm/DonateForm";
+import DonateForm from "../components/DonateForm";
 import DonationHeader from "./DonationHeader";
 import DonationMetrics from "./DonationMetrics";
 import Footer from "./Footer";
@@ -12,7 +12,7 @@ export default function App() {
   return (
     <WalletContext>
       <div className="grid min-h-screen bg-gray-l5 dark:bg-blue-d5">
-        <Header classes="-mb-[5.439rem] z-10" />
+        <Header classes="-mb-[5.439rem] z-10 sticky top-0" />
         <Hero />
         <DonationHeader />
         <div className="grid md:grid-cols-[3fr_4fr]  container-padded gap-4 my-16">

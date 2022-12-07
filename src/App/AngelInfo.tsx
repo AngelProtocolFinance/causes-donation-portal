@@ -52,7 +52,7 @@ const AngelInfo = () => {
             </a>
           </li>
         </ul>
-        <p className="leading-relaxed mb-4 font-medium text-black">
+        <p className="leading-relaxed mb-4 font-medium text-black dark:text-white">
           It is deeply saddening that these $UST denominated funds were also
           slashed during the de-peg event.
         </p>
@@ -63,7 +63,7 @@ const AngelInfo = () => {
           is currently reviewing issues with the indexing, but there is no quick
           resolution expected.
         </p>
-        <p className="leading-relaxed my-8 font-medium text-black">
+        <p className="leading-relaxed my-8 font-medium text-black dark:text-white">
           We understand most people cannot be made whole from the $UST collapse,
           and we do not seek any special treatment for Angel Protocol itself.
         </p>
@@ -73,7 +73,7 @@ const AngelInfo = () => {
           checked on-chain. They were not seeking risk and the sums raised
           already potentially assured the future of many of these charities.
         </p>
-        <p className="my-8 font-medium text-black">
+        <p className="my-8 font-medium text-black dark:text-white">
           Charities exist as a safety net for causes that fall through the
           cracks of society. Please do not let the charities themselves fall
           through the cracks as well.
