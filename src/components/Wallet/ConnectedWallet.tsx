@@ -14,15 +14,16 @@ const ConnectedWallet = () => {
   const { disconnect } = useSetWallet();
 
   const { address, displayCoin, coins, chainId } = wallet!; //this component only renders when wallet is connected
+
   if (!supportedChainIds.includes(chainId)) {
     return <SupportedNetworksMenu />;
   }
 
   return (
-    <Popover className="relative">
+    <Popover className="isolate relative">
       <Popover.Button
         disabled={isWalletLoading}
-        className="bg-slate-50 py-2 px-3 rounded-md flex items-center gap-2"
+        className="btn-orange text-sm py-2 px-3 rounded-md flex items-center gap-2"
       >
         <span>{sliced(address, 5, -3)}</span>
         {isWalletLoading ? (
@@ -38,7 +39,7 @@ const ConnectedWallet = () => {
         )}
       </Popover.Button>
 
-      <Popover.Panel className="absolute right-0 z-20 w-full min-w-max mt-2 rounded-md px-3 py-2">
+      <Popover.Panel className="absolute border right-0 z-20 px-3 py-2 border-prim bg-white dark:bg-blue-d7 w-full min-w-max mt-2 rounded-md shadow-lg">
         <p className="mb-2 uppercase font-extrabold text-sky-600">
           {displayCoin.chain_name}
         </p>
@@ -51,7 +52,7 @@ const ConnectedWallet = () => {
           ))}
         </div>
         <button
-          className="uppercase text-sm font-extrabold text-amber-500 hover:text-amber-400 active:text-amber-600 text-right w-full"
+          className="uppercase text-sm font-extrabold hover:text-orange dark:hover:text-orange-l2 text-right w-full"
           onClick={() => disconnect()}
         >
           Disconnect
