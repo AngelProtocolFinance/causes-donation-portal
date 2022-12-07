@@ -13,7 +13,7 @@ export default function SupportedNetworksMenu() {
       </Popover.Button>
 
       <Popover.Panel className="absolute z-10 w-full bg-white dark:bg-blue-d7 border border-prim mt-2 rounded-md px-3 py-2">
-        <p className="text-sm font-bold text-sky-500 uppercase">
+        <p className="text-sm font-bold text-blue uppercase">
           Supported networks
         </p>
         <ul className="list-disc my-4 pl-4">

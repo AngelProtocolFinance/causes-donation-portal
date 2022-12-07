@@ -71,7 +71,7 @@ const AngelInfo = () => {
           relaunching the charity marketplace, and then you will also be able to
           donate to charities individually.
         </p>
-        <p className="my-8 text-lg text-sky-600 font-semibold">
+        <p className="my-8 text-lg text-blue dark:text-blue-l2 font-semibold">
           Thank you for your time, and for any support you can provide for the
           charities.
         </p>

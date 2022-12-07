@@ -15,9 +15,7 @@ function WalletInstruction({ open, setOpen }: any) {
           Wallet Instructions
         </Dialog.Title>
         <article className="leading-relaxed text-sm">
-          <h4 className="text-sky-500 font-extrabold uppercase">
-            Terra Station
-          </h4>
+          <h4 className="text-blue font-extrabold uppercase">Terra Station</h4>
           <p>
             <span className="font-medium block my-1">
               If you have Terra Station installed:
@@ -31,7 +29,7 @@ function WalletInstruction({ open, setOpen }: any) {
             </span>
             Use{" "}
             <a
-              className="text-sky-500 underline"
+              className="text-blue underline"
               target="_blank"
               rel="noopenner noreferrer"
               href="https://chrome.google.com/webstore/detail/terra-station-wallet/aiifbnbfobpmeekipheeijimdpnlpgpp"
@@ -43,7 +41,7 @@ function WalletInstruction({ open, setOpen }: any) {
           </p>
         </article>
         <article className="leading-relaxed text-sm mt-6">
-          <h4 className="text-amber-600 font-extrabold uppercase">Metamask</h4>
+          <h4 className="text-orange font-extrabold uppercase">Metamask</h4>
           <p>
             <span className="font-medium block my-1">
               If you have Metamask installed:
@@ -57,7 +55,7 @@ function WalletInstruction({ open, setOpen }: any) {
             </span>
             Use{" "}
             <a
-              className="text-sky-500 underline"
+              className="text-blue underline"
               target="_blank"
               rel="noopenner noreferrer"
               href="https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=en"
@@ -69,7 +67,7 @@ function WalletInstruction({ open, setOpen }: any) {
           </p>
         </article>
         <article className="leading-relaxed text-sm mt-6">
-          <h4 className="text-amber-400 font-extrabold uppercase">
+          <h4 className="text-orange font-extrabold uppercase">
             Binance Wallet
           </h4>
           <p>
@@ -85,7 +83,7 @@ function WalletInstruction({ open, setOpen }: any) {
             </span>
             Use{" "}
             <a
-              className="text-sky-500 underline"
+              className="text-blue underline"
               target="_blank"
               rel="noopenner noreferrer"
               href="https://chrome.google.com/webstore/detail/binance-wallet/fhbohimaelbohpjbbldcngcnapndodjp"
@@ -97,7 +95,7 @@ function WalletInstruction({ open, setOpen }: any) {
           </p>
         </article>
         <article className="leading-relaxed text-sm mt-6">
-          <h4 className="text-sky-700 font-extrabold uppercase">
+          <h4 className="text-blue-d2 font-extrabold uppercase">
             Xdefi Wallet
           </h4>
           <p>
@@ -113,7 +111,7 @@ function WalletInstruction({ open, setOpen }: any) {
             </span>
             Use{" "}
             <a
-              className="text-sky-500 underline"
+              className="text-blue underline"
               target="_blank"
               rel="noopenner noreferrer"
               href="https://chrome.google.com/webstore/detail/xdefi-wallet/hmeobnfnfcmdkdcmlblgagmfpfboieaf"

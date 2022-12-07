@@ -89,7 +89,7 @@ const DonateForm = (): JSX.Element => {
             <span className="uppercase text-xs">balance: </span>
             <button
               onClick={setMaxAmount}
-              className="hover:text-sky-500 active:text-sky-600"
+              className="hover:text-blue active:text-blue-d1"
             >
               {toCurrency(activeToken.balance || 0, 4)}
             </button>

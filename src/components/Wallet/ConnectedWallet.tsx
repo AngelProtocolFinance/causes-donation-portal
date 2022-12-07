@@ -40,7 +40,7 @@ const ConnectedWallet = () => {
       </Popover.Button>
 
       <Popover.Panel className="absolute border right-0 z-20 px-3 py-2 border-prim bg-white dark:bg-blue-d7 w-full min-w-max mt-2 rounded-md shadow-lg">
-        <p className="mb-2 uppercase font-extrabold text-sky-600">
+        <p className="mb-2 uppercase font-extrabold text-blue-d1">
           {displayCoin.chain_name}
         </p>
         <p className="text-sm uppercase border-b border-prim mb-2 pb-1">
