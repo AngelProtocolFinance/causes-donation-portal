@@ -13,3 +13,10 @@ export const providerIcons: { [key in ProviderId]: string } = {
   station: terraStationIcon,
   walletconnect: walletConnectIcon,
 };
+
+export const chains = {
+  1: { name: "Ethereum mainnet", rpc: "", lcd: "", txExplorer: "" },
+  2: { name: "Ethereum mainnet", rpc: "", lcd: "", txExplorer: "" },
+  3: { name: "Ethereum mainnet", rpc: "", lcd: "", txExplorer: "" },
+  4: { name: "Ethereum mainnet", rpc: "", lcd: "", txExplorer: "" },
+};

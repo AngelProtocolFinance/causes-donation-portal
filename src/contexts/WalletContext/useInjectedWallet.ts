@@ -14,6 +14,7 @@ export default function useInjectedWallet(meta: WalletMeta): Wallet {
     connect,
   });
 
+  /** persistent connection */
   useEffect(() => {
     const lastAction = retrieveUserAction(actionKey);
     const shouldReconnect = lastAction === "connect";
@@ -42,11 +43,16 @@ export default function useInjectedWallet(meta: WalletMeta): Wallet {
 
   const handleAccountsChange: AccountChangeHandler = (accounts) => {
     setState((prev) => {
-      if (prev.status === "connected" && accounts.length > 0) {
-        return {
-          ...prev,
-          address: accounts[0],
-        };
+      if (prev.status === "connected") {
+        if (accounts.length > 0) {
+          return {
+            ...prev,
+            address: accounts[0],
+          };
+        } else {
+          saveUserAction(actionKey, "disconnect");
+          return { status: "disconnected", connect };
+        }
       }
       return prev;
     });
@@ -109,6 +115,9 @@ export default function useInjectedWallet(meta: WalletMeta): Wallet {
       if (provider.removeListener) {
         provider.removeListener("accountsChanged", handleAccountsChange);
         provider.removeListener("chainChanged", handleChainChange);
+      } else {
+        /** if provider doesn't support removeListener, just reload to remove listeners*/
+        window.location.reload();
       }
     }
   }
