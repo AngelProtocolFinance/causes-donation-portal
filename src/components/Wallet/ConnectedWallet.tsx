@@ -8,7 +8,6 @@ import { WithBalance } from "types";
 import { supportedChainIds } from "constants/chainIDs";
 import SupportedNetworksMenu from "./SupportedNetworksMenu";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
-import { useMemo } from "react";
 
 const ConnectedWallet = () => {
   const { wallet, isWalletLoading } = useGetWallet();
@@ -39,7 +38,7 @@ const ConnectedWallet = () => {
         )}
       </Popover.Button>
 
-      <Popover.Panel className="absolute right-0 z-20 w-full min-w-max bg-slate-50 mt-2 rounded-md px-3 py-2">
+      <Popover.Panel className="absolute right-0 z-20 w-full min-w-max mt-2 rounded-md px-3 py-2">
         <p className="mb-2 uppercase font-extrabold text-sky-600">
           {displayCoin.chain_name}
         </p>

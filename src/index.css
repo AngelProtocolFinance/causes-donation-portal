@@ -12,7 +12,7 @@
   }
 
   body {
-    @apply min-h-full font-body;
+    @apply min-h-full font-body text-gray-d2 dark:text-white;
   }
 
   h1,

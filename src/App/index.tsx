@@ -11,7 +11,7 @@ import Hero from "./Hero";
 export default function App() {
   return (
     <WalletContext>
-      <div className="grid min-h-screen bg-gray-l5 dark:bg-blue-d5 text-gray-d2 dark:text-white">
+      <div className="grid min-h-screen bg-gray-l5 dark:bg-blue-d5">
         <Header classes="-mb-[5.439rem] z-10" />
         <Hero />
         <DonationHeader />

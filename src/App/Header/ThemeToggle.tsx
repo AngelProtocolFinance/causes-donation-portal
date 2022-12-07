@@ -24,9 +24,9 @@ export default function ThemeToggle() {
     >
       {({ checked }) =>
         checked ? (
-          <BsMoonFill className="text-orange-l4" />
+          <BsMoonFill className="text-orange-l2" />
         ) : (
-          <FiSun className="text-orange" />
+          <FiSun className="text-orange-l4" />
         )
       }
     </Switch>
