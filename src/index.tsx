@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { store } from "store";
 import { Provider } from "react-redux";
 
-import "./style.css";
+import "./index.css";
 import App from "app";
 
 getChainOptions().then((chainOptions) => {

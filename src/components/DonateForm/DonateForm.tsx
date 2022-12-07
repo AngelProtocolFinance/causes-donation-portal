@@ -5,7 +5,7 @@ import useDonate from "./useDonate";
 import TxModal from "components/TxModal/TxModal";
 import { useGetWallet } from "contexts/WalletContext/WalletContext";
 import { placeHolderBalances } from "services/web3/constants";
-import toCurrency from "functions/toCurrency";
+import toCurrency from "helpers/toCurrency";
 import WalletSelection from "components/Wallet/WalletSelection";
 import CurrencyDropdown from "./CurrencyDropdown";
 

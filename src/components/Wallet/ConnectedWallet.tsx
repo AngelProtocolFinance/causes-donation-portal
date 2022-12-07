@@ -1,5 +1,5 @@
 import { Popover } from "@headlessui/react";
-import { sliced } from "functions/sliceAddress";
+import { sliced } from "helpers/sliceAddress";
 import {
   useGetWallet,
   useSetWallet,

@@ -4,7 +4,7 @@
 
 @layer base {
   * {
-    @apply font-sans;
+    @apply text-inherit;
   }
 
   html {
@@ -12,7 +12,16 @@
   }
 
   body {
-    @apply min-h-full;
+    @apply min-h-full font-body;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading;
   }
 }
 
@@ -28,6 +37,10 @@
   }
   .container-unpadded {
     @apply xl:container xl:mx-auto;
+  }
+
+  .overlay {
+    @apply before:content-[''] before:absolute before:inset-0 before:bg-blue/90 before:dark:bg-blue-d3/90;
   }
 }
 

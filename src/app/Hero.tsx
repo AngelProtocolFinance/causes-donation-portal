@@ -16,7 +16,7 @@ export default function Hero() {
         <source src={copyAndImages.hero_video} type="video/mp4" />
       </video>
       <header className="grid justify-items-center gap-4">
-        <h1 className="font-sans text-slate-50 text-3xl sm:text-4xl sm:leading-relaxed my-6 font-extrabold uppercase text-center">
+        <h1 className="text-slate-50 text-3xl sm:text-4xl sm:leading-relaxed my-6 font-extrabold uppercase text-center">
           {copyAndImages.hero_title}
         </h1>
         <a

@@ -37,5 +37,5 @@ export const copyAndImages = {
     "Support an impact organization - Angel Protocol",
   donation_subtitle:
     process.env.REACT_APP_DONATION_SUBTITLE ??
-    "Angel Protocol provides impact stakeholders with the tools to fundraise, coordinate, and invest capital.",
+    "We provide impact stakeholders like non-profits and social entrepreneurs with the tools to raise, coordinate, and invest capital. With Angel Protocol, impact is amplified. Funding goes further, connections run deeper, and access is available to all.",
 };

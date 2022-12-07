@@ -1,4 +1,4 @@
-import toCurrency from "functions/toCurrency";
+import toCurrency from "helpers/toCurrency";
 import { useMetricsQuery } from "services/apes";
 
 const DonationMetrics = () => {

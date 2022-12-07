@@ -5,7 +5,7 @@ import {
   TwitterShareButton,
 } from "react-share";
 import { useGetWallet } from "contexts/WalletContext/WalletContext";
-import getTxUrl from "functions/getTxUrl";
+import getTxUrl from "helpers/getTxUrl";
 import { Dialog } from "@headlessui/react";
 import angelIcon from "assets/icons/angelwing_bl.png";
 

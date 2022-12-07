@@ -2,7 +2,7 @@ import { Fragment } from "react";
 import { Listbox } from "@headlessui/react";
 import { WithBalance } from "types";
 import { BsChevronDown } from "react-icons/bs";
-import toCurrency from "functions/toCurrency";
+import toCurrency from "helpers/toCurrency";
 
 type Props = {
   tokens: WithBalance[];

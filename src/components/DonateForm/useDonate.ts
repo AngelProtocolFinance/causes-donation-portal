@@ -2,7 +2,7 @@ import { Coin, MsgSend } from "@terra-money/terra.js";
 import { UserDenied, useWallet } from "@terra-money/wallet-provider";
 import { ApesAddresses } from "constants/constants";
 import { useGetWallet } from "contexts/WalletContext/WalletContext";
-import { getProvider } from "functions/getProvider";
+import { getProvider } from "helpers/getProvider";
 import { useState } from "react";
 import { TxStep, WithBalance } from "types";
 import ERC20Abi from "abi/ERC20.json";
@@ -11,8 +11,8 @@ import {
   TransactionResponse,
   Web3Provider,
 } from "types/third-party/ethers";
-import { parseUnits } from "functions/third-party/ethers";
-import { scaleAmount } from "functions/third-party/terra";
+import { parseUnits } from "helpers/third-party/ethers";
+import { scaleAmount } from "helpers/third-party/terra";
 
 export default function useDonate(donationAmount: string, token: WithBalance) {
   const { post } = useWallet();
