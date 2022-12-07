@@ -7,7 +7,7 @@ const DonationMetrics = () => {
   } = useMetricsQuery("");
 
   return (
-    <section className="font-heading grid grid-cols-1 md:grid-cols-3 gap-16 items-center p-8 my-16">
+    <section className="font-heading container-padded grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-10 items-center p-8 lg:my-16">
       <Metric
         name="Total Donated"
         value={toCurrency(+data.totalUsd, 3) + " USDC"}
@@ -25,7 +25,7 @@ export default DonationMetrics;
 
 function Metric(props: { name: string; value: string }) {
   return (
-    <div className="grid gap-4 place-items-center p-8 rounded-md border bg-white dark:bg-blue-d6 border-prim">
+    <div className="text-center grid gap-4 place-items-center p-8 rounded-md border bg-white dark:bg-blue-d6 border-prim">
       <p className="text-xl font-semibold">{props.name}</p>
       <p className="text-3xl font-bold">{props.value}</p>
     </div>

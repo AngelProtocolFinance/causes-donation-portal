@@ -15,9 +15,9 @@ export default function App() {
         <Header classes="-mb-[5.439rem] z-10 sticky top-0" />
         <Hero />
         <DonationHeader />
-        <div className="grid md:grid-cols-[3fr_4fr]  container-padded gap-4 my-16">
+        <div className="grid lg:grid-cols-[3fr_4fr]  container-padded gap-4 my-16">
           <img
-            className="h-60 md:h-96 w-full object-cover rounded"
+            className="h-60 lg:h-96 w-full object-cover rounded"
             src={copyAndImages.donation_image}
           />
           <DonateForm />

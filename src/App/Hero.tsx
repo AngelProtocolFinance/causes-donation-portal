@@ -8,7 +8,7 @@ export default function Hero() {
         loop
         muted
         playsInline
-        className="absolute object-cover h-full w-full inset-0 opacity-50 brightness-50 rounded-md rounded-t-none overlay"
+        className="absolute object-cover h-full w-full inset-0 opacity-50 brightness-50"
       >
         <source src={copyAndImages.hero_video} type="video/mp4" />
       </video>
