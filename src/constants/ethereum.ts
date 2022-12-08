@@ -1,7 +1,7 @@
 export const EIP1193Events = {
   accountsChanged: "accountsChanged",
   chainChanged: "chainChanged",
-};
+} as const;
 
 export const EIPMethods = {
   eth_requestAccounts: "eth_requestAccounts",

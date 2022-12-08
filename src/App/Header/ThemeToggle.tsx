@@ -20,7 +20,7 @@ export default function ThemeToggle() {
     <Switch
       checked={isDark}
       onChange={toggle}
-      className="ml-2 p-2 rounded-full border border-prim"
+      className="ml-2 p-2 rounded-full border border-prim max-sm:text-xs"
     >
       {({ checked }) =>
         checked ? (

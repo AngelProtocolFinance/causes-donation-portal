@@ -1,4 +1,4 @@
-import toCurrency from "helpers/toCurrency";
+import { humanize } from "helpers/decimal";
 import { useMetricsQuery } from "services/apes";
 
 const DonationMetrics = () => {
@@ -10,11 +10,11 @@ const DonationMetrics = () => {
     <section className="font-heading container-padded grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-10 items-center p-8 lg:my-16">
       <Metric
         name="Total Donated"
-        value={toCurrency(+data.totalUsd, 3) + " USDC"}
+        value={humanize(+data.totalUsd, 3) + " USDC"}
       />
       <Metric
         name="Largest Donation"
-        value={toCurrency(+data.largestDonationUsd, 3) + " USDC"}
+        value={humanize(+data.largestDonationUsd, 3) + " USDC"}
       />
       <Metric name="Number of Donations" value={data.numberOfDonations} />
     </section>

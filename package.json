@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "build": "react-app-rewired build",
-    "start": "GENERATE_SOURCEMAP=false react-app-rewired start",
+    "start": "GENERATE_SOURCEMAP=false PORT=4200 react-app-rewired start",
     "test": "react-app-rewired test --colors",
     "coverage": "react-app-rewired test --coverage",
     "precommit": "lint-staged",
@@ -37,6 +37,8 @@
   },
   "dependencies": {
     "@headlessui/react": "^1.6.5",
+    "@hookform/error-message": "^2.0.1",
+    "@hookform/resolvers": "^2.9.10",
     "@reduxjs/toolkit": "^1.8.2",
     "@terra-money/terra.js": "^3.1.7",
     "@terra-money/wallet-provider": "^3.11.2",
@@ -45,9 +47,12 @@
     "react": "^18.2.0",
     "react-device-detect": "^2.2.2",
     "react-dom": "^18.2.0",
+    "react-hook-form": "^7.40.0",
     "react-icons": "^4.3.1",
     "react-redux": "^8.0.2",
-    "react-share": "^4.4.1"
+    "react-share": "^4.4.1",
+    "react-toastify": "^9.1.1",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@babel/core": "^7.20.5",

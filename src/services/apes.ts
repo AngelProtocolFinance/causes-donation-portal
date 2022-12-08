@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { apes_endpoint } from "constants/urls";
+import { app } from "constants/config";
+import { APIs } from "constants/urls";
 import { createAuthToken } from "helpers/createAuthToken";
 
 type DonationMetrics = {
@@ -8,10 +9,10 @@ type DonationMetrics = {
   totalUsd: string; //"7.3177838494";
 };
 
-export const apesApi = createApi({
+export const apes = createApi({
   reducerPath: "apes",
   baseQuery: fetchBaseQuery({
-    baseUrl: apes_endpoint,
+    baseUrl: APIs.apes,
     mode: "cors",
     prepareHeaders(headers) {
       headers.set("authorization", createAuthToken());
@@ -22,12 +23,12 @@ export const apesApi = createApi({
     metrics: builder.query<DonationMetrics, any>({
       query: () => {
         return {
-          url: "/donations-metrics",
-          params: { app: "make-whole" },
+          url: "v1/donations-metrics",
+          params: { app: app.id },
         };
       },
     }),
   }),
 });
 
-export const { useMetricsQuery } = apesApi;
+export const { useMetricsQuery } = apes;

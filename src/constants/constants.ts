@@ -1,6 +1,3 @@
-import video from "assets/videos/holdinghands.mp4";
-import placeHolderImage from "assets/images/charitable_giving.jpeg";
-
 export type ApesAddressKeys =
   | "atom"
   | "btc"
@@ -24,18 +21,4 @@ export const angelSocials = {
   youtube: "https://www.youtube.com/channel/UCPYj_fooJCfc_tc52rPiw1w",
   telegram: "https://t.me/angelprotocoI",
   discord: "https://discord.com/invite/RhqA652ySA",
-};
-
-export const copyAndImages = {
-  hero_video: process.env.REACT_APP_HERO_VIDEO ?? video,
-  hero_title:
-    process.env.REACT_APP_HERO_TITLE ??
-    "Angel protocol redefines global impact financing",
-  donation_image: process.env.REACT_APP_DONATION_IMAGE ?? placeHolderImage,
-  donation_title:
-    process.env.REACT_APP_DONATION_TITLE ??
-    "Support an impact organization - Angel Protocol",
-  donation_subtitle:
-    process.env.REACT_APP_DONATION_SUBTITLE ??
-    "We provide impact stakeholders like non-profits and social entrepreneurs with the tools to raise, coordinate, and invest capital. With Angel Protocol, impact is amplified. Funding goes further, connections run deeper, and access is available to all.",
 };
