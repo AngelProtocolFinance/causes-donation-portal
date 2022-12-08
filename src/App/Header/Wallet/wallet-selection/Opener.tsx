@@ -9,7 +9,7 @@ export const Opener = ({ wallets }: { wallets: DisconnectedWallet[] }) => {
   return (
     <>
       <button
-        className="p-0 sm:py-2 sm:px-3 rounded text-white hover:text-orange sm:btn-orange uppercase text-sm font-bold"
+        className="p-0 sm:py-2 sm:px-3 rounded text-white sm:btn-orange uppercase text-sm font-bold"
         onClick={() => setIsOpen(true)}
       >
         <AiOutlineWallet size={35} className="sm:hidden" />
