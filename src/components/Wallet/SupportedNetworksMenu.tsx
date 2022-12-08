@@ -1,10 +1,13 @@
 import { Popover } from "@headlessui/react";
-import { useSetWallet } from "contexts/WalletContext/WalletContext";
+import { chains } from "constants/chains";
+import { ConnectedWallet } from "contexts/WalletContext";
 import { AiFillWarning } from "react-icons/ai";
 
-export default function SupportedNetworksMenu() {
-  const { disconnect } = useSetWallet();
-
+export default function SupportedNetworksMenu({
+  wallet,
+}: {
+  wallet: ConnectedWallet;
+}) {
   return (
     <Popover className="relative">
       <Popover.Button className="text-sm bg-white py-2 px-3 rounded-md flex gap-2 items-center text-red">
@@ -16,14 +19,17 @@ export default function SupportedNetworksMenu() {
         <p className="text-sm font-bold text-blue uppercase">
           Supported networks
         </p>
+        {/** show only chain with the same type, if type="evm" give ability to switch */}
         <ul className="list-disc my-4 pl-4">
-          <li className="text-sm p-0.5">Terra Phoenix Mainnet</li>
-          <li className="text-sm p-0.5">Binance Smart Chain</li>
-          <li className="text-sm p-0.5">Ethereum Mainnet</li>
+          {Object.entries(chains).map(([, chain]) => (
+            <li key={chain.name} className="text-sm p-0.5">
+              {chain.name}
+            </li>
+          ))}
         </ul>
         <button
           className="uppercase text-sm font-extrabold hover:text-orange hover:dark:text-orange-l2 text-right w-full"
-          onClick={() => disconnect()}
+          onClick={wallet.disconnect}
         >
           Disconnect
         </button>

@@ -1,21 +1,14 @@
 import { Popover } from "@headlessui/react";
 import { sliced } from "helpers/sliceAddress";
-import {
-  useGetWallet,
-  useSetWallet,
-} from "contexts/WalletContext/WalletContext";
 import { WithBalance } from "types";
-import { supportedChainIds } from "constants/chainIDs";
-import SupportedNetworksMenu from "./SupportedNetworksMenu";
-import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { ConnectedWallet as TConnectedWallet } from "contexts/WalletContext";
+import { chains } from "constants/chains";
+import SupportedNetworksMenu from "./SupportedNetworksMenu";
 
 const ConnectedWallet = ({ wallet }: { wallet: TConnectedWallet }) => {
-  // const { address, displayCoin, coins, chainId } = wallet!; //this component only renders when wallet is connected
-
-  // if (!supportedChainIds.includes(chainId)) {
-  //   return <SupportedNetworksMenu />;
-  // }
+  if (!(wallet.chainId in chains)) {
+    return <SupportedNetworksMenu wallet={wallet} />;
+  }
 
   return (
     <Popover className="isolate relative">

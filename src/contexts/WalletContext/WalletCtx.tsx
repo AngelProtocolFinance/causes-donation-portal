@@ -2,6 +2,7 @@ import { PropsWithChildren, createContext, useContext } from "react";
 import { ConnectedWallet, ContextState, DisconnectedWallet } from "./types";
 import binanceWalletIcon from "assets/icons/wallets/binance.png";
 import metamaskIcon from "assets/icons/wallets/metamask.png";
+import xdefiIcon from "assets/icons/wallets/xdefi.jpg";
 
 import useInjectedWallet from "./useInjectedWallet";
 import useTerra2 from "./useTerra2";
@@ -19,9 +20,15 @@ export default function WalletCtx(props: PropsWithChildren<{}>) {
     type: "evm",
     name: "Binance wallet",
   });
+  const xdefiEvm = useInjectedWallet({
+    id: "xdefi-evm",
+    logo: xdefiIcon,
+    type: "evm",
+    name: "Xdefi ethereum",
+  });
   const terraWallets = useTerra2();
 
-  const wallets = [metamask, binance, ...terraWallets];
+  const wallets = [metamask, binance, xdefiEvm, ...terraWallets];
 
   const connectedWallet = wallets.find((w) => w.status === "connected") as
     | ConnectedWallet

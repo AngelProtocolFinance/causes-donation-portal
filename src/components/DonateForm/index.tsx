@@ -6,7 +6,7 @@ import TxModal from "components/TxModal/TxModal";
 import { useGetWallet } from "contexts/WalletContext/WalletContext";
 import { placeHolderBalances } from "services/web3/constants";
 import toCurrency from "helpers/toCurrency";
-import WalletSelection from "components/Wallet/WalletSelection";
+import WalletSelection from "components/Wallet/wallet-selection/Modal";
 import CurrencyDropdown from "./CurrencyDropdown";
 import { FaInfoCircle } from "react-icons/fa";
 
