@@ -1,5 +1,9 @@
 import { IS_TEST } from "./env";
 
+export const APIs = {
+  apes: "https://fctqkloitc.execute-api.us-east-1.amazonaws.com",
+};
+
 export const apes_endpoint =
   "https://fctqkloitc.execute-api.us-east-1.amazonaws.com";
 

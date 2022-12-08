@@ -7,7 +7,7 @@ import Balance from "./Balance";
 export default function Amount() {
   const {
     register,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useFormContext<FV>();
 
   return (
@@ -28,7 +28,8 @@ export default function Amount() {
         id="amount"
         type="text"
         placeholder="0.0000"
-        className="p-3 bg-orange-l6 dark:bg-blue-d7 rounded w-full border border-prim focus:outline-none focus:border-gray-d2 focus:dark:border-blue"
+        disabled={isSubmitting}
+        className="p-3 bg-orange-l6 dark:bg-blue-d7 rounded w-full border border-prim focus:outline-none focus:border-gray-d2 focus:dark:border-blue disabled:bg-gray-l2 disabled:dark:bg-bluegray-d1"
       />
 
       <ErrorMessage

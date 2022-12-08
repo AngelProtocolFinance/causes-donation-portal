@@ -1,126 +1,65 @@
-import { PropsWithChildren, createContext, useContext, useMemo } from "react";
-import {
-  Connection,
-  ProviderId,
-  ProviderInfo,
-  ProviderStatuses,
-} from "./types";
-import { WithBalance } from "types";
-import { useBalancesQuery } from "services/web3";
-import useInjectedProvider from "./useInjectedProvider";
+import { PropsWithChildren, createContext, useContext } from "react";
+import { ConnectedWallet, ContextState, DisconnectedWallet } from "./types";
+import binanceWalletIcon from "assets/icons/wallets/binance.png";
+import metamaskIcon from "assets/icons/wallets/metamask.png";
+import xdefiIcon from "assets/icons/wallets/xdefi.jpg";
+
+import useInjectedWallet from "./useInjectedWallet";
 import useTerra from "./useTerra";
-import { placeHolderBalances } from "services/web3/constants";
-
-export type WalletState = {
-  walletIcon: string;
-  displayCoin: WithBalance;
-  coins: WithBalance[];
-  address: string;
-  chainId: string;
-  providerId: ProviderId;
-  type: ProviderInfo["type"];
-};
-
-type State = {
-  wallet?: WalletState;
-  isWalletLoading: boolean;
-  isProviderLoading: boolean;
-};
-
-type Setters = {
-  disconnect(): void;
-  connections: Connection[];
-};
-
-const initialState: State = {
-  wallet: undefined,
-  isWalletLoading: true,
-  isProviderLoading: true,
-};
 
 export default function WalletContext(props: PropsWithChildren<{}>) {
-  // const {
-  //   isLoading: isMetamaskLoading, //requesting permission, attaching event listeners
-  //   connection: metamaskConnection,
-  //   disconnect: disconnectMetamask,
-  //   providerInfo: metamaskInfo,
-  // } = useInjectedProvider("metamask");
+  const metamask = useInjectedWallet({
+    id: "metamask",
+    logo: metamaskIcon,
+    type: "evm",
+    name: "Metamask",
+  });
+  const binance = useInjectedWallet({
+    id: "binance-wallet",
+    logo: binanceWalletIcon,
+    type: "evm",
+    name: "Binance wallet",
+  });
+  const xdefiEvm = useInjectedWallet({
+    id: "xdefi-evm",
+    logo: xdefiIcon,
+    type: "evm",
+    name: "Xdefi ethereum",
+  });
+  const terraWallets = useTerra();
 
-  // const {
-  //   isLoading: isBinanceWalletLoading,
-  //   connection: binanceWalletConnection,
-  //   disconnect: disconnectBinanceWallet,
-  //   providerInfo: binanceWalletInfo,
-  // } = useInjectedProvider("binance-wallet");
+  const wallets = [metamask, binance, xdefiEvm, ...terraWallets];
 
-  // const {
-  //   isLoading: isXdefiLoading,
-  //   connection: xdefiConnection,
-  //   disconnect: disconnectXdefi,
-  //   providerInfo: xdefiEVMinfo,
-  // } = useInjectedProvider("xdefi-evm", undefined, "Xdefi Ethereum");
+  const connectedWallet = wallets.find((w) => w.status === "connected") as
+    | ConnectedWallet
+    | undefined;
 
-  const { isTerraLoading, terraConnections, disconnectTerra, terraInfo } =
-    useTerra();
-
-  const providerStatuses: ProviderStatuses = [];
-
-  const isProviderLoading = providerStatuses.reduce(
-    (status, curr) => status || curr.isLoading,
-    false
-  );
-  const activeProviderInfo = providerStatuses.find(
-    ({ providerInfo, isLoading }) => !isLoading && providerInfo !== undefined
-  )?.providerInfo;
-
-  const {
-    data: coinWithBalances = placeHolderBalances,
-    isLoading,
-    isFetching,
-  } = useBalancesQuery(activeProviderInfo!, { skip: !activeProviderInfo });
-
-  const walletState: WalletState | undefined = useMemo(() => {
-    if (activeProviderInfo) {
-      const { logo, providerId, address, chainId, type } = activeProviderInfo;
-      return {
-        walletIcon: logo,
-        displayCoin: coinWithBalances[0],
-        coins: coinWithBalances,
-        address,
-        chainId,
-        providerId,
-        type,
-      };
-    }
-  }, [activeProviderInfo, coinWithBalances]);
-
-  const disconnect = () => {};
+  const isLoading = wallets.some((w) => w.status === "loading");
 
   return (
-    <getContext.Provider
-      value={{
-        wallet: walletState,
-        isWalletLoading: isFetching || isLoading,
-        isProviderLoading,
-      }}
+    <context.Provider
+      value={
+        isLoading
+          ? "loading"
+          : connectedWallet
+          ? connectedWallet
+          : (wallets as DisconnectedWallet[])
+      }
     >
-      <setContext.Provider
-        value={{
-          connections: [],
-          disconnect,
-        }}
-      >
-        {props.children}
-      </setContext.Provider>
-    </getContext.Provider>
+      {props.children}
+    </context.Provider>
   );
 }
 
-const getContext = createContext<State>(initialState);
-const setContext = createContext<Setters>({
-  connections: [],
-  disconnect: async () => {},
-});
+const UNINITIALIZED = "unitialized";
+const context = createContext<ContextState>(
+  UNINITIALIZED as unknown as ContextState
+);
 
-export const useSetWallet = () => useContext(setContext);
-export const useGetWallet = () => useContext(getContext);
+export const useWalletContext = () => {
+  const val = useContext(context);
+  if ((val as any) === UNINITIALIZED) {
+    throw new Error("this hook should only be used inside wallet context");
+  }
+  return val;
+};

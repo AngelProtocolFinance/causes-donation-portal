@@ -1,12 +1,11 @@
 import AngelInfo from "./AngelInfo";
-import DonateForm from "../components/DonateForm";
 import DonationHeader from "./DonationHeader";
 import DonationMetrics from "./DonationMetrics";
 import Footer from "./Footer";
 import Header from "./Header";
 import { copyAndImages } from "constants/constants";
 import Hero from "./Hero";
-import WalletCtx from "contexts/WalletContext/WalletCtx";
+import WalletCtx from "contexts/WalletContext/WalletContext";
 import ModalContext from "contexts/ModalContext";
 import Donater from "./Donater";
 

@@ -4,7 +4,8 @@ import { CoinWithBalance } from "types";
 import { ConnectedWallet as TConnectedWallet } from "contexts/WalletContext";
 import { Chain, chains } from "constants/chains";
 import SupportedNetworksMenu from "./SupportedNetworksMenu";
-import { useBalsQuery } from "services/web3";
+import { useBalancesQuery } from "services/web3";
+import DrawerIcon from "components/DrawerIcon";
 
 const ConnectedWallet = ({ wallet }: { wallet: TConnectedWallet }) => {
   if (!(wallet.chainId in chains)) {
@@ -15,21 +16,32 @@ const ConnectedWallet = ({ wallet }: { wallet: TConnectedWallet }) => {
   return (
     <Popover className="isolate relative">
       <Popover.Button className="btn-orange text-sm p-2 pr-3 rounded-md flex items-center gap-2">
-        <img
-          src={wallet.logo}
-          alt=""
-          className="h-6 w-6 bg-white rounded-full p-1"
-        />
-        <span>{sliced(wallet.address, 5, -3)}</span>
+        {({ open }) => (
+          <>
+            <img
+              src={wallet.logo}
+              alt=""
+              className="h-6 w-6 bg-white rounded-full p-1"
+            />
+            <span className="max-sm:hidden">
+              {sliced(wallet.address, 5, -3)}
+            </span>
+            <DrawerIcon isOpen={open} size={22} />
+          </>
+        )}
       </Popover.Button>
 
       <Popover.Panel className="absolute border right-0 z-20 px-3 py-2 border-prim bg-white dark:bg-blue-d7 w-full min-w-max mt-2 rounded-md shadow-lg">
-        <p className="mb-2 uppercase font-extrabold text-blue-d1">
+        <p className="sm:mb-2 uppercase font-heading text-xs font-bold text-blue-d1">
           {chain.name}
+        </p>
+        <p className="sm:hidden mb-2 mt-1 text-sm text-right">
+          {sliced(wallet.address, 5, -4)}
         </p>
         <p className="text-sm uppercase border-b border-prim mb-2 pb-1">
           Balances
         </p>
+
         <Balances wallet={wallet} chain={chain} />
         <button
           className="uppercase text-sm font-extrabold hover:text-orange dark:hover:text-orange-l2 text-right w-full"
@@ -53,7 +65,7 @@ const Token = ({ logo, balance, symbol }: CoinWithBalance) => {
 };
 
 function Balances(props: { wallet: TConnectedWallet; chain: Chain }) {
-  const { data: coins = [], isLoading } = useBalsQuery({
+  const { data: coins = [], isLoading } = useBalancesQuery({
     ...props.chain,
     id: props.wallet.chainId,
     walletAddr: props.wallet.address,

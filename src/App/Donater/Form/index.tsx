@@ -1,17 +1,20 @@
-import WalletInstruction from "components/DonateForm/WalletInstruction";
+import WalletInstruction from "../WalletInstruction";
 import { useModalContext } from "contexts/ModalContext";
 import { useFormContext } from "react-hook-form";
 import { FaInfoCircle } from "react-icons/fa";
 import { FormValues as FV } from "../types";
 import Amount from "./Amount";
 import CoinSelector from "./CoinSelector";
+import useDonate from "./useDonate";
 
-export default function Form({}) {
+export default function Form() {
   const { getValues } = useFormContext<FV>();
   const { showModal } = useModalContext();
+  const { submit, isSubmitting } = useDonate();
   return (
     <form
-      className="grid justify-items-left border border-prim bg-white dark:bg-blue-d6 rounded-md p-4"
+      onSubmit={submit}
+      className="grid justify-items-left border border-prim bg-white dark:bg-blue-d6 rounded-md p-4 scroll-mt-24"
       id="donate_now"
     >
       <p className="">Supported Wallets: MetaMask, Binance Wallet, xDefi</p>
@@ -28,12 +31,11 @@ export default function Form({}) {
       <CoinSelector<FV, "coin"> fieldName="coin" tokens={getValues("coins")} />
       <Amount />
       <button
+        type="submit"
+        disabled={isSubmitting}
         className="justify-self-end btn-orange py-2 w-full uppercase leading-relaxed font-extrabold rounded"
-        onClick={() => {
-          alert("donate");
-        }}
       >
-        Donate
+        {isSubmitting ? "Processing..." : "Donate"}
       </button>
 
       <p className="text-sm text-gray-d1 dark:text-gray text-center mt-3">

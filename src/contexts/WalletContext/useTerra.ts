@@ -1,20 +1,16 @@
 import {
   ConnectType,
+  Installation,
+  Connection as TerraConnection,
   WalletStatus,
   useWallet,
 } from "@terra-money/wallet-provider";
-import { ProviderId, ProviderInfo, Connection } from "./types";
+import { ProviderId, Wallet } from "./types";
 
-const excludedTerraWallets: string[] = [
-  "leap-walelt",
-  "falcon-wallet",
-  "bitkeep-wallet",
-];
-
-export default function useTerra() {
+export default function useTerra2(): Wallet[] {
   const {
     availableConnections,
-    connection,
+    availableInstallations,
     network,
     wallets,
     status,
@@ -22,43 +18,47 @@ export default function useTerra() {
     disconnect,
   } = useWallet();
 
-  const terraInfo: ProviderInfo | undefined = connection
-    ? {
-        providerId:
-          //use connect type as Id if no futher connections stems out of the type
-          (connection?.identifier as ProviderId) ||
-          connection.type.toLowerCase(),
-        logo: connection?.icon!,
-        chainId: network.chainID,
-        address: wallets[0].terraAddress,
-        type: "terra",
-      }
-    : undefined;
+  function toWallet(c: Installation | TerraConnection): Wallet {
+    return {
+      id: (c?.identifier as ProviderId) || c.type.toLowerCase(),
+      type: "terra",
+      logo: c.icon,
+      name: c.name,
+      ...(status === WalletStatus.INITIALIZING
+        ? { status: "loading" }
+        : WalletStatus.WALLET_CONNECTED && wallets[0]
+        ? {
+            status: "connected",
+            disconnect,
+            address: wallets[0].terraAddress,
+            chainId: network.chainID,
+          }
+        : {
+            status: "disconnected",
+            connect: () => {
+              /** if installation */
+              if ("url" in c) {
+                window.open(c.url, "_blank", "noopener noreferrer");
+              } else {
+                connect(c.type, c.identifier);
+              }
+            },
+          }),
+    };
+  }
 
-  const terraConnections: Connection[] = availableConnections
-    .filter(
-      ({ identifier: id = "", type }) =>
-        !(excludedTerraWallets.includes(id) || type === ConnectType.READONLY)
-    )
-    .map((connection) => ({
-      logo: connection.icon,
-      name:
-        connection.identifier === "xdefi-wallet"
-          ? "Xdefi (Terra)"
-          : connection.name,
-      connect: async () => {
-        connect(connection.type, connection.identifier);
-      },
-    }));
-
-  return {
-    isTerraLoading: status === WalletStatus.INITIALIZING,
-    terraConnections,
-    disconnectTerra: disconnect,
-    terraInfo,
-  };
+  return availableConnections
+    .filter(_filter)
+    .map((c) => toWallet(c))
+    .concat(availableInstallations.filter(_filter).map((i) => toWallet(i)));
 }
 
-/** | "leap-wallet"
-  | "falcon-wallet"
-  | "bitkeep-wallet" */
+function _filter<T extends TerraConnection | Installation>(conn: T) {
+  const id = conn.identifier;
+  return (
+    id === "xdefi-wallet" ||
+    id === "leap-wallet" ||
+    id === "station" ||
+    conn.type === ConnectType.WALLETCONNECT
+  );
+}

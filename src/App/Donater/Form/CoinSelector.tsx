@@ -19,7 +19,10 @@ export default function CoinSelector<
   tokens: CoinWithAmount[];
   fieldName: T[K] extends CoinWithAmount ? K : never;
 }) {
-  const { setValue } = useFormContext<BaseFormValue>();
+  const {
+    setValue,
+    formState: { isSubmitting },
+  } = useFormContext<BaseFormValue>();
   const {
     field: { onChange: onTokenChange, value: token },
   } = useController<BaseFormValue>({
@@ -39,7 +42,7 @@ export default function CoinSelector<
 
   return (
     <Combobox
-      disabled={!hasOptions}
+      disabled={!hasOptions || isSubmitting}
       value={token}
       onChange={(token: CoinWithAmount) => {
         onTokenChange(token);
@@ -48,7 +51,12 @@ export default function CoinSelector<
       as="div"
       className="relative"
     >
-      <Combobox.Button className="flex items-center p-3 bg-orange-l6 dark:bg-blue-d7 rounded w-full gap-2 border border-prim">
+      <Combobox.Button
+        disabled={true}
+        className={`flex items-center p-3 bg-orange-l6 dark:bg-blue-d7 rounded w-full gap-2 border border-prim ${
+          hasOptions ? "disabled:bg-gray-l2 disabled:dark:bg-bluegray-d1" : ""
+        }`}
+      >
         {({ open }) => (
           <>
             <img src={token.logo} alt="" className="w-6 h-6 object-contain" />
@@ -61,7 +69,11 @@ export default function CoinSelector<
       </Combobox.Button>
       <Combobox.Options className="z-[1] absolute top-full mt-1 w-full border border-gray-l2 dark:border-bluegray p-1 max-h-60 overflow-y-auto rounded-md bg-gray-l5 dark:bg-blue-d7 shadow-lg focus:outline-none">
         <div className="flex p-2 gap-2 border border-gray-l2 dark:border-bluegray rounded mb-1">
-          <BsSearch type="Search" size={20} />
+          <BsSearch
+            type="Search"
+            size={16}
+            className="inline -bottom-px relative"
+          />
           <Combobox.Input
             placeholder="Search..."
             disabled={props.tokens.length <= 1}

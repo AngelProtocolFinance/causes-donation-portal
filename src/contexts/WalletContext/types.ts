@@ -6,23 +6,6 @@ export type ProviderId =
   | "station"
   | "walletconnect";
 
-export type Connection = {
-  logo: string;
-  name: string;
-  connect(arg?: string): Promise<void>;
-};
-
-export type ProviderInfo = {
-  providerId: ProviderId;
-  logo: string;
-  chainId: string;
-  address: string;
-  type: "evm" | "terra";
-};
-
-type ProviderStatus = { providerInfo?: ProviderInfo; isLoading: boolean };
-export type ProviderStatuses = ProviderStatus[];
-
 type Connected = {
   status: "connected";
   address: string;

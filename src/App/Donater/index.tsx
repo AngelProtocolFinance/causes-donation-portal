@@ -4,9 +4,9 @@ import { FormValues } from "./types";
 import { ConnectedWallet } from "contexts/WalletContext";
 import Form from "./Form";
 import { schema } from "./schema";
-import { useWalletContext } from "contexts/WalletContext/WalletCtx";
+import { useWalletContext } from "contexts/WalletContext/WalletContext";
 import { chains } from "constants/chains";
-import { useBalsQuery } from "services/web3";
+import { useBalancesQuery } from "services/web3";
 import { CoinWithBalance } from "types";
 import { ReactElement } from "react";
 import Skeleton from "./Skeleton";
@@ -17,7 +17,7 @@ export default function Donater() {
   if (wallet === "loading") {
     return <Skeleton>Connecting wallet...</Skeleton>;
   } else if (Array.isArray(wallet)) {
-    return <Skeleton>Wallet is disconnected</Skeleton>;
+    return <Skeleton>Connect wallet to donate</Skeleton>;
   }
 
   if (!(wallet.chainId in chains)) {
@@ -26,18 +26,25 @@ export default function Donater() {
 
   return (
     <WithBalance {...wallet}>
-      {(tokens) => <Context tokens={tokens} />}
+      {(tokens) => <Context tokens={tokens} wallet={wallet} />}
     </WithBalance>
   );
 }
 
-function Context({ tokens }: { tokens: CoinWithBalance[] }) {
+function Context({
+  tokens,
+  wallet,
+}: {
+  tokens: CoinWithBalance[];
+  wallet: ConnectedWallet;
+}) {
   const methods = useForm<FormValues>({
     mode: "onChange",
     reValidateMode: "onChange",
     defaultValues: {
       coin: { ...tokens[0], amount: "0" },
       coins: tokens.map((t) => ({ ...t, amount: "0" })),
+      wallet,
     },
     resolver: yupResolver(schema),
   });
@@ -58,7 +65,7 @@ function WithBalance({
     data: tokens = [],
     isLoading,
     isError,
-  } = useBalsQuery({
+  } = useBalancesQuery({
     ...chains[chainId],
     walletAddr: address,
     id: chainId,
