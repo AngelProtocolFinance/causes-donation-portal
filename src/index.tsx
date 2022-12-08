@@ -8,7 +8,7 @@ import "./index.css";
 import App from "App";
 import { initTheme } from "helpers/theme";
 import { chainOptions } from "chainOptions";
-import { ToastContainer, TypeOptions } from "react-toastify";
+import { Flip, ToastContainer, TypeOptions } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 
 //set theme immediately, so even suspense loaders and can use it
@@ -30,6 +30,7 @@ root.render(
             options?.type
           )} p-2 rounded`
         }
+        transition={Flip}
         position="top-right"
         autoClose={2000}
         hideProgressBar
