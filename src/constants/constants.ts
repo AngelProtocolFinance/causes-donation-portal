@@ -25,17 +25,3 @@ export const angelSocials = {
   telegram: "https://t.me/angelprotocoI",
   discord: "https://discord.com/invite/RhqA652ySA",
 };
-
-export const copyAndImages = {
-  hero_video: process.env.REACT_APP_HERO_VIDEO ?? video,
-  hero_title:
-    process.env.REACT_APP_HERO_TITLE ??
-    "Angel protocol redefines global impact financing",
-  donation_image: process.env.REACT_APP_DONATION_IMAGE ?? placeHolderImage,
-  donation_title:
-    process.env.REACT_APP_DONATION_TITLE ??
-    "Support an impact organization - Angel Protocol",
-  donation_subtitle:
-    process.env.REACT_APP_DONATION_SUBTITLE ??
-    "We provide impact stakeholders like non-profits and social entrepreneurs with the tools to raise, coordinate, and invest capital. With Angel Protocol, impact is amplified. Funding goes further, connections run deeper, and access is available to all.",
-};

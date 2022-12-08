@@ -3,11 +3,11 @@ import DonationHeader from "./DonationHeader";
 import DonationMetrics from "./DonationMetrics";
 import Footer from "./Footer";
 import Header from "./Header";
-import { copyAndImages } from "constants/constants";
 import Hero from "./Hero";
 import WalletCtx from "contexts/WalletContext/WalletContext";
 import ModalContext from "contexts/ModalContext";
 import Donater from "./Donater";
+import { app } from "constants/config";
 
 export default function App() {
   return (
@@ -20,7 +20,7 @@ export default function App() {
           <div className="grid lg:grid-cols-[3fr_4fr]  container-padded gap-4 my-16">
             <img
               className="h-60 lg:h-full w-full object-cover rounded"
-              src={copyAndImages.donation_image}
+              src={app.donate.image}
             />
             <Donater />
           </div>
