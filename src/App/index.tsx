@@ -1,4 +1,3 @@
-import WalletContext from "contexts/WalletContext";
 import AngelInfo from "./AngelInfo";
 import DonateForm from "../components/DonateForm";
 import DonationHeader from "./DonationHeader";
@@ -8,27 +7,28 @@ import Header from "./Header";
 import { copyAndImages } from "constants/constants";
 import Hero from "./Hero";
 import WalletCtx from "contexts/WalletContext/WalletCtx";
+import ModalContext from "contexts/ModalContext";
 
 export default function App() {
   return (
     <WalletCtx>
-      {/* <WalletContext> */}
-      <div className="grid min-h-screen bg-gray-l5 dark:bg-blue-d5">
-        <Header classes="-mb-[5.439rem] z-10 sticky top-0" />
-        <Hero />
-        <DonationHeader />
-        <div className="grid lg:grid-cols-[3fr_4fr]  container-padded gap-4 my-16">
-          <img
-            className="h-60 lg:h-96 w-full object-cover rounded"
-            src={copyAndImages.donation_image}
-          />
-          <DonateForm />
+      <ModalContext>
+        <div className="grid min-h-screen bg-gray-l5 dark:bg-blue-d5">
+          <Header classes="-mb-[5.439rem] z-10 sticky top-0" />
+          <Hero />
+          <DonationHeader />
+          <div className="grid lg:grid-cols-[3fr_4fr]  container-padded gap-4 my-16">
+            <img
+              className="h-60 lg:h-96 w-full object-cover rounded"
+              src={copyAndImages.donation_image}
+            />
+            <DonateForm />
+          </div>
+          <DonationMetrics />
+          <AngelInfo />
+          <Footer />
         </div>
-        <DonationMetrics />
-        <AngelInfo />
-        <Footer />
-      </div>
-      {/* </WalletContext> */}
+      </ModalContext>
     </WalletCtx>
   );
 }
