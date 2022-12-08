@@ -1,34 +1,11 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { supportedChainIds } from "constants/chainIDs";
-import { apes_endpoint, terraLcdUrl } from "constants/urls";
 import { ethers, utils } from "ethers";
-import {
-  Coin,
-  CoinData,
-  CoinWithBalance,
-  Denoms,
-  FetchedChain,
-  WithBalance,
-} from "types";
+import { Coin, CoinData, CoinWithBalance, FetchedChain } from "types";
 import ERC20Abi from "abi/ERC20.json";
-import {
-  axlUSDCToken,
-  lunaToken,
-  bnbToken,
-  ethToken,
-  ethBal,
-  bnbBal,
-  lunaBal,
-  axlUsdcBal,
-  placeHolderBalances,
-  ethUSDCToken,
-  ethUSDTToken,
-  busdToken,
-} from "./constants";
 import { EVMContract, JsonRpcProvider } from "types/third-party/ethers";
-import { condenseAmount } from "helpers/third-party/terra";
 import { Chain } from "constants/chains";
 import { queryContract } from "./queryContract";
+import { APIs } from "constants/urls";
 
 type BalanceRes = { balance: CoinData };
 
@@ -47,7 +24,7 @@ export const web3Api = createApi({
       async queryFn(args, queryApi, extraOptions, baseQuery) {
         try {
           const { tokens, native_currency } = await fetch(
-            `${apes_endpoint}/v1/chain/${args.id}`
+            `${APIs.apes}/v1/chain/${args.id}`
           ).then<FetchedChain>((res) => {
             if (!res.ok) throw new Error("failed to fetch chain");
             return res.json();
