@@ -7,8 +7,6 @@ import { Chain } from "constants/chains";
 import { queryContract } from "./queryContract";
 import { APIs } from "constants/urls";
 
-type BalanceRes = { balance: CoinData };
-
 export const web3Api = createApi({
   reducerPath: "web3",
   baseQuery: fetchBaseQuery({
