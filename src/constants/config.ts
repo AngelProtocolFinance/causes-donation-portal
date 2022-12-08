@@ -1,5 +1,3 @@
-import { string } from "yup";
-
 export const app = {
   id: "aging",
   url: "https://app.angelprotocol.io",
@@ -17,7 +15,7 @@ export const app = {
   },
 
   share: {
-    description: "",
-    tags: [""],
+    message: "I just donated to aging portal",
+    twitterTags: ["aging"],
   },
 };

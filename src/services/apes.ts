@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { APP_CODE } from "constants/env";
+import { app } from "constants/config";
 import { APIs } from "constants/urls";
 import { createAuthToken } from "helpers/createAuthToken";
 
@@ -24,7 +24,7 @@ export const apes = createApi({
       query: () => {
         return {
           url: "v1/donations-metrics",
-          params: { app: APP_CODE },
+          params: { app: app.id },
         };
       },
     }),

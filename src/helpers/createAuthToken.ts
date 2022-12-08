@@ -1,13 +1,12 @@
-import { APP_CODE } from "constants/env";
+import { app } from "constants/config";
 import jwt, { JwtPayload } from "jsonwebtoken";
 
 export const createAuthToken = () => {
   const payload: JwtPayload = {
     authorization: "allow",
-    user: APP_CODE,
+    user: app.id,
   };
-
-  return jwt.sign(payload, process.env.REACT_APP_JWT_SECRET_KEY!, {
+  return jwt.sign(payload, process.env.REACT_APP_APES_AUTH_SECRET_KEY!, {
     expiresIn: 30,
   });
 };

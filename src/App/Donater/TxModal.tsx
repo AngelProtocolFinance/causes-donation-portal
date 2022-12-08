@@ -1,6 +1,7 @@
 import { Dialog } from "@headlessui/react";
 import angelIcon from "assets/icons/angelwing_bl.png";
 import { chains } from "constants/chains";
+import { app } from "constants/config";
 import { useModalContext } from "contexts/ModalContext";
 import {
   FacebookIcon,
@@ -38,17 +39,14 @@ export default function TxModal({ message, tx, shareable }: Props) {
       {shareable && (
         <div className="flex items-center gap-2 mt-4 mb-2">
           <TwitterShareButton
-            title="I just donated to help make charities whole again on @AngelProtocol! Please join me in helping out the cause"
-            hashtags={["makewhole"]}
+            title={app.share.message}
+            hashtags={app.share.twitterTags}
             related={[]}
-            url="https://make-whole.angelprotocol.io"
+            url={app.url}
           >
             <TwitterIcon size={32} round />
           </TwitterShareButton>
-          <FacebookShareButton
-            quote="I just donated to help make charities whole again on Angel Protocol! Please join me in helping out the cause"
-            url="https://make-whole.angelprotocol.io"
-          >
+          <FacebookShareButton quote={app.share.message} url={app.url}>
             <FacebookIcon size={32} round />
           </FacebookShareButton>
         </div>
