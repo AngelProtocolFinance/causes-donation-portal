@@ -1,10 +1,9 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { FormProvider, useForm } from "react-hook-form";
 import { FormValues } from "./types";
-import { ConnectedWallet } from "contexts/WalletContext";
 import Form from "./Form";
 import { schema } from "./schema";
-import { useWalletContext } from "contexts/WalletContext/WalletContext";
+import { useWalletContext, ConnectedWallet } from "contexts/WalletContext";
 import { chains } from "constants/chains";
 import { useBalancesQuery } from "services/web3";
 import { CoinWithBalance } from "types";

@@ -11,7 +11,7 @@ export function getProvider(
     case "metamask":
       return dwindow.ethereum;
     case "xdefi-evm":
-      return dwindow.xfi?.ethereum;
+      return dwindow.xfi?.ethereum as any;
     default:
       return undefined;
   }

@@ -4,14 +4,14 @@ import DonationMetrics from "./DonationMetrics";
 import Footer from "./Footer";
 import Header from "./Header";
 import Hero from "./Hero";
-import WalletCtx from "contexts/WalletContext/WalletContext";
+import WalletContext from "contexts/WalletContext";
 import ModalContext from "contexts/ModalContext";
 import Donater from "./Donater";
 import { app } from "constants/config";
 
 export default function App() {
   return (
-    <WalletCtx>
+    <WalletContext>
       <ModalContext>
         <div className="grid min-h-screen bg-gray-l5 dark:bg-blue-d5">
           <Header classes="-mb-[5.439rem] z-10 sticky top-0" />
@@ -29,6 +29,6 @@ export default function App() {
           <Footer />
         </div>
       </ModalContext>
-    </WalletCtx>
+    </WalletContext>
   );
 }

@@ -1,6 +1,6 @@
 import { WalletSelectionOpener } from "./wallet-selection";
 import ConnectedWallet from "./ConnectedWallet";
-import { useWalletContext } from "contexts/WalletContext/WalletContext";
+import { useWalletContext } from "contexts/WalletContext";
 
 const Wallet = () => {
   const walletState = useWalletContext();

@@ -3,9 +3,12 @@ import { Wallet, WalletMeta, WalletState } from "./types";
 import { getProvider } from "helpers/getProvider";
 import { EIPMethods } from "constants/ethereum";
 import { retrieveUserAction, saveUserAction } from "./helpers/prefActions";
-import { AccountChangeHandler, ChainChangeHandler } from "types";
+import { AccountChangeHandler, ChainChangeHandler, Dwindow } from "types";
+import { toast } from "react-toastify";
 
-export default function useInjectedWallet(meta: WalletMeta): Wallet {
+export default function useInjectedWallet(
+  meta: WalletMeta & { installUrl: string }
+): Wallet {
   const { id } = meta;
   const actionKey = `${id}__pref`;
 
@@ -63,18 +66,20 @@ export default function useInjectedWallet(meta: WalletMeta): Wallet {
       const provider = getProvider(id);
       if (!provider) {
         if (!isNew) return; /** dont alert on persistent connection */
-        return alert("wallet not installed: show alert with install link");
+        return window.open(meta.installUrl, "_blank", "noopener noreferrer");
       }
       /** isMobile check not needed, just hide this wallet on mobile */
 
       /** xdefi checks */
-      type XFIeth = { isMetamask?: boolean };
-      if (id === "xdefi-evm" && !(provider as XFIeth).isMetamask) {
+      const xfiEth = (window as Dwindow).xfi?.ethereum;
+      if (id === "xdefi-evm" && !xfiEth?.isMetaMask) {
         if (!isNew) return;
-        return alert("Kindly prioritize Xdefi and reload the page");
-      } else if (id !== "xdefi-evm" && (provider as XFIeth).isMetamask) {
+        return toast.warn("Kindly prioritize Xdefi and reload the page");
+      } else if (id !== "xdefi-evm" && xfiEth?.isMetaMask) {
         if (!isNew) return;
-        return alert("Kindly remove priority to xdefi");
+        return toast.warn(
+          "Kindly remove priority to Xdefi and reload the page"
+        );
       }
 
       setState({ status: "loading" });
@@ -99,7 +104,7 @@ export default function useInjectedWallet(meta: WalletMeta): Wallet {
       saveUserAction(actionKey, "connect");
     } catch (err) {
       if (isNew) {
-        alert("connecting failed");
+        toast.error("Failed to connect to wallet.");
       }
       setState({ status: "disconnected", connect });
       saveUserAction(actionKey, "disconnect");

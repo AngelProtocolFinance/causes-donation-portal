@@ -1,6 +1,6 @@
 export interface Dwindow extends Window {
   xfi?: {
-    ethereum?: any;
+    ethereum?: { isMetaMask?: boolean };
   };
   ethereum?: any;
   BinanceChain?: any;

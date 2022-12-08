@@ -13,18 +13,24 @@ export default function WalletContext(props: PropsWithChildren<{}>) {
     logo: metamaskIcon,
     type: "evm",
     name: "Metamask",
+    installUrl:
+      "https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn",
   });
   const binance = useInjectedWallet({
     id: "binance-wallet",
     logo: binanceWalletIcon,
     type: "evm",
     name: "Binance wallet",
+    installUrl:
+      "https://chrome.google.com/webstore/detail/binance-wallet/fhbohimaelbohpjbbldcngcnapndodjp",
   });
   const xdefiEvm = useInjectedWallet({
     id: "xdefi-evm",
     logo: xdefiIcon,
     type: "evm",
     name: "Xdefi ethereum",
+    installUrl:
+      "https://chrome.google.com/webstore/detail/xdefi-wallet/hmeobnfnfcmdkdcmlblgagmfpfboieaf?hl=en",
   });
   const terraWallets = useTerra();
 
