@@ -1,6 +1,3 @@
-import video from "assets/videos/holdinghands.mp4";
-import placeHolderImage from "assets/images/charitable_giving.jpeg";
-
 export type ApesAddressKeys =
   | "atom"
   | "btc"
