@@ -25,7 +25,7 @@ function KycForm() {
       <TextInput name="city" label="City" />
       <TextInput name="zipCode" label="Zip code" />
       <TextInput name="country" label="Country" />
-      <button className="uppercase text-sm font-extrabold bg-sky-600 hover:bg-sky-400 active:bg-sky-500 text-slate-50 w-full text-center p-2 rounded">
+      <button className="uppercase text-sm font-extrabold btn-blue w-full text-center p-2 rounded">
         submit
       </button>
     </form>
@@ -35,11 +35,8 @@ function KycForm() {
 function TextInput(props: { name: string; label: string }) {
   const _id = `__${props.name}`;
   return (
-    <div className="grid mb-3 text-slate-700 mt-6 first:mt-0">
-      <label
-        htmlFor={_id}
-        className="ml-0.5 text-angel-grey text-xs uppercase font-extrabold"
-      >
+    <div className="grid mb-3  mt-6 first:mt-0">
+      <label htmlFor={_id} className="ml-0.5 text-xs uppercase font-extrabold">
         {props.label}
       </label>
       <input
@@ -47,7 +44,7 @@ function TextInput(props: { name: string; label: string }) {
         autoComplete="off"
         id={_id}
         type="text"
-        className="p-1 pt-2 focus:outline-none border-b border-slate-600/20"
+        className="p-1 pt-2 focus:outline-none border-b border-prim"
       />
     </div>
   );

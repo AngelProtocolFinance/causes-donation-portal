@@ -41,7 +41,7 @@ function TxPrompt({ step, txHash, resetTx }: Props) {
       {/**backdrop */}
       <div className="fixed inset-0 bg-black/30" aria-hidden="true" />
 
-      <Dialog.Panel className="bg-slate-50 fixed-center p-8 rounded-md text-slate-700">
+      <Dialog.Panel className="dark:bg-blue-d7 fixed-center p-8 rounded-md z-10 border border-prim">
         {content}
       </Dialog.Panel>
     </Dialog>

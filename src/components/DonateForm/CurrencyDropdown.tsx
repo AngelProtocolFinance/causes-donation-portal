@@ -2,7 +2,7 @@ import { Fragment } from "react";
 import { Listbox } from "@headlessui/react";
 import { WithBalance } from "types";
 import { BsChevronDown } from "react-icons/bs";
-import toCurrency from "functions/toCurrency";
+import toCurrency from "helpers/toCurrency";
 
 type Props = {
   tokens: WithBalance[];
@@ -10,7 +10,7 @@ type Props = {
   setActiveToken: React.Dispatch<React.SetStateAction<WithBalance>>;
 };
 
-export default function MyListbox({
+export default function CurrencyDropdown({
   tokens,
   activeToken,
   setActiveToken,
@@ -18,7 +18,7 @@ export default function MyListbox({
   return (
     <Listbox value={activeToken} onChange={setActiveToken}>
       <div className="relative w-full">
-        <Listbox.Button className="p-2 text-slate-600 flex items-center gap-2 border border-slate-600/2 w-full">
+        <Listbox.Button className="p-3 flex items-center gap-2 bg-orange-l6 dark:bg-blue-d7 border border-prim rounded w-full">
           <img
             src={activeToken.logo}
             alt=""
@@ -27,14 +27,16 @@ export default function MyListbox({
           <span>{activeToken.symbol}</span>
           <BsChevronDown size={15} className="ml-auto" />
         </Listbox.Button>
-        <Listbox.Options className="absolute bg-slate-50 w-full">
+        <Listbox.Options className="absolute bg-orange-l6 dark:bg-blue-d7 border border-prim rounded mt-1 w-full py-2">
           {tokens.map((token) => (
             <Listbox.Option key={token.denom} value={token} as={Fragment}>
               {({ active, selected }) =>
                 !selected ? (
                   <li
-                    className={`p-2 text-slate-600 flex items-center gap-2 ${
-                      active ? "bg-sky-500/10" : ""
+                    className={`p-3 flex items-center gap-2 ${
+                      active
+                        ? "bg-orange-l4 dark:bg-blue-d5 cursor-pointer"
+                        : ""
                     }`}
                   >
                     <img

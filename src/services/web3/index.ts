@@ -20,7 +20,7 @@ import {
   busdToken,
 } from "./constants";
 import { EVMContract, JsonRpcProvider } from "types/third-party/ethers";
-import { condenseAmount } from "functions/third-party/terra";
+import { condenseAmount } from "helpers/third-party/terra";
 
 type BalanceRes = { balance: CoinData };
 

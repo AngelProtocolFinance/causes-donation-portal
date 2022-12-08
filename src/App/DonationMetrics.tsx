@@ -1,4 +1,4 @@
-import toCurrency from "functions/toCurrency";
+import toCurrency from "helpers/toCurrency";
 import { useMetricsQuery } from "services/apes";
 
 const DonationMetrics = () => {
@@ -7,7 +7,7 @@ const DonationMetrics = () => {
   } = useMetricsQuery("");
 
   return (
-    <section className="bg-sky-600 grid grid-cols-1 md:grid-cols-3 gap-16 items-center container-padded p-8 my-16 rounded">
+    <section className="font-heading container-padded grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-10 items-center p-8 lg:my-16">
       <Metric
         name="Total Donated"
         value={toCurrency(+data.totalUsd, 3) + " USDC"}
@@ -25,7 +25,7 @@ export default DonationMetrics;
 
 function Metric(props: { name: string; value: string }) {
   return (
-    <div className="grid gap-4 place-items-center text-slate-50 p-8 border rounded-md border-slate-50/40">
+    <div className="text-center grid gap-4 place-items-center p-8 rounded-md border bg-white dark:bg-blue-d6 border-prim">
       <p className="text-xl font-semibold">{props.name}</p>
       <p className="text-3xl font-bold">{props.value}</p>
     </div>

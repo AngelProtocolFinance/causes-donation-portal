@@ -1,6 +1,8 @@
+import React, { PropsWithChildren } from "react";
+
 const AngelInfo = () => {
   return (
-    <section className="container-padded text-slate-700">
+    <section className="container-padded">
       <article className="max-w-4xl">
         <h3 className="font-extrabold text-4xl uppercase mb-4 mt-6">
           Who we are
@@ -13,46 +15,30 @@ const AngelInfo = () => {
           the crypto community. The significant contributions, amplification,
           and support raised over $6 million dollars in donations to more than:{" "}
         </p>
-        <ul className="font-semibold list-disc my-4 pl-4 md:pl-8 text-lg">
-          <li className="mb-4">
-            <a
-              className="text-sky-600 hover:text-sky-500 active:text-sky-400"
-              href="https://www.angelprotocol.io/app/leaderboard"
-              target="_blank"
-            >
+        <ul className="list-disc my-4 pl-4 md:pl-8">
+          <li className="mb-1">
+            <Anc href="https://www.angelprotocol.io/app/leaderboard">
               160 charities{" "}
-            </a>
+            </Anc>
             with $1.5M raised to fight{" "}
-            <a
-              className="text-sky-600 hover:text-sky-500 active:text-sky-400"
-              href="https://restore-earth.angelprotocol.io/"
-              target="_blank"
-            >
+            <Anc href="https://restore-earth.angelprotocol.io/">
               climate change
-            </a>
+            </Anc>
           </li>
-          <li className="mb-4">
+          <li className="mb-1">
             $500k in humanitarian relief for those impacted by{" "}
-            <a
-              className="text-sky-600 hover:text-sky-500 active:text-sky-400"
-              href="https://www.youtube.com/watch?v=h3wLfQLb8_4"
-              target="_blank"
-            >
+            <Anc href="https://www.youtube.com/watch?v=h3wLfQLb8_4">
               Typhoon Rai
-            </a>
+            </Anc>
           </li>
-          <li className="mb-4">
+          <li className="mb-1">
             over $200k to support{" "}
-            <a
-              className="text-sky-600 hover:text-sky-500 active:text-sky-400"
-              href="https://ukraine.angelprotocol.io/"
-              target="_blank"
-            >
+            <Anc href="https://ukraine.angelprotocol.io/">
               Ukrainian refugees.
-            </a>
+            </Anc>
           </li>
         </ul>
-        <p className="leading-relaxed mb-4 font-semibold text-sky-900/70">
+        <p className="leading-relaxed mb-1 font-medium">
           It is deeply saddening that these $UST denominated funds were also
           slashed during the de-peg event.
         </p>
@@ -63,7 +49,7 @@ const AngelInfo = () => {
           is currently reviewing issues with the indexing, but there is no quick
           resolution expected.
         </p>
-        <p className="leading-relaxed my-8 font-semibold text-sky-900/70">
+        <p className="leading-relaxed mt-8 mb-1 font-medium">
           We understand most people cannot be made whole from the $UST collapse,
           and we do not seek any special treatment for Angel Protocol itself.
         </p>
@@ -73,7 +59,7 @@ const AngelInfo = () => {
           checked on-chain. They were not seeking risk and the sums raised
           already potentially assured the future of many of these charities.
         </p>
-        <p className="my-8 text-sky-900/70 font-semibold">
+        <p className="mt-8 mb-1 font-medium">
           Charities exist as a safety net for causes that fall through the
           cracks of society. Please do not let the charities themselves fall
           through the cracks as well.
@@ -85,7 +71,7 @@ const AngelInfo = () => {
           relaunching the charity marketplace, and then you will also be able to
           donate to charities individually.
         </p>
-        <p className="my-8 text-lg text-sky-600 font-semibold">
+        <p className="my-8 text-lg text-blue dark:text-blue-l2 font-semibold">
           Thank you for your time, and for any support you can provide for the
           charities.
         </p>
@@ -106,3 +92,19 @@ const AngelInfo = () => {
 };
 
 export default AngelInfo;
+
+function Anc({
+  children,
+  ...props
+}: Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, "rel" | "target">) {
+  return (
+    <a
+      {...props}
+      className="text-blue dark:text-orange-l1 hover:text-orange hover:dark:text-orange-l2"
+      target="_blank"
+      rel="noreferrer noopener"
+    >
+      {children}
+    </a>
+  );
+}

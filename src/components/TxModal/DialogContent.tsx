@@ -5,7 +5,7 @@ import {
   TwitterShareButton,
 } from "react-share";
 import { useGetWallet } from "contexts/WalletContext/WalletContext";
-import getTxUrl from "functions/getTxUrl";
+import getTxUrl from "helpers/getTxUrl";
 import { Dialog } from "@headlessui/react";
 import angelIcon from "assets/icons/angelwing_bl.png";
 
@@ -26,7 +26,7 @@ const DialogContent = ({ title, txHash, resetable, shareable }: Props) => {
         <p className="flex gap-2 text-sm items-baseline">
           <span className="text-xs uppercase">Tx hash:</span>
           <a
-            className="text-sky-500"
+            className="text-blue-d1 hover:text-blue"
             href={getTxUrl(txHash, wallet?.chainId)}
             target="_blank"
           >
@@ -39,7 +39,7 @@ const DialogContent = ({ title, txHash, resetable, shareable }: Props) => {
       {resetable && (
         <button
           onClick={() => window.location.reload()}
-          className="bg-sky-600 mt-2 p-2 uppercase text-slate-50 text-xs font-extrabold rounded"
+          className="mt-2 p-2 uppercase btn-blue text-xs font-extrabold rounded"
         >
           Go Back
         </button>
@@ -55,7 +55,7 @@ function Share() {
     <>
       <div className="">
         <button
-          className="bg-sky-600 mt-2 p-2 uppercase text-slate-50 text-xs font-extrabold rounded-md mb-4"
+          className="btn-blue mt-2 p-2 uppercase text-xs font-extrabold rounded-md mb-4"
           onClick={() => window.location.reload()}
         >
           Go Back

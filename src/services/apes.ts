@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { apes_endpoint } from "constants/urls";
-import { createAuthToken } from "functions/createAuthToken";
+import { createAuthToken } from "helpers/createAuthToken";
 
 type DonationMetrics = {
   largestDonationUsd: string; //"5.02134105";

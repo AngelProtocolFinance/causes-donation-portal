@@ -22,14 +22,14 @@ const WalletSelection = ({ isSelectionOpen, setIsSelectionOpen }: Props) => {
 
   return (
     <Dialog
-      className="relative z-50"
+      className="relative"
       open={isSelectionOpen}
       onClose={() => setIsSelectionOpen(false)}
     >
       {/**backdrop */}
-      <div className="fixed inset-0 bg-black/30" aria-hidden="true" />
+      <div className="fixed inset-0 bg-black/60" aria-hidden="true" />
 
-      <Dialog.Panel className="bg-slate-50 fixed-center p-8 rounded-md text-slate-700 min-w-max">
+      <Dialog.Panel className="z-20 fixed-center p-8 rounded-md min-w-max bg-white dark:bg-blue-d7 border border-prim">
         <Dialog.Title className="uppercase font-extrabold mb-2">
           Connect to a wallet
         </Dialog.Title>
@@ -61,7 +61,7 @@ function Connector(props: Connection) {
   }
   return (
     <button
-      className="flex items-center gap-2 p-4 border-b border-slate-600/10 hover:bg-sky-400/30 active:bg-sky-400/50"
+      className="flex items-center gap-2 p-4 border-b border-gray-d1 dark:border-bluegray hover:text-blue hover:dark:text-orange-l1"
       onClick={handleConnect}
     >
       <img

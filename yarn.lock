@@ -3108,13 +3108,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@terra-money/terra.js@npm:^3.0.7":
-  version: 3.1.5
-  resolution: "@terra-money/terra.js@npm:3.1.5"
+"@terra-money/terra.js@npm:^3.1.7":
+  version: 3.1.7
+  resolution: "@terra-money/terra.js@npm:3.1.7"
   dependencies:
     "@terra-money/legacy.proto": "npm:@terra-money/terra.proto@^0.1.7"
     "@terra-money/terra.proto": ^2.1.0
-    axios: ^0.26.1
+    axios: ^0.27.2
     bech32: ^2.0.0
     bip32: ^2.0.6
     bip39: ^3.0.3
@@ -3125,8 +3125,8 @@ __metadata:
     secp256k1: ^4.0.2
     tmp: ^0.2.1
     utf-8-validate: ^5.0.5
-    ws: ^7.5.5
-  checksum: e9da43d4d329b975abeaafeeb13facd29b603c0ff64eaf8dd5a885410a74dc928c019e98f6e05a46087e3ea4ab6ff7cbadf79d3c1e909ce864591cae828133d6
+    ws: ^7.5.9
+  checksum: b8272943b70bc47213bb520bfdb7b645f993f5d3c628e631d7eaf67e07b2b96a9b8df722e8c8296d34d665771754d90972d9025b5cc80e38f1ec35eda4cfa08e
   languageName: node
   linkType: hard
 
@@ -3142,24 +3142,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@terra-money/use-wallet@npm:^3.9.4":
-  version: 3.9.4
-  resolution: "@terra-money/use-wallet@npm:3.9.4"
+"@terra-money/use-wallet@npm:^3.11.2":
+  version: 3.11.2
+  resolution: "@terra-money/use-wallet@npm:3.11.2"
   dependencies:
-    "@terra-money/wallet-types": ^3.9.4
+    "@terra-money/wallet-types": ^3.11.2
   peerDependencies:
-    "@terra-money/terra.js": ^3.0.0
+    "@terra-money/terra.js": ^3.1.6
     react: ">=17.0.0"
-  checksum: 11a22023ff901b0cd9823b96a5d008d877e94d5199d1d589b37234f3dcb4aa4ecb15762b4edcb50657dc9effcf7316bcfa370516cd091e931ad18eb85d0f35fd
+  checksum: 2d0bcd48eef1a9c9adf6ef78a68459d28ef7908970ad986c99a8a28729725ece11f21424046689ef7d4e6b9339059d6beed306e240274cb52d57a7315038cf97
   languageName: node
   linkType: hard
 
-"@terra-money/wallet-controller@npm:^3.9.4":
-  version: 3.9.4
-  resolution: "@terra-money/wallet-controller@npm:3.9.4"
+"@terra-money/wallet-controller@npm:^3.11.2":
+  version: 3.11.2
+  resolution: "@terra-money/wallet-controller@npm:3.11.2"
   dependencies:
-    "@terra-money/wallet-types": ^3.9.4
-    "@terra-money/web-extension-interface": ^3.9.4
+    "@terra-money/wallet-types": ^3.11.2
+    "@terra-money/web-extension-interface": ^3.11.2
     "@walletconnect/core": ^1.6.6
     "@walletconnect/iso-crypto": ^1.6.6
     "@walletconnect/types": ^1.6.6
@@ -3173,41 +3173,41 @@ __metadata:
     secp256k1: ^4.0.0
     ws: ^7.5.5
   peerDependencies:
-    "@terra-money/terra.js": ^3.0.0
-  checksum: 449b940be167e4ddbe0c7f0d3100086fd92d8413ab1aa210cbe09dfa0c9b1bbe505202bc03f9a7f6531b3a080be17b24754d660a008da2c440c9a8aa799f3f85
+    "@terra-money/terra.js": ^3.1.6
+  checksum: 06ea64196eb5b3e20d313983b9b2a20516710d02b4fc1dd103ee24535568568f8024f72b511e5df37cde33648813a574e44e8c2020c55c3702b20da0eb989caa
   languageName: node
   linkType: hard
 
-"@terra-money/wallet-provider@npm:^3.8.0":
-  version: 3.9.4
-  resolution: "@terra-money/wallet-provider@npm:3.9.4"
+"@terra-money/wallet-provider@npm:^3.11.2":
+  version: 3.11.2
+  resolution: "@terra-money/wallet-provider@npm:3.11.2"
   dependencies:
-    "@terra-money/use-wallet": ^3.9.4
-    "@terra-money/wallet-controller": ^3.9.4
-    "@terra-money/web-extension-interface": ^3.9.4
+    "@terra-money/use-wallet": ^3.11.2
+    "@terra-money/wallet-controller": ^3.11.2
+    "@terra-money/web-extension-interface": ^3.11.2
   peerDependencies:
     react: ">=17.0.0"
-  checksum: 1ed27feef1b0e6524102783f7aad4d511eb752bf6a33c9fcaa0ff7772370ae5a9523de8dbe5c6ea026b95360fee68ab34aba6ea9665160c1301abef8537cfbe0
+  checksum: 7421e838bba9ad963548d06ad2118ef67a2a00726ff5763098289f56b7ce592a066a51fbed05fba4f10ccc1cdb949844c10152a2c4797f4e2c8a3a19a0a3c23e
   languageName: node
   linkType: hard
 
-"@terra-money/wallet-types@npm:^3.9.4":
-  version: 3.9.4
-  resolution: "@terra-money/wallet-types@npm:3.9.4"
+"@terra-money/wallet-types@npm:^3.11.2":
+  version: 3.11.2
+  resolution: "@terra-money/wallet-types@npm:3.11.2"
   peerDependencies:
-    "@terra-money/terra.js": ^3.0.0
-  checksum: b6b196ed2d85e330704cc5b6f557192b2c13c56fb45a5b3bf5f089cf7ad7c14df2fd1e89e2090ebbb73a051cb2281c36c7d6046a27987d38327aa43f234af445
+    "@terra-money/terra.js": ^3.1.6
+  checksum: dc1eb42fd4f7df46d09f0d19ec03ca2f4b47eeb025acba93d7f83be96c5fe3f9b6f29557caf507878758814aeee17b80e753a2b52af6e1742d086d5b75415485
   languageName: node
   linkType: hard
 
-"@terra-money/web-extension-interface@npm:^3.9.4":
-  version: 3.9.4
-  resolution: "@terra-money/web-extension-interface@npm:3.9.4"
+"@terra-money/web-extension-interface@npm:^3.11.2":
+  version: 3.11.2
+  resolution: "@terra-money/web-extension-interface@npm:3.11.2"
   dependencies:
     rxjs: ^7.0.0
   peerDependencies:
-    "@terra-money/terra.js": ^3.0.0
-  checksum: 8e29c499c1dd6c1155b4d6e609390dfac74b4bd0af0a97f40730ab5f15073034829fe5a77f115695b70012702fbc2147c31bd65d2d0c483ddc9df9aca59cc4d5
+    "@terra-money/terra.js": ^3.1.6
+  checksum: 39b035ad9969216a2a67f2ed2ab6bf3614ccde91f3849d36e5fbb14fe2e531edfd8c5d7e454ee37c6a3b9b22c6412e165c32504e59e57e46090edac5a08eedbd
   languageName: node
   linkType: hard
 
@@ -3572,12 +3572,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-dom@npm:^17.0.11":
-  version: 17.0.17
-  resolution: "@types/react-dom@npm:17.0.17"
+"@types/react-dom@npm:^18.0.9":
+  version: 18.0.9
+  resolution: "@types/react-dom@npm:18.0.9"
   dependencies:
-    "@types/react": ^17
-  checksum: 23caf98aa03e968811560f92a2c8f451694253ebe16b670929b24eaf0e7fa62ba549abe9db0ac028a9d8a9086acd6ab9c6c773f163fa21224845edbc00ba6232
+    "@types/react": "*"
+  checksum: e744e3feba25fc43733289d4df4d9c0e59fcca7f34e8c89d75f81a339accb2bd70236d69382d47d2c0ad06a1529b2e56aa6171fe175854d60e07156ddceedfcb
   languageName: node
   linkType: hard
 
@@ -3592,14 +3592,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:^17, @types/react@npm:^17.0.34":
-  version: 17.0.48
-  resolution: "@types/react@npm:17.0.48"
+"@types/react@npm:^18.0.26":
+  version: 18.0.26
+  resolution: "@types/react@npm:18.0.26"
   dependencies:
     "@types/prop-types": "*"
     "@types/scheduler": "*"
     csstype: ^3.0.2
-  checksum: b683fa33f751ced0b8c8715df9f40de15513c1d7ce66064a75cdfb8805cc913b0b214a2e7022ef0b724bd62a1e8651d040cd265dd0452bde03cca9b8e495742d
+  checksum: b62f0ea3cdfa68e106391728325057ad36f1bde7ba2dfae029472c47e01e482bc77c6ba4f1dad59f3f04ee81cb597618ff7c30a33c157c0a20462b6dd6aa2d4d
   languageName: node
   linkType: hard
 
@@ -4666,12 +4666,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:^0.26.1":
-  version: 0.26.1
-  resolution: "axios@npm:0.26.1"
+"axios@npm:^0.27.2":
+  version: 0.27.2
+  resolution: "axios@npm:0.27.2"
   dependencies:
-    follow-redirects: ^1.14.8
-  checksum: d9eb58ff4bc0b36a04783fc9ff760e9245c829a5a1052ee7ca6013410d427036b1d10d04e7380c02f3508c5eaf3485b1ae67bd2adbfec3683704745c8d7a6e1a
+    follow-redirects: ^1.14.9
+    form-data: ^4.0.0
+  checksum: 38cb7540465fe8c4102850c4368053c21683af85c5fdf0ea619f9628abbcb59415d1e22ebc8a6390d2bbc9b58a9806c874f139767389c862ec9b772235f06854
   languageName: node
   linkType: hard
 
@@ -5498,10 +5499,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"classnames@npm:^2.2.5":
-  version: 2.3.1
-  resolution: "classnames@npm:2.3.1"
-  checksum: 14db8889d56c267a591f08b0834989fe542d47fac659af5a539e110cc4266694e8de86e4e3bbd271157dbd831361310a8293e0167141e80b0f03a0f175c80960
+"classnames@npm:^2.3.2":
+  version: 2.3.2
+  resolution: "classnames@npm:2.3.2"
+  checksum: 2c62199789618d95545c872787137262e741f9db13328e216b093eea91c85ef2bfb152c1f9e63027204e2559a006a92eb74147d46c800a9f96297ae1d9f96f4e
   languageName: node
   linkType: hard
 
@@ -5857,13 +5858,13 @@ __metadata:
     "@babel/plugin-transform-react-jsx": ^7.19.0
     "@headlessui/react": ^1.6.5
     "@reduxjs/toolkit": ^1.8.2
-    "@terra-money/terra.js": ^3.0.7
-    "@terra-money/wallet-provider": ^3.8.0
+    "@terra-money/terra.js": ^3.1.7
+    "@terra-money/wallet-provider": ^3.11.2
     "@testing-library/jest-dom": ^5.15.0
     "@types/jest": ^27.0.2
     "@types/jsonwebtoken": ^8.5.8
-    "@types/react": ^17.0.34
-    "@types/react-dom": ^17.0.11
+    "@types/react": ^18.0.26
+    "@types/react-dom": ^18.0.9
     autoprefixer: ^10.4.7
     buffer: ^6.0.3
     cross-env: ^7.0.3
@@ -5874,14 +5875,14 @@ __metadata:
     postcss: ^8.4.14
     prettier: ^2.7.1
     process: ^0.11.10
-    react: ^17.0.2
+    react: ^18.2.0
     react-app-rewired: ^2.1.11
     react-device-detect: ^2.2.2
-    react-dom: ^17.0.2
+    react-dom: ^18.2.0
     react-icons: ^4.3.1
     react-redux: ^8.0.2
-    react-scripts: 5.0.0
-    react-share: ^4.4.0
+    react-scripts: 5.0.1
+    react-share: ^4.4.1
     stream-browserify: ^3.0.0
     tailwindcss: ^3.1.4
     typescript: ^4.4.4
@@ -6980,7 +6981,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-config-react-app@npm:^7.0.0":
+"eslint-config-react-app@npm:^7.0.1":
   version: 7.0.1
   resolution: "eslint-config-react-app@npm:7.0.1"
   dependencies:
@@ -7470,7 +7471,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fast-glob@npm:^3.2.11, fast-glob@npm:^3.2.9":
+"fast-glob@npm:^3.2.12":
+  version: 3.2.12
+  resolution: "fast-glob@npm:3.2.12"
+  dependencies:
+    "@nodelib/fs.stat": ^2.0.2
+    "@nodelib/fs.walk": ^1.2.3
+    glob-parent: ^5.1.2
+    merge2: ^1.3.0
+    micromatch: ^4.0.4
+  checksum: 0b1990f6ce831c7e28c4d505edcdaad8e27e88ab9fa65eedadb730438cfc7cde4910d6c975d6b7b8dc8a73da4773702ebcfcd6e3518e73938bb1383badfe01c2
+  languageName: node
+  linkType: hard
+
+"fast-glob@npm:^3.2.9":
   version: 3.2.11
   resolution: "fast-glob@npm:3.2.11"
   dependencies:
@@ -7658,13 +7672,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"follow-redirects@npm:^1.0.0, follow-redirects@npm:^1.14.8":
+"follow-redirects@npm:^1.0.0":
   version: 1.15.1
   resolution: "follow-redirects@npm:1.15.1"
   peerDependenciesMeta:
     debug:
       optional: true
   checksum: 6aa4e3e3cdfa3b9314801a1cd192ba756a53479d9d8cca65bf4db3a3e8834e62139245cd2f9566147c8dfe2efff1700d3e6aefd103de4004a7b99985e71dd533
+  languageName: node
+  linkType: hard
+
+"follow-redirects@npm:^1.14.9":
+  version: 1.15.2
+  resolution: "follow-redirects@npm:1.15.2"
+  peerDependenciesMeta:
+    debug:
+      optional: true
+  checksum: faa66059b66358ba65c234c2f2a37fcec029dc22775f35d9ad6abac56003268baf41e55f9ee645957b32c7d9f62baf1f0b906e68267276f54ec4b4c597c2b190
   languageName: node
   linkType: hard
 
@@ -7716,6 +7740,17 @@ __metadata:
     combined-stream: ^1.0.8
     mime-types: ^2.1.12
   checksum: b019e8d35c8afc14a2bd8a7a92fa4f525a4726b6d5a9740e8d2623c30e308fbb58dc8469f90415a856698933c8479b01646a9dff33c87cc4e76d72aedbbf860d
+  languageName: node
+  linkType: hard
+
+"form-data@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "form-data@npm:4.0.0"
+  dependencies:
+    asynckit: ^0.4.0
+    combined-stream: ^1.0.8
+    mime-types: ^2.1.12
+  checksum: 01135bf8675f9d5c61ff18e2e2932f719ca4de964e3be90ef4c36aacfc7b9cb2fceb5eca0b7e0190e3383fe51c5b37f4cb80b62ca06a99aaabfcfd6ac7c9328c
   languageName: node
   linkType: hard
 
@@ -9813,7 +9848,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lilconfig@npm:^2.0.3, lilconfig@npm:^2.0.5":
+"lilconfig@npm:^2.0.3, lilconfig@npm:^2.0.5, lilconfig@npm:^2.0.6":
   version: 2.0.6
   resolution: "lilconfig@npm:2.0.6"
   checksum: 40a3cd72f103b1be5975f2ac1850810b61d4053e20ab09be8d3aeddfe042187e1ba70b4651a7e70f95efa1642e7dc8b2ae395b317b7d7753b241b43cef7c0f7d
@@ -11595,14 +11630,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-nested@npm:5.0.6":
-  version: 5.0.6
-  resolution: "postcss-nested@npm:5.0.6"
+"postcss-nested@npm:6.0.0":
+  version: 6.0.0
+  resolution: "postcss-nested@npm:6.0.0"
   dependencies:
-    postcss-selector-parser: ^6.0.6
+    postcss-selector-parser: ^6.0.10
   peerDependencies:
     postcss: ^8.2.14
-  checksum: dbcbfd11e514f485ac0d2b649b32bcbd855665a88a76f697f8be6c5017aa0260954ecccd2475bbd5865a5d248eae9a4e6e10d2d51927621d05430381aa37e43b
+  checksum: 2105dc52cd19747058f1a46862c9e454b5a365ac2e7135fc1015d67a8fe98ada2a8d9ee578e90f7a093bd55d3994dd913ba5ff1d5e945b4ed9a8a2992ecc8f10
   languageName: node
   linkType: hard
 
@@ -11892,7 +11927,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-selector-parser@npm:^6.0.10, postcss-selector-parser@npm:^6.0.2, postcss-selector-parser@npm:^6.0.4, postcss-selector-parser@npm:^6.0.5, postcss-selector-parser@npm:^6.0.6, postcss-selector-parser@npm:^6.0.9":
+"postcss-selector-parser@npm:^6.0.10, postcss-selector-parser@npm:^6.0.2, postcss-selector-parser@npm:^6.0.4, postcss-selector-parser@npm:^6.0.5, postcss-selector-parser@npm:^6.0.9":
   version: 6.0.10
   resolution: "postcss-selector-parser@npm:6.0.10"
   dependencies:
@@ -11950,6 +11985,17 @@ __metadata:
     picocolors: ^1.0.0
     source-map-js: ^1.0.2
   checksum: fe58766ff32e4becf65a7d57678995cfd239df6deed2fe0557f038b47c94e4132e7e5f68b5aa820c13adfec32e523b693efaeb65798efb995ce49ccd83953816
+  languageName: node
+  linkType: hard
+
+"postcss@npm:^8.4.18":
+  version: 8.4.19
+  resolution: "postcss@npm:8.4.19"
+  dependencies:
+    nanoid: ^3.3.4
+    picocolors: ^1.0.0
+    source-map-js: ^1.0.2
+  checksum: 62782723a385f92b7525f66d29614624de7c5643855423db3a5efd9287e677650300192749adddbbb6734cea9b1d5f5fd4f6ea00ca3f9a95dbbb88f835f5ca64
   languageName: node
   linkType: hard
 
@@ -12268,7 +12314,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dev-utils@npm:^12.0.0":
+"react-dev-utils@npm:^12.0.1":
   version: 12.0.1
   resolution: "react-dev-utils@npm:12.0.1"
   dependencies:
@@ -12312,16 +12358,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:^17.0.2":
-  version: 17.0.2
-  resolution: "react-dom@npm:17.0.2"
+"react-dom@npm:^18.2.0":
+  version: 18.2.0
+  resolution: "react-dom@npm:18.2.0"
   dependencies:
     loose-envify: ^1.1.0
-    object-assign: ^4.1.1
-    scheduler: ^0.20.2
+    scheduler: ^0.23.0
   peerDependencies:
-    react: 17.0.2
-  checksum: 1c1eaa3bca7c7228d24b70932e3d7c99e70d1d04e13bb0843bbf321582bc25d7961d6b8a6978a58a598af2af496d1cedcfb1bf65f6b0960a0a8161cb8dab743c
+    react: ^18.2.0
+  checksum: 7d323310bea3a91be2965f9468d552f201b1c27891e45ddc2d6b8f717680c95a75ae0bc1e3f5cf41472446a2589a75aed4483aee8169287909fcd59ad149e8cc
   languageName: node
   linkType: hard
 
@@ -12401,9 +12446,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-scripts@npm:5.0.0":
-  version: 5.0.0
-  resolution: "react-scripts@npm:5.0.0"
+"react-scripts@npm:5.0.1":
+  version: 5.0.1
+  resolution: "react-scripts@npm:5.0.1"
   dependencies:
     "@babel/core": ^7.16.0
     "@pmmmwh/react-refresh-webpack-plugin": ^0.5.3
@@ -12421,7 +12466,7 @@ __metadata:
     dotenv: ^10.0.0
     dotenv-expand: ^5.1.0
     eslint: ^8.3.0
-    eslint-config-react-app: ^7.0.0
+    eslint-config-react-app: ^7.0.1
     eslint-webpack-plugin: ^3.1.1
     file-loader: ^6.2.0
     fs-extra: ^10.0.0
@@ -12439,7 +12484,7 @@ __metadata:
     postcss-preset-env: ^7.0.1
     prompts: ^2.4.2
     react-app-polyfill: ^3.0.0
-    react-dev-utils: ^12.0.0
+    react-dev-utils: ^12.0.1
     react-refresh: ^0.11.0
     resolve: ^1.20.0
     resolve-url-loader: ^4.0.0
@@ -12464,29 +12509,28 @@ __metadata:
       optional: true
   bin:
     react-scripts: bin/react-scripts.js
-  checksum: 55ffad0d68ee6345326f5803c1925ae44b46cc33cb1cad9bcb68fd1784acfb3876bc12118b3079bc4d934834ae0197a9776baa0a06df0263831acc91ac42df29
+  checksum: 92afa2f245c7092ccc97d5609dc7a2130616262e34da7f15072d9442e2d2e1d4909a91022abd1faac1336eb17c5525a10d9bd43e1ae374c7ec941ca20addca68
   languageName: node
   linkType: hard
 
-"react-share@npm:^4.4.0":
-  version: 4.4.0
-  resolution: "react-share@npm:4.4.0"
+"react-share@npm:^4.4.1":
+  version: 4.4.1
+  resolution: "react-share@npm:4.4.1"
   dependencies:
-    classnames: ^2.2.5
+    classnames: ^2.3.2
     jsonp: ^0.2.1
   peerDependencies:
-    react: ^16.3.0 || ^17
-  checksum: 69306d4593cbbc8043383d03a6aea254affb9d74f79da79903bfb6fb044451516761b955786a4b1bf54b84ff9ddeaa4512f3722388e80b073defcd3949f1abc4
+    react: ^16.3.0 || ^17 || ^18
+  checksum: f86bf7415f9fe98243b1ea58bf9df53503de7fb2235b1e633dd25c8cef68e59070b3cd20fab6ec5286eccbd30d27ce6c458ac532c4fdf7b6f12f4048bbea24d3
   languageName: node
   linkType: hard
 
-"react@npm:^17.0.2":
-  version: 17.0.2
-  resolution: "react@npm:17.0.2"
+"react@npm:^18.2.0":
+  version: 18.2.0
+  resolution: "react@npm:18.2.0"
   dependencies:
     loose-envify: ^1.1.0
-    object-assign: ^4.1.1
-  checksum: b254cc17ce3011788330f7bbf383ab653c6848902d7936a87b09d835d091e3f295f7e9dd1597c6daac5dc80f90e778c8230218ba8ad599f74adcc11e33b9d61b
+  checksum: 88e38092da8839b830cda6feef2e8505dec8ace60579e46aa5490fc3dc9bba0bd50336507dc166f43e3afc1c42939c09fe33b25fae889d6f402721dcd78fca1b
   languageName: node
   linkType: hard
 
@@ -12992,13 +13036,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"scheduler@npm:^0.20.2":
-  version: 0.20.2
-  resolution: "scheduler@npm:0.20.2"
+"scheduler@npm:^0.23.0":
+  version: 0.23.0
+  resolution: "scheduler@npm:0.23.0"
   dependencies:
     loose-envify: ^1.1.0
-    object-assign: ^4.1.1
-  checksum: c4b35cf967c8f0d3e65753252d0f260271f81a81e427241295c5a7b783abf4ea9e905f22f815ab66676f5313be0a25f47be582254db8f9241b259213e999b8fc
+  checksum: d79192eeaa12abef860c195ea45d37cbf2bbf5f66e3c4dcd16f54a7da53b17788a70d109ee3d3dde1a0fd50e6a8fc171f4300356c5aee4fc0171de526bf35f8a
   languageName: node
   linkType: hard
 
@@ -13823,9 +13866,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tailwindcss@npm:^3.0.2, tailwindcss@npm:^3.1.4":
-  version: 3.1.6
-  resolution: "tailwindcss@npm:3.1.6"
+"tailwindcss@npm:3.2.4":
+  version: 3.2.4
+  resolution: "tailwindcss@npm:3.2.4"
   dependencies:
     arg: ^5.0.2
     chokidar: ^3.5.3
@@ -13833,18 +13876,19 @@ __metadata:
     detective: ^5.2.1
     didyoumean: ^1.2.2
     dlv: ^1.1.3
-    fast-glob: ^3.2.11
+    fast-glob: ^3.2.12
     glob-parent: ^6.0.2
     is-glob: ^4.0.3
-    lilconfig: ^2.0.5
+    lilconfig: ^2.0.6
+    micromatch: ^4.0.5
     normalize-path: ^3.0.0
     object-hash: ^3.0.0
     picocolors: ^1.0.0
-    postcss: ^8.4.14
+    postcss: ^8.4.18
     postcss-import: ^14.1.0
     postcss-js: ^4.0.0
     postcss-load-config: ^3.1.4
-    postcss-nested: 5.0.6
+    postcss-nested: 6.0.0
     postcss-selector-parser: ^6.0.10
     postcss-value-parser: ^4.2.0
     quick-lru: ^5.1.1
@@ -13854,7 +13898,7 @@ __metadata:
   bin:
     tailwind: lib/cli.js
     tailwindcss: lib/cli.js
-  checksum: 90719c6fd0dcdda5c8e2882ad421048c9dd90890e0c118d12ff3ec31adba53eb2df8fed1ed203e728e5b32297e1cc207df463a6b196d37344a63fde9f67c52b6
+  checksum: ec187d180c722ec4f57537f2216c7b21269b525f12aaf353cea464d939c3e6286a1221eb3e1206e45d1f015f296171309ad4d9952899b0245cd07d9500a9401f
   languageName: node
   linkType: hard
 
@@ -15079,7 +15123,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ws@npm:^7.4.6, ws@npm:^7.5.5":
+"ws@npm:^7.4.6, ws@npm:^7.5.5, ws@npm:^7.5.9":
   version: 7.5.9
   resolution: "ws@npm:7.5.9"
   peerDependencies:
