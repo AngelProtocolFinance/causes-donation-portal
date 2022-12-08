@@ -8,6 +8,7 @@ import { copyAndImages } from "constants/constants";
 import Hero from "./Hero";
 import WalletCtx from "contexts/WalletContext/WalletCtx";
 import ModalContext from "contexts/ModalContext";
+import Donater from "./Donater";
 
 export default function App() {
   return (
@@ -19,10 +20,10 @@ export default function App() {
           <DonationHeader />
           <div className="grid lg:grid-cols-[3fr_4fr]  container-padded gap-4 my-16">
             <img
-              className="h-60 lg:h-96 w-full object-cover rounded"
+              className="h-60 lg:h-full w-full object-cover rounded"
               src={copyAndImages.donation_image}
             />
-            <DonateForm />
+            <Donater />
           </div>
           <DonationMetrics />
           <AngelInfo />

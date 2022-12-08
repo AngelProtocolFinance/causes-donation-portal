@@ -8,6 +8,7 @@ export type Coin = {
 };
 
 export type CoinWithBalance = Coin & { balance: number };
+export type CoinWithAmount = CoinWithBalance & { amount: string };
 export type FetchedChain = { tokens: Coin[]; native_currency: Coin };
 
 type TokenBase = {

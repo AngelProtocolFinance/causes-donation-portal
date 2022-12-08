@@ -14,8 +14,13 @@ const ConnectedWallet = ({ wallet }: { wallet: TConnectedWallet }) => {
   const chain = chains[wallet.chainId];
   return (
     <Popover className="isolate relative">
-      <Popover.Button className="btn-orange text-sm py-2 px-3 rounded-md flex items-center gap-2">
-        {sliced(wallet.address, 5, -3)}
+      <Popover.Button className="btn-orange text-sm p-2 pr-3 rounded-md flex items-center gap-2">
+        <img
+          src={wallet.logo}
+          alt=""
+          className="h-6 w-6 bg-white rounded-full p-1"
+        />
+        <span>{sliced(wallet.address, 5, -3)}</span>
       </Popover.Button>
 
       <Popover.Panel className="absolute border right-0 z-20 px-3 py-2 border-prim bg-white dark:bg-blue-d7 w-full min-w-max mt-2 rounded-md shadow-lg">

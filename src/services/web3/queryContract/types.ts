@@ -1,4 +1,4 @@
-import { CW20Balance, QueryRes as Q } from "types/contracts";
+import { CW20Balance, QueryRes as Q } from "types";
 
 type Addr = { addr: string };
 export interface ContractQueries {
