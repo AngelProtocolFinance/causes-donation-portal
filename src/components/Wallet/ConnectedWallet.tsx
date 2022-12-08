@@ -56,6 +56,9 @@ function Balances(props: { wallet: TConnectedWallet; chain: Chain }) {
 
   if (isLoading) return <p className="text-sm mb-4">Fetching balances...</p>;
 
+  if (coins.length <= 0 || coins.some((c) => c.balance <= 0))
+    return <p className="text-sm mb-4">Wallet is empty...</p>;
+
   return (
     <div className="grid gap-1 mb-4">
       {coins.map((coin) => (

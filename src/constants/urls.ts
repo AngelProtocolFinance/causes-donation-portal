@@ -1,7 +1,7 @@
 import { IS_TEST } from "./env";
 
 export const apes_endpoint =
-  "https://9t0u8zpqjk.execute-api.us-east-1.amazonaws.com";
+  "https://fctqkloitc.execute-api.us-east-1.amazonaws.com";
 
 /**LCDs & RPCs*/
 export const terraLcdUrl = IS_TEST
