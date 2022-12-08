@@ -3,7 +3,7 @@ import { IS_TEST } from "./env";
 type EVMAsset = { type: "evm"; rpc: string };
 type TerraAsset = { type: "terra"; lcd: string };
 
-type Chain = {
+export type Chain = {
   name: string;
   txExplorer: string;
 } & (EVMAsset | TerraAsset);

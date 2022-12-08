@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "build": "react-app-rewired build",
-    "start": "GENERATE_SOURCEMAP=false react-app-rewired start",
+    "start": "GENERATE_SOURCEMAP=false PORT=4200 react-app-rewired start",
     "test": "react-app-rewired test --colors",
     "coverage": "react-app-rewired test --coverage",
     "precommit": "lint-staged",
