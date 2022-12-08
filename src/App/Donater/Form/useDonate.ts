@@ -43,19 +43,19 @@ export default function useDonate() {
             },
           });
           /** terra wallet is defined */
-          const { success, result } = await terraWallet!.post({ msgs: [msg] });
-          if (success) {
-            showModal(TxModal, {
-              message: "Donation submitted!",
-              tx: { hash: result.txhash, chainId: wallet.chainId },
-              shareable: true,
-            });
-          } else {
-            showModal(TxModal, {
-              message: "Transaction failed",
-              tx: { hash: result.txhash, chainId: wallet.chainId },
-            });
-          }
+        }
+        const { success, result } = await terraWallet!.post({ msgs: [msg] });
+        if (success) {
+          showModal(TxModal, {
+            message: "Donation submitted!",
+            tx: { hash: result.txhash, chainId: wallet.chainId },
+            shareable: true,
+          });
+        } else {
+          showModal(TxModal, {
+            message: "Transaction failed",
+            tx: { hash: result.txhash, chainId: wallet.chainId },
+          });
         }
       } else {
         const wei_amount = ethers.utils.parseEther(`${coin.amount}`);
@@ -87,7 +87,7 @@ export default function useDonate() {
       }
     } catch (err) {
       showModal(TxModal, {
-        message: "Transaction failed",
+        message: "Transaction error occured",
       });
     } finally {
       reset(undefined, { keepDefaultValues: true });
