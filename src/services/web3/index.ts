@@ -14,6 +14,12 @@ export const web3Api = createApi({
     mode: "cors",
   }),
   endpoints: (builder) => ({
+    balance: builder.query<any, Coin & { chainId: string }>({
+      providesTags: [],
+      async queryFn(args, queryApi, extraOptions, baseQuery) {
+        return { data: undefined };
+      },
+    }),
     balances: builder.query<
       CoinWithBalance[],
       Chain & { id: string; walletAddr: string }

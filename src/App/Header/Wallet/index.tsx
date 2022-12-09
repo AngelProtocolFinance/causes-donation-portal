@@ -9,7 +9,7 @@ import DrawerIcon from "components/DrawerIcon";
 import withConnectedWallet, { useConnectedWallet } from "contexts/WalletGuard";
 import { Opener } from "./wallet-selection/Opener";
 
-const ConnectedWallet = () => {
+const Wallet = () => {
   const wallet = useConnectedWallet();
   const chain = chains[wallet.chainId];
   return (
@@ -84,7 +84,7 @@ function Balances(props: { wallet: TConnectedWallet; chain: Chain }) {
   );
 }
 
-export default withConnectedWallet(ConnectedWallet, {
+export default withConnectedWallet(Wallet, {
   type: "replacement",
   loading: <div className="pr-2 text-white">Loading...</div>,
   disconnected: Opener,

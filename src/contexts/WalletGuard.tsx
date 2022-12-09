@@ -38,12 +38,11 @@ type UIs = {
 type FallbackOptions = (Overlay | Replacement) & UIs;
 
 export default function withConnectedWallet<T extends object>(
-  ...args: [Component: FC<T>, options: FallbackOptions]
+  Component: FC<T>,
+  options: FallbackOptions
 ) {
-  const [Component, options] = args;
   return function WalletGuard(props: T) {
     const wallet = useWalletContext();
-
     const {
       loading: Loader,
       disconnected: Connector,
@@ -59,7 +58,9 @@ export default function withConnectedWallet<T extends object>(
       ) : (
         fallback
       );
-    } else if (Array.isArray(wallet)) {
+    }
+
+    if (Array.isArray(wallet)) {
       const fallback = isElement(Connector) ? (
         Connector
       ) : (
@@ -72,8 +73,9 @@ export default function withConnectedWallet<T extends object>(
       ) : (
         fallback
       );
-      /** could also check here, chainId whitelist, blacklist. check if in general list for now */
-    } else if (!(wallet.chainId in chains)) {
+    }
+    /** could also check here, chainId whitelist, blacklist. check if in general list for now */
+    if (!(wallet.chainId in chains)) {
       const fallback = isElement(Switcher) ? (
         Switcher
       ) : (
@@ -87,6 +89,7 @@ export default function withConnectedWallet<T extends object>(
         fallback
       );
     }
+
     return (
       <context.Provider value={wallet}>
         <Component {...props} />
@@ -130,7 +133,7 @@ export function useConnectedWallet() {
   return val;
 }
 
-const placeholderConnectedWallet: ConnectedWallet = {
+export const placeholderConnectedWallet: ConnectedWallet = {
   id: "binance-wallet",
   type: "",
   name: "",
