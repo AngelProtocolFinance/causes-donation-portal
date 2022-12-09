@@ -1,0 +1,144 @@
+import { chains } from "constants/chains";
+import {
+  createContext,
+  FC,
+  PropsWithChildren,
+  ReactElement,
+  useContext,
+} from "react";
+import {
+  ConnectedWallet,
+  DisconnectedWallet,
+  useWalletContext,
+} from "./WalletContext";
+
+type Classes = {
+  container?: string;
+  overlay?: string;
+};
+
+type Overlay = {
+  type: "overlay";
+  classes?: { container?: string; overlay: string };
+};
+
+type Replacement = {
+  type: "replacement";
+  classes?: never;
+};
+
+type UI<T extends object> = ReactElement | FC<T>;
+
+type UIs = {
+  loading: UI<any>;
+  disconnected: UI<{ wallets: DisconnectedWallet[] }>;
+  unsupported: UI<ConnectedWallet>;
+};
+
+type FallbackOptions = (Overlay | Replacement) & UIs;
+
+export default function withConnectedWallet<T extends object>(
+  ...args: [Component: FC<T>, options: FallbackOptions]
+) {
+  const [Component, options] = args;
+  return function WalletGuard(props: T) {
+    const wallet = useWalletContext();
+
+    const {
+      loading: Loader,
+      disconnected: Connector,
+      unsupported: Switcher,
+    } = options;
+
+    if (wallet === "loading") {
+      const fallback = isElement(Loader) ? Loader : <Loader />;
+      return options.type == "overlay" ? (
+        <WithOverlay classes={options.classes} fallback={fallback}>
+          <Component {...props} />
+        </WithOverlay>
+      ) : (
+        fallback
+      );
+    } else if (Array.isArray(wallet)) {
+      const fallback = isElement(Connector) ? (
+        Connector
+      ) : (
+        <Connector wallets={wallet} />
+      );
+      return options.type == "overlay" ? (
+        <WithOverlay classes={options.classes} fallback={fallback}>
+          <Component {...props} />
+        </WithOverlay>
+      ) : (
+        fallback
+      );
+      /** could also check here, chainId whitelist, blacklist. check if in general list for now */
+    } else if (!(wallet.chainId in chains)) {
+      const fallback = isElement(Switcher) ? (
+        Switcher
+      ) : (
+        <Switcher {...wallet} />
+      );
+      return options.type == "overlay" ? (
+        <WithOverlay classes={options.classes} fallback={fallback}>
+          <Component {...props} />
+        </WithOverlay>
+      ) : (
+        fallback
+      );
+    }
+    return (
+      <context.Provider value={wallet}>
+        <Component {...props} />
+      </context.Provider>
+    );
+  };
+}
+
+const typeKey: keyof ReactElement = "type";
+function isElement(
+  component: ReactElement | FC<any>
+): component is ReactElement {
+  return typeKey in component;
+}
+
+function WithOverlay({
+  children,
+  classes,
+  fallback,
+}: PropsWithChildren<{ classes?: Classes; fallback: JSX.Element }>) {
+  const { container = "", overlay = "" } = classes || {};
+  return (
+    <context.Provider value={placeholderConnectedWallet}>
+      <div className={container + " relative"}>
+        <div className={overlay + " absolute inset-0"}>{fallback}</div>
+        {children}
+      </div>
+    </context.Provider>
+  );
+}
+
+const UNINITIALIZED: any = "uninitialized";
+const context = createContext<ConnectedWallet>(UNINITIALIZED);
+export function useConnectedWallet() {
+  const val = useContext(context);
+  if (val === UNINITIALIZED)
+    throw new Error(
+      "this hook should only be used within components wrapped by withConnectedWallet"
+    );
+
+  return val;
+}
+
+const placeholderConnectedWallet: ConnectedWallet = {
+  id: "binance-wallet",
+  type: "",
+  name: "",
+  logo: "",
+  address: "",
+  chainId: "1",
+  status: "connected",
+  disconnect: () => {
+    throw new Error("placeholder wallet shoudn't be used");
+  },
+};
