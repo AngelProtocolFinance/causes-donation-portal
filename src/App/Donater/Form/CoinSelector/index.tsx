@@ -1,5 +1,5 @@
 import { Combobox } from "@headlessui/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   FieldValues,
   Path,
@@ -18,7 +18,7 @@ export const PLACEHOLDER_COIN: Coin = {
   decimals: 6,
   min_donation_amnt: 0,
   logo: placeHolderIcon,
-  symbol: "",
+  symbol: "Select currency",
   token_id: "",
   type: "evm-native",
 };
@@ -33,6 +33,17 @@ export default function CoinSelector<
   chainId: string;
 }) {
   const {
+    setValue,
+    formState: { isSubmitting },
+  } = useFormContext<T>();
+
+  const {
+    field: { onChange: onTokenChange, value: token = PLACEHOLDER_COIN },
+  } = useController<{ [index: string]: Coin | undefined }>({
+    name: props.fieldName,
+  });
+
+  const {
     data: tokens = [],
     isLoading,
     isError,
@@ -40,25 +51,17 @@ export default function CoinSelector<
     skip: props.chainId === PLACEHOLDER_WALLET.chainId,
   });
 
-  const {
-    setValue,
-    formState: { isSubmitting },
-  } = useFormContext<T>();
-
-  const {
-    field: {
-      onChange: onTokenChange,
-      value: token = tokens[0] ?? PLACEHOLDER_COIN,
-    },
-  } = useController<{ [index: string]: Coin }>({
-    name: props.fieldName,
-  });
+  useEffect(() => {
+    if (tokens.length > 0) {
+      onTokenChange(tokens[0]);
+    }
+  }, [tokens.length]);
 
   const hasOptions = tokens.length > 1;
 
   return (
     <Combobox
-      disabled={!hasOptions || isSubmitting}
+      disabled={!hasOptions || isSubmitting || isError}
       value={token}
       onChange={(token: Coin) => {
         onTokenChange(token);
@@ -80,6 +83,13 @@ export default function CoinSelector<
                 <Icon type="loading" className="animate-spin" />
                 <span>Fetching currency options...</span>
               </>
+            ) : isError ? (
+              <>
+                <Icon type="info" className="text-red" />
+                <span className="text-red dark:text-red-l2">
+                  Failed to get options
+                </span>
+              </>
             ) : (
               <>
                 <img
@@ -90,7 +100,7 @@ export default function CoinSelector<
                 <span>{token.symbol}</span>
               </>
             )}
-            {hasOptions && (
+            {!isError && hasOptions && (
               <DrawerIcon isOpen={open} size={30} className="ml-auto" />
             )}
           </>

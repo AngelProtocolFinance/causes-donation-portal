@@ -2,16 +2,18 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { FormProvider, useForm } from "react-hook-form";
 import { FormValues } from "./types";
 import Form from "./Form";
-import { schema } from "./schema";
-import withConnectedWallet from "contexts/WalletGuard";
+import { contextKey, schema } from "./schema";
+import withConnectedWallet, { useConnectedWallet } from "contexts/WalletGuard";
 
 function Donater() {
+  const wallet = useConnectedWallet();
   const methods = useForm<FormValues>({
     mode: "onChange",
     reValidateMode: "onChange",
     defaultValues: {
       amount: "",
     },
+    context: { [contextKey]: wallet },
     resolver: yupResolver(schema),
   });
 
@@ -21,6 +23,7 @@ function Donater() {
     </FormProvider>
   );
 }
+
 export default withConnectedWallet(Donater, {
   type: "overlay",
   classes: {
