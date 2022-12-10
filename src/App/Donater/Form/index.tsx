@@ -1,11 +1,11 @@
 import WalletInstruction from "../WalletInstruction";
 import { useModalContext } from "contexts/ModalContext";
-import { FaInfoCircle } from "react-icons/fa";
 import { FormValues as FV } from "../types";
 import Amount from "./Amount";
 import CoinSelector from "./CoinSelector";
 import useDonate from "./useDonate";
 import withConnectedWallet, { useConnectedWallet } from "contexts/WalletGuard";
+import Icon from "components/Icon";
 
 function Form() {
   const wallet = useConnectedWallet();
@@ -22,7 +22,7 @@ function Form() {
         className="text-left text-sm text-gray-d1 dark:text-gray justify-self-start hover:text-orange hover:dark:text-orange-l2"
         onClick={() => showModal(WalletInstruction, {})}
       >
-        <FaInfoCircle className="inline relative bottom-px mr-1" />
+        <Icon type="info" className="inline relative bottom-px mr-1" />
         Wallet Instructions
       </button>
       <p className="font-heading text-lg md:text-xl uppercase font-extrabold my-2 mt-4">

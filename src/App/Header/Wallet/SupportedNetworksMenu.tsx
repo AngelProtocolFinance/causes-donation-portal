@@ -1,13 +1,13 @@
 import { Popover } from "@headlessui/react";
+import Icon from "components/Icon";
 import { chains } from "constants/chains";
 import { ConnectedWallet } from "contexts/WalletContext";
-import { AiFillWarning } from "react-icons/ai";
 
 export default function SupportedNetworksMenu(wallet: ConnectedWallet) {
   return (
     <Popover className="relative">
       <Popover.Button className="text-sm bg-white py-2 px-3 rounded-md flex gap-2 items-center text-red">
-        <AiFillWarning size={20} />
+        <Icon type="warning" size={20} />
         <span>Unsupported network</span>
       </Popover.Button>
 

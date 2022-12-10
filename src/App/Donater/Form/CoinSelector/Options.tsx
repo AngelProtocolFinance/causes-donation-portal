@@ -1,6 +1,6 @@
 import { Combobox } from "@headlessui/react";
+import Icon from "components/Icon";
 import { useState } from "react";
-import { BsCheck, BsSearch } from "react-icons/bs";
 import { Coin } from "types";
 
 export default function Options({ tokens }: { tokens: Coin[] }) {
@@ -16,11 +16,7 @@ export default function Options({ tokens }: { tokens: Coin[] }) {
   return (
     <Combobox.Options className="z-[1] absolute top-full mt-1 w-full border border-gray-l2 dark:border-bluegray p-1 max-h-60 overflow-y-auto rounded-md bg-gray-l5 dark:bg-blue-d7 shadow-lg focus:outline-none scroller">
       <div className="flex p-2 gap-2 border border-gray-l2 dark:border-bluegray rounded mb-1">
-        <BsSearch
-          type="Search"
-          size={16}
-          className="inline -bottom-px relative"
-        />
+        <Icon type="search" size={16} className="inline -bottom-px relative" />
         <Combobox.Input
           placeholder="Search..."
           disabled={tokens.length <= 1}
@@ -50,7 +46,7 @@ export default function Options({ tokens }: { tokens: Coin[] }) {
                 />
                 <span className="text-sm">{token.symbol}</span>
                 {selected && (
-                  <BsCheck className="text-green ml-auto" size={20} />
+                  <Icon type="check" className="text-green ml-auto" size={20} />
                 )}
               </>
             )}

@@ -1,5 +1,5 @@
 import { IconBaseProps } from "react-icons";
-import { RiArrowDropDownLine } from "react-icons/ri";
+import Icon from "./Icon";
 
 export default function DrawerIcon({
   isOpen,
@@ -7,8 +7,9 @@ export default function DrawerIcon({
   ...props
 }: IconBaseProps & { isOpen: boolean }) {
   return (
-    <RiArrowDropDownLine
+    <Icon
       {...props}
+      type="dropdown"
       className={`transition transform ease-in-out ${
         isOpen ? "rotate-180" : "rotate-0"
       } ${className}`}

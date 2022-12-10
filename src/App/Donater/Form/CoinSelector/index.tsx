@@ -9,10 +9,10 @@ import {
 import { Coin } from "types";
 import DrawerIcon from "components/DrawerIcon";
 import { useTokensQuery } from "services/apes";
-import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import placeHolderIcon from "assets/icons/angelwing_bl.png";
 import Options from "./Options";
 import { PLACEHOLDER_WALLET } from "contexts/WalletGuard";
+import Icon from "components/Icon";
 
 export const PLACEHOLDER_COIN: Coin = {
   decimals: 6,
@@ -77,7 +77,7 @@ export default function CoinSelector<
           <>
             {isLoading ? (
               <>
-                <AiOutlineLoading3Quarters className="animate-spin" />
+                <Icon type="loading" className="animate-spin" />
                 <span>Fetching currency options...</span>
               </>
             ) : (
