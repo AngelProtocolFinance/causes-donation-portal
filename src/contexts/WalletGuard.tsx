@@ -112,7 +112,7 @@ function WithOverlay({
 }: PropsWithChildren<{ classes?: Classes; fallback: JSX.Element }>) {
   const { container = "", overlay = "" } = classes || {};
   return (
-    <context.Provider value={placeholderConnectedWallet}>
+    <context.Provider value={PLACEHOLDER_WALLET}>
       <div className={container + " relative"}>
         <div className={overlay + " absolute inset-0"}>{fallback}</div>
         {children}
@@ -133,13 +133,13 @@ export function useConnectedWallet() {
   return val;
 }
 
-export const placeholderConnectedWallet: ConnectedWallet = {
+export const PLACEHOLDER_WALLET: ConnectedWallet = {
   id: "binance-wallet",
   type: "",
   name: "",
   logo: "",
   address: "",
-  chainId: "1",
+  chainId: "",
   status: "connected",
   disconnect: () => {
     throw new Error("placeholder wallet shoudn't be used");
