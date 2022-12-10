@@ -3,7 +3,7 @@ import {
   TransactionResponse,
 } from "@ethersproject/abstract-provider";
 import { Coin, MsgExecuteContract, MsgSend } from "@terra-money/terra.js";
-import { useConnectedWallet } from "@terra-money/wallet-provider";
+import { useConnectedWallet as useTerraWallet } from "@terra-money/wallet-provider";
 import { chains } from "constants/chains";
 import { ApesAddresses } from "constants/constants";
 import { ethers } from "ethers";
@@ -14,6 +14,7 @@ import ERC20Abi from "abi/ERC20.json";
 import { FormValues as FV } from "../types";
 import { useModalContext } from "contexts/ModalContext";
 import TxModal from "../TxModal";
+import { useConnectedWallet } from "contexts/WalletGuard";
 
 export default function useDonate() {
   const {
@@ -21,24 +22,25 @@ export default function useDonate() {
     handleSubmit,
     formState: { isSubmitting },
   } = useFormContext<FV>();
-  const terraWallet = useConnectedWallet();
+  const terraWallet = useTerraWallet();
+  const wallet = useConnectedWallet();
   const { showModal } = useModalContext();
 
-  const submit: SubmitHandler<FV> = async ({ coin, wallet }) => {
+  const submit: SubmitHandler<FV> = async ({ coin, amount: _amount }) => {
     const chain = chains[wallet.chainId];
     try {
       if (chain.type === "terra") {
         let msg: MsgSend | MsgExecuteContract;
-        const amount = scaleToStr(coin.amount);
+        const uamount = scaleToStr(_amount);
         if (coin.type === "terra-native" || coin.type === "ibc") {
           msg = new MsgSend(wallet.address, ApesAddresses.terra, [
-            new Coin(coin.token_id, amount),
+            new Coin(coin.token_id, uamount),
           ]);
           /** cw20 */
         } else {
           msg = new MsgExecuteContract(wallet.address, coin.token_id, {
             transfer: {
-              amount,
+              uamount,
               recipient: ApesAddresses.terra,
             },
           });
@@ -58,7 +60,7 @@ export default function useDonate() {
           });
         }
       } else {
-        const wei_amount = ethers.utils.parseEther(`${coin.amount}`);
+        const wei_amount = ethers.utils.parseEther(`${_amount}`);
         const provider = new ethers.providers.Web3Provider(
           getProvider(wallet.id) as any
         );

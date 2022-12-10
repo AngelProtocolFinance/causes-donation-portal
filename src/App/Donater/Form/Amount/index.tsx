@@ -23,7 +23,7 @@ export default function Amount() {
       </div>
 
       <input
-        {...register("coin.amount")}
+        {...register("amount")}
         autoComplete="off"
         id="amount"
         type="text"
@@ -34,7 +34,7 @@ export default function Amount() {
 
       <ErrorMessage
         errors={errors}
-        name="coin.amount"
+        name="amount"
         as="p"
         className="text-red dark:text-red-l2 text-xs text-left my-1 absolute -bottom-6"
       />

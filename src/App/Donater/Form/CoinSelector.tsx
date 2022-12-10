@@ -6,26 +6,47 @@ import {
   useController,
   useFormContext,
 } from "react-hook-form";
-import { CoinWithAmount } from "types";
+import { Coin } from "types";
 import DrawerIcon from "components/DrawerIcon";
-import { BsSearch } from "react-icons/bs";
+import { useTokensQuery } from "services/apes";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { BsCheck, BsSearch } from "react-icons/bs";
 
-type BaseFormValue = { [index: string]: CoinWithAmount };
+const placeHolderCoin: Coin = {
+  decimals: 6,
+  min_donation_amnt: 0,
+  logo: "",
+  symbol: "",
+  token_id: "",
+  type: "evm-native",
+};
 
 export default function CoinSelector<
   T extends FieldValues,
-  K extends Path<T>
+  K extends Path<T> & keyof T
 >(props: {
-  tokens: CoinWithAmount[];
-  fieldName: T[K] extends CoinWithAmount ? K : never;
+  fieldName: T[K] extends Coin ? K : never;
+  /** to reset amount when changing tokens */
+  amountFieldName: Path<T>;
+  chainId: string;
 }) {
+  const {
+    data: tokens = [],
+    isLoading,
+    isError,
+  } = useTokensQuery(props.chainId);
+
   const {
     setValue,
     formState: { isSubmitting },
-  } = useFormContext<BaseFormValue>();
+  } = useFormContext<T>();
+
   const {
-    field: { onChange: onTokenChange, value: token },
-  } = useController<BaseFormValue>({
+    field: {
+      onChange: onTokenChange,
+      value: token = tokens[0] ?? placeHolderCoin,
+    },
+  } = useController<{ [index: string]: Coin }>({
     name: props.fieldName,
   });
 
@@ -33,34 +54,47 @@ export default function CoinSelector<
 
   const filtered =
     symbol === ""
-      ? props.tokens
-      : props.tokens.filter((t) => {
+      ? tokens
+      : tokens.filter((t) => {
           return t.symbol.includes(symbol.toLowerCase());
         });
 
-  const hasOptions = props.tokens.length > 1;
+  const hasOptions = tokens.length > 1;
 
   return (
     <Combobox
       disabled={!hasOptions || isSubmitting}
       value={token}
-      onChange={(token: CoinWithAmount) => {
+      onChange={(token: Coin) => {
         onTokenChange(token);
-        setValue("coin.amount", token.amount);
+        setValue(props.amountFieldName, "0" as any);
       }}
+      by="token_id"
       as="div"
       className="relative"
     >
       <Combobox.Button
-        disabled={true}
         className={`flex items-center p-3 bg-orange-l6 dark:bg-blue-d7 rounded w-full gap-2 border border-prim ${
           hasOptions ? "disabled:bg-gray-l2 disabled:dark:bg-bluegray-d1" : ""
         }`}
       >
         {({ open }) => (
           <>
-            <img src={token.logo} alt="" className="w-6 h-6 object-contain" />
-            <span>{token.symbol}</span>
+            {isLoading ? (
+              <>
+                <AiOutlineLoading3Quarters className="animate-spin" />
+                <span>Fetching currency options...</span>
+              </>
+            ) : (
+              <>
+                <img
+                  src={token.logo}
+                  alt=""
+                  className="w-6 h-6 object-contain"
+                />
+                <span>{token.symbol}</span>
+              </>
+            )}
             {hasOptions && (
               <DrawerIcon isOpen={open} size={30} className="ml-auto" />
             )}
@@ -76,7 +110,7 @@ export default function CoinSelector<
           />
           <Combobox.Input
             placeholder="Search..."
-            disabled={props.tokens.length <= 1}
+            disabled={tokens.length <= 1}
             className="text-left text-sm focus:outline-none bg-transparent w-20"
             onChange={(event) => setSymbol(event.target.value)}
           />
@@ -94,8 +128,8 @@ export default function CoinSelector<
               }
               value={token}
             >
-              {({ selected }) =>
-                !selected ? (
+              {({ selected }) => {
+                return (
                   <>
                     <img
                       alt=""
@@ -103,11 +137,12 @@ export default function CoinSelector<
                       className="w-6 h-6 object-contain"
                     />
                     <span className="text-sm">{token.symbol}</span>
+                    {selected && (
+                      <BsCheck className="text-green ml-auto" size={20} />
+                    )}
                   </>
-                ) : (
-                  <></>
-                )
-              }
+                );
+              }}
             </Combobox.Option>
           ))
         )}

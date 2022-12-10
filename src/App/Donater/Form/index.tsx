@@ -1,14 +1,14 @@
 import WalletInstruction from "../WalletInstruction";
 import { useModalContext } from "contexts/ModalContext";
-import { useFormContext } from "react-hook-form";
 import { FaInfoCircle } from "react-icons/fa";
 import { FormValues as FV } from "../types";
 import Amount from "./Amount";
 import CoinSelector from "./CoinSelector";
 import useDonate from "./useDonate";
+import withConnectedWallet, { useConnectedWallet } from "contexts/WalletGuard";
 
-export default function Form() {
-  const { getValues } = useFormContext<FV>();
+function Form() {
+  const wallet = useConnectedWallet();
   const { showModal } = useModalContext();
   const { submit, isSubmitting } = useDonate();
   return (
@@ -28,7 +28,11 @@ export default function Form() {
       <p className="font-heading text-lg md:text-xl uppercase font-extrabold my-2 mt-4">
         Currency
       </p>
-      <CoinSelector<FV, "coin"> fieldName="coin" tokens={getValues("coins")} />
+      <CoinSelector<FV, "coin">
+        fieldName="coin"
+        amountFieldName="amount"
+        chainId={wallet.chainId}
+      />
       <Amount />
       <button
         type="submit"
@@ -51,3 +55,16 @@ export default function Form() {
     </form>
   );
 }
+
+export default withConnectedWallet(Form, {
+  type: "overlay",
+  classes: {
+    overlay:
+      "bg-black/50 text-white dark:bg-white/60 dark:text-gray-d2 rounded grid place-items-center z-[1] font-bold font-heading",
+  },
+  disconnected: <>You need to connect your wallet to make a donation</>,
+  loading: <>Connecting wallet..</>,
+  unsupported: function () {
+    return <>Wallet network is not supported</>;
+  },
+});
