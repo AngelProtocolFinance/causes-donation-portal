@@ -1,13 +1,14 @@
 import { Popover } from "@headlessui/react";
 import { sliced } from "helpers/sliceAddress";
-import { CoinWithBalance } from "types";
+import { Coin } from "types";
 import { ConnectedWallet as TConnectedWallet } from "contexts/WalletContext";
-import { Chain, chains } from "constants/chains";
+import { chains } from "constants/chains";
 import SupportedNetworksMenu from "./SupportedNetworksMenu";
-import { useBalancesQuery } from "services/web3";
 import DrawerIcon from "components/DrawerIcon";
 import withConnectedWallet, { useConnectedWallet } from "contexts/WalletGuard";
 import { Opener } from "./wallet-selection/Opener";
+import { useTokensQuery } from "services/apes";
+import { useBalanceQuery } from "services/web3";
 
 const Wallet = () => {
   const wallet = useConnectedWallet();
@@ -41,7 +42,7 @@ const Wallet = () => {
           Balances
         </p>
 
-        <Balances wallet={wallet} chain={chain} />
+        <Balances {...wallet} />
         <button
           className="uppercase text-sm font-extrabold hover:text-orange dark:hover:text-orange-l2 text-right w-full"
           onClick={wallet.disconnect}
@@ -53,36 +54,35 @@ const Wallet = () => {
   );
 };
 
-const Token = ({ logo, balance, symbol }: CoinWithBalance) => {
+function Balances(wallet: TConnectedWallet) {
+  const { data: coins = [], isLoading } = useTokensQuery(wallet.chainId);
+  if (isLoading) return <p className="text-sm mb-4">Fetching tokens...</p>;
   return (
-    <div className="flex items-center gap-2 justify-between p-0.5">
-      <img src={logo} className="w-4 h-4 object-contain" />
-      <span>{balance.toFixed(3)}</span>
-      <span className="ml-auto text-sm">{symbol}</span>
-    </div>
-  );
-};
-
-function Balances(props: { wallet: TConnectedWallet; chain: Chain }) {
-  const { data: coins = [], isLoading } = useBalancesQuery({
-    ...props.chain,
-    id: props.wallet.chainId,
-    walletAddr: props.wallet.address,
-  });
-
-  if (isLoading) return <p className="text-sm mb-4">Fetching balances...</p>;
-
-  if (coins.length <= 0 || coins.some((c) => c.balance <= 0))
-    return <p className="text-sm mb-4">Wallet is empty</p>;
-
-  return (
-    <div className="grid gap-1 mb-4">
+    <div className="grid gap-1 mb-4 empty:after:content-['wallet_is_empty'] after:text-xs">
       {coins.map((coin) => (
-        <Token key={coin.token_id} {...coin} />
+        <Token key={coin.token_id} wallet={wallet} coin={coin} />
       ))}
     </div>
   );
 }
+
+const Token = ({ coin, wallet }: { coin: Coin; wallet: TConnectedWallet }) => {
+  const { data: balance = 0, isLoading } = useBalanceQuery({
+    ...coin,
+    address: wallet.address,
+    chainId: wallet.chainId,
+  });
+
+  if (!balance && !isLoading) return null;
+
+  return (
+    <div className="flex items-center gap-2 justify-between p-0.5">
+      <img src={coin.logo} className="w-4 h-4 object-contain" />
+      <span>{isLoading ? "..." : balance.toFixed(3)}</span>
+      <span className="ml-auto text-sm">{coin.symbol}</span>
+    </div>
+  );
+};
 
 export default withConnectedWallet(Wallet, {
   type: "replacement",
