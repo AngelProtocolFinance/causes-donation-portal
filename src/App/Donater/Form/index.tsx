@@ -4,10 +4,10 @@ import { FormValues as FV } from "../types";
 import Amount from "./Amount";
 import CoinSelector from "./CoinSelector";
 import useDonate from "./useDonate";
-import withConnectedWallet, { useConnectedWallet } from "contexts/WalletGuard";
+import { useConnectedWallet } from "contexts/WalletGuard";
 import Icon from "components/Icon";
 
-function Form() {
+export default function Form() {
   const wallet = useConnectedWallet();
   const { showModal } = useModalContext();
   const { submit, isSubmitting } = useDonate();
@@ -55,16 +55,3 @@ function Form() {
     </form>
   );
 }
-
-export default withConnectedWallet(Form, {
-  type: "overlay",
-  classes: {
-    overlay:
-      "bg-black/50 text-white dark:bg-white/60 dark:text-gray-d2 rounded grid place-items-center z-[1] font-bold font-heading",
-  },
-  disconnected: <>You need to connect your wallet to make a donation</>,
-  loading: <>Connecting wallet..</>,
-  unsupported: function () {
-    return <>Wallet network is not supported</>;
-  },
-});

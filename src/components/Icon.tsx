@@ -17,7 +17,7 @@ import {
 } from "react-icons/fa";
 import { IconBaseProps } from "react-icons";
 
-export const icons = {
+const icons = {
   twitter: FaTwitter,
   medium: FaMedium,
   telegram: FaTelegram,
