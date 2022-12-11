@@ -34,7 +34,5 @@ export default withConnectedWallet(Donater, {
   },
   disconnected: <>You need to connect your wallet to make a donation</>,
   loading: <>Connecting wallet..</>,
-  unsupported: function () {
-    return <>Wallet network is not supported</>;
-  },
+  unsupported: <>Wallet network is not supported</>,
 });
