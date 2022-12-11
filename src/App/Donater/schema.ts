@@ -1,5 +1,5 @@
 import * as Yup from "yup";
-import { Coin, CoinWithAmount as CWA, SchemaShape } from "types";
+import { Coin, SchemaShape } from "types";
 import { FormValues as FV } from "./types";
 import { ConnectedWallet } from "contexts/WalletContext";
 import { Dec } from "@terra-money/terra.js";
