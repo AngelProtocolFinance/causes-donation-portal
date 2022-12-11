@@ -2,18 +2,20 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { FormProvider, useForm } from "react-hook-form";
 import { FormValues } from "./types";
 import Form from "./Form";
-import { contextKey, schema } from "./schema";
+import { walletContextKey, fetcherContextKey, schema } from "./schema";
 import withConnectedWallet, { useConnectedWallet } from "contexts/WalletGuard";
+import { useLazyBalanceQuery } from "services/web3";
 
 function Donater() {
   const wallet = useConnectedWallet();
+  const [fetchBalance] = useLazyBalanceQuery();
   const methods = useForm<FormValues>({
     mode: "onChange",
     reValidateMode: "onChange",
     defaultValues: {
       amount: "",
     },
-    context: { [contextKey]: wallet },
+    context: { [walletContextKey]: wallet, [fetcherContextKey]: fetchBalance },
     resolver: yupResolver(schema),
   });
 

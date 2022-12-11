@@ -10,7 +10,7 @@ import Icon from "components/Icon";
 export default function Form() {
   const wallet = useConnectedWallet();
   const { showModal } = useModalContext();
-  const { submit, isSubmitting } = useDonate();
+  const { submit, isSubmitting, isValidating } = useDonate();
   return (
     <form
       onSubmit={submit}
@@ -36,7 +36,7 @@ export default function Form() {
       <Amount />
       <button
         type="submit"
-        disabled={isSubmitting}
+        disabled={isSubmitting || isValidating}
         className="justify-self-end btn-orange py-2 w-full uppercase leading-relaxed font-extrabold rounded"
       >
         {isSubmitting ? "Processing..." : "Donate"}

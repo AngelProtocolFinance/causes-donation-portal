@@ -3,12 +3,7 @@ import { Coin, CoinWithAmount as CWA, SchemaShape } from "types";
 import { FormValues as FV } from "./types";
 import { ConnectedWallet } from "contexts/WalletContext";
 import { Dec } from "@terra-money/terra.js";
-
-// type Key = keyof CWA;
-// type Min = CWA["min_donation_amnt"];
-// type Bal = CWA["balance"];
-// const minKey: Key = "min_donation_amnt";
-// const balKey: Key = "balance";
+import { TBalanceFetcher } from "services/web3";
 
 const coinKey: keyof FV = "coin";
 
@@ -20,22 +15,39 @@ export const tokenConstraint = Yup.number()
   .positive("invalid: must be greater than zero ")
   .test("max precision", "must not be greater than 6 digits", testPrecision);
 
-export const contextKey = "wallet";
+export const walletContextKey = "wallet";
+export const fetcherContextKey = "fetcher";
 export const schema = Yup.object().shape<SchemaShape<FV>>({
   amount: Yup.lazy((amount: FV["amount"]) =>
     amount === ""
       ? Yup.string().required("required")
-      : tokenConstraint.when([coinKey, "$" + contextKey], (...args: any[]) => {
-          const [coin, wallet, schema] = args as [
-            Coin | undefined,
-            ConnectedWallet,
-            Yup.NumberSchema
-          ];
-          if (!coin) return schema;
-          const min = coin.min_donation_amnt || Number.NEGATIVE_INFINITY;
-          return schema
-            .min(min || 0, `amount must be at least ${min}`)
-            .test("balance check", "not enough balance", async () => false);
-        })
+      : tokenConstraint.when(
+          [coinKey, "$" + walletContextKey, "$" + fetcherContextKey],
+          (...args: any[]) => {
+            const [coin, wallet, fetcher, schema] = args as [
+              Coin | undefined,
+              ConnectedWallet,
+              TBalanceFetcher,
+              Yup.NumberSchema
+            ];
+            if (!coin) return schema;
+            const min = coin.min_donation_amnt || Number.NEGATIVE_INFINITY;
+            return schema
+              .min(min || 0, `amount must be at least ${min}`)
+              .test("enough balance", "not enough balance", async () => {
+                const { data: balance = 0 } = await fetcher(
+                  {
+                    ...coin,
+                    address: wallet.address,
+                    chainId: wallet.chainId,
+                  },
+                  /** this will only fetch once, or may not fetch at all
+                   * if other component already queried balance of this particular coin */
+                  true
+                );
+                return balance >= +amount;
+              });
+          }
+        )
   ),
 });

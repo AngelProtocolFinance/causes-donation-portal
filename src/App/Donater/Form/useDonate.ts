@@ -20,7 +20,7 @@ export default function useDonate() {
   const {
     reset,
     handleSubmit,
-    formState: { isSubmitting },
+    formState: { isSubmitting, isValidating },
   } = useFormContext<FV>();
   const terraWallet = useTerraWallet();
   const wallet = useConnectedWallet();
@@ -96,5 +96,5 @@ export default function useDonate() {
     }
   };
 
-  return { submit: handleSubmit(submit), isSubmitting };
+  return { submit: handleSubmit(submit), isSubmitting, isValidating };
 }

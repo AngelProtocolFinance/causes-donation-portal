@@ -19,7 +19,6 @@ export const web3Api = createApi({
         providesTags: [],
         async queryFn({ chainId, address, ...coin }) {
           const chain = chains[chainId];
-
           switch (coin.type) {
             case "terra-native":
             case "ibc": {
@@ -31,6 +30,7 @@ export const web3Api = createApi({
                 }
                 return res.json();
               });
+
               return { data: condenseToNum(balance.amount, coin.decimals) };
             }
             case "cw20": {
@@ -65,4 +65,6 @@ export const web3Api = createApi({
   }),
 });
 
-export const { useBalanceQuery } = web3Api;
+export const { useBalanceQuery, useLazyBalanceQuery } = web3Api;
+
+export type TBalanceFetcher = ReturnType<typeof useLazyBalanceQuery>[0];
