@@ -3,6 +3,7 @@ import donateImage from "assets/images/charitable_giving.jpeg";
 
 export const app = {
   id: "aging",
+  indexFund: 1,
   url: "https://app.angelprotocol.io",
   name: "aging portal", //<-- reflect in index.html
   description: "description", //<-- reflect in index.html

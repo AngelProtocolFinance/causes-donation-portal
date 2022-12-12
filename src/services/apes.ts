@@ -10,6 +10,23 @@ type DonationMetrics = {
   totalUsd: string; //"7.3177838494";
 };
 
+type TxDefaults = {
+  /** defaults */
+  transactionDate: string;
+  splitLiq: "100"; //default to "100%"
+  fundId: number;
+};
+
+type TxDetails = {
+  transactionId: string;
+  chainId: string;
+  amount: number;
+  denomination: string;
+  walletAddress: string;
+};
+
+type DonationLogPayload = TxDefaults & TxDetails;
+
 export const apes = createApi({
   reducerPath: "apes",
   baseQuery: fetchBaseQuery({
@@ -23,7 +40,7 @@ export const apes = createApi({
   endpoints: (builder) => ({
     tokens: builder.query<Coin[], string>({
       query: (chainId) => `v1/chain/${chainId}`,
-      transformResponse(res: FetchedChain, meta, arg) {
+      transformResponse(res: FetchedChain) {
         return [res.native_currency, ...res.tokens];
       },
     }),
@@ -35,7 +52,22 @@ export const apes = createApi({
         };
       },
     }),
+    donationLog: builder.mutation<any, TxDetails>({
+      query: (payload) => {
+        const defaults: TxDefaults = {
+          splitLiq: "100",
+          transactionDate: new Date().toISOString(),
+          fundId: app.indexFund,
+        };
+        return {
+          method: "POST",
+          url: "v3/donation",
+          params: { app: app.id },
+          body: { ...payload, ...defaults },
+        };
+      },
+    }),
   }),
 });
 
-export const { useMetricsQuery, useTokensQuery } = apes;
+export const { useMetricsQuery, useTokensQuery, useDonationLogMutation } = apes;

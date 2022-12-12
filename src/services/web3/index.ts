@@ -9,6 +9,7 @@ import { condenseToNum } from "helpers/decimal";
 
 export const web3Api = createApi({
   reducerPath: "web3",
+  tagTypes: ["balance"],
   baseQuery: fetchBaseQuery({
     baseUrl: "",
     mode: "cors",
@@ -16,7 +17,11 @@ export const web3Api = createApi({
   endpoints: (builder) => ({
     balance: builder.query<number, Coin & { chainId: string; address: string }>(
       {
-        providesTags: [],
+        providesTags(result, meta, args) {
+          return result !== undefined
+            ? [{ type: "balance", id: args.token_id }]
+            : [];
+        },
         async queryFn({ chainId, address, ...coin }) {
           const chain = chains[chainId];
           switch (coin.type) {
@@ -65,6 +70,10 @@ export const web3Api = createApi({
   }),
 });
 
-export const { useBalanceQuery, useLazyBalanceQuery } = web3Api;
+export const {
+  useBalanceQuery,
+  useLazyBalanceQuery,
+  util: { invalidateTags: invalidateWeb3Tags },
+} = web3Api;
 
 export type TBalanceFetcher = ReturnType<typeof useLazyBalanceQuery>[0];
