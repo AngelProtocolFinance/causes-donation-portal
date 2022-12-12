@@ -1,11 +1,5 @@
+import Icon from "components/Icon";
 import { angelSocials } from "constants/constants";
-import {
-  FaTwitter,
-  FaMedium,
-  FaTelegram,
-  FaYoutube,
-  FaDiscord,
-} from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -17,35 +11,35 @@ const Footer = () => {
             target="_blank"
             href={angelSocials.twitter}
           >
-            <FaTwitter size={25} />
+            <Icon type="twitter" size={25} />
           </a>
           <a
             className="hover:text-orange-l3"
             target="_blank"
             href={angelSocials.telegram}
           >
-            <FaTelegram size={25} />
+            <Icon type="telegram" size={25} />
           </a>
           <a
             className="hover:text-orange-l3"
             target="_blank"
             href={angelSocials.youtube}
           >
-            <FaYoutube size={32} />
+            <Icon type="youtube" size={32} />
           </a>
           <a
             className="hover:text-orange-l3"
             target="_blank"
             href={angelSocials.medium}
           >
-            <FaMedium size={25} />
+            <Icon type="medium" size={25} />
           </a>
           <a
             className="hover:text-orange-l3"
             target="_blank"
             href={angelSocials.discord}
           >
-            <FaDiscord size={30} />
+            <Icon type="discord" size={30} />
           </a>
         </div>
 

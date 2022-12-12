@@ -21,7 +21,7 @@ export default function TxModal({ message, tx, shareable }: Props) {
   return (
     <Dialog.Panel className="w-full max-w-xs grid place-items-center fixed-center z-20 bg-white dark:bg-blue-d7 fixed-center p-8 rounded-md border border-prim">
       <img src={angelIcon} alt="" className="w-32 h-32 object-contain" />
-      <Dialog.Title className="mb-1">{message}</Dialog.Title>
+      <Dialog.Title className="mb-1 text-center">{message}</Dialog.Title>
 
       {tx && (
         <p className="flex gap-2 text-sm items-baseline">

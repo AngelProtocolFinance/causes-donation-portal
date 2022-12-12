@@ -1,16 +1,16 @@
 import WalletInstruction from "../WalletInstruction";
 import { useModalContext } from "contexts/ModalContext";
-import { useFormContext } from "react-hook-form";
-import { FaInfoCircle } from "react-icons/fa";
 import { FormValues as FV } from "../types";
 import Amount from "./Amount";
 import CoinSelector from "./CoinSelector";
 import useDonate from "./useDonate";
+import { useConnectedWallet } from "contexts/WalletGuard";
+import Icon from "components/Icon";
 
 export default function Form() {
-  const { getValues } = useFormContext<FV>();
+  const wallet = useConnectedWallet();
   const { showModal } = useModalContext();
-  const { submit, isSubmitting } = useDonate();
+  const { submit, isSubmitting, isValidating } = useDonate();
   return (
     <form
       onSubmit={submit}
@@ -22,17 +22,21 @@ export default function Form() {
         className="text-left text-sm text-gray-d1 dark:text-gray justify-self-start hover:text-orange hover:dark:text-orange-l2"
         onClick={() => showModal(WalletInstruction, {})}
       >
-        <FaInfoCircle className="inline relative bottom-px mr-1" />
+        <Icon type="info" className="inline relative bottom-px mr-1" />
         Wallet Instructions
       </button>
       <p className="font-heading text-lg md:text-xl uppercase font-extrabold my-2 mt-4">
         Currency
       </p>
-      <CoinSelector<FV, "coin"> fieldName="coin" tokens={getValues("coins")} />
+      <CoinSelector<FV, "coin">
+        fieldName="coin"
+        amountFieldName="amount"
+        chainId={wallet.chainId}
+      />
       <Amount />
       <button
         type="submit"
-        disabled={isSubmitting}
+        disabled={isSubmitting || isValidating}
         className="justify-self-end btn-orange py-2 w-full uppercase leading-relaxed font-extrabold rounded"
       >
         {isSubmitting ? "Processing..." : "Donate"}

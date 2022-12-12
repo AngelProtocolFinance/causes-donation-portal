@@ -2,7 +2,6 @@ import { WalletProvider } from "@terra-money/wallet-provider";
 import { createRoot } from "react-dom/client";
 import { store } from "store";
 import { Provider } from "react-redux";
-import { IoMdClose } from "react-icons/io";
 
 import "./index.css";
 import App from "App";
@@ -10,6 +9,7 @@ import { initTheme } from "helpers/theme";
 import { chainOptions } from "chainOptions";
 import { Flip, ToastContainer, TypeOptions } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
+import Icon from "components/Icon";
 
 //set theme immediately, so even suspense loaders and can use it
 initTheme();
@@ -20,7 +20,8 @@ root.render(
     <WalletProvider {...chainOptions}>
       <ToastContainer
         closeButton={() => (
-          <IoMdClose
+          <Icon
+            type="close"
             className="text-gray-d2 dark:text-white hover:text-orange hover:dark:text-orange pr-1 self-start"
             size={22}
           />

@@ -36,7 +36,7 @@
     ]
   },
   "dependencies": {
-    "@headlessui/react": "^1.6.5",
+    "@headlessui/react": "^1.7.5",
     "@hookform/error-message": "^2.0.1",
     "@hookform/resolvers": "^2.9.10",
     "@reduxjs/toolkit": "^1.8.2",

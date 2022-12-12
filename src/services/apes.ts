@@ -1,12 +1,30 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { app } from "constants/config";
+import { IS_TEST } from "constants/env";
 import { APIs } from "constants/urls";
 import { createAuthToken } from "helpers/createAuthToken";
+import { Coin, FetchedChain } from "types";
 
 type DonationMetrics = {
   largestDonationUsd: string; //"5.02134105";
   numberOfDonations: string; //"4";
   totalUsd: string; //"7.3177838494";
+};
+
+type TxDefaults = {
+  /** defaults */
+  transactionDate: string;
+  splitLiq: "100"; //default to "100%"
+  fundId: number;
+  network: "testnet" | "mainnet";
+};
+
+type TxDetails = {
+  transactionId: string;
+  chainId: string;
+  amount: number;
+  denomination: string;
+  walletAddress: string;
 };
 
 export const apes = createApi({
@@ -20,6 +38,12 @@ export const apes = createApi({
     },
   }),
   endpoints: (builder) => ({
+    tokens: builder.query<Coin[], string>({
+      query: (chainId) => `v1/chain/${chainId}`,
+      transformResponse(res: FetchedChain) {
+        return [res.native_currency, ...res.tokens];
+      },
+    }),
     metrics: builder.query<DonationMetrics, any>({
       query: () => {
         return {
@@ -28,7 +52,23 @@ export const apes = createApi({
         };
       },
     }),
+    donationLog: builder.mutation<any, TxDetails>({
+      query: (payload) => {
+        const defaults: TxDefaults = {
+          network: IS_TEST ? "testnet" : "mainnet",
+          splitLiq: "100",
+          transactionDate: new Date().toISOString(),
+          fundId: app.indexFund,
+        };
+        return {
+          method: "POST",
+          url: "v2/donation",
+          params: { app: app.id },
+          body: { ...payload, ...defaults },
+        };
+      },
+    }),
   }),
 });
 
-export const { useMetricsQuery } = apes;
+export const { useMetricsQuery, useTokensQuery, useDonationLogMutation } = apes;
