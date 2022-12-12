@@ -16,7 +16,7 @@ import { useFormContext, SubmitHandler } from "react-hook-form";
 import ERC20Abi from "abi/ERC20.json";
 import { FormValues as FV } from "../types";
 import { useModalContext } from "contexts/ModalContext";
-import TxModal from "../TxModal";
+import Prompt from "components/Prompt";
 import { useConnectedWallet } from "contexts/WalletGuard";
 import { ConnectedWallet } from "contexts/WalletContext";
 import { useDonationLogMutation } from "services/apes";
@@ -42,7 +42,7 @@ export default function useDonate() {
     if (result) {
       const { hash, recipient } = result;
 
-      showModal(TxModal, { message: "Saving donation details.." });
+      showModal(Prompt, { message: "Saving donation details.." });
 
       const res = await saveDonation({
         transactionId: hash,
@@ -53,18 +53,19 @@ export default function useDonate() {
       });
 
       if ("error" in res)
-        return showModal(TxModal, {
+        return showModal(Prompt, {
           tx: { hash, chainId: wallet.chainId },
           message:
             "Transaction has been submitted but was not saved for receipt purposes. Kindly contact support@angelprotocol.io",
         });
 
-      showModal(TxModal, {
+      showModal(Prompt, {
         message: "Thank you for your donation!",
         tx: { hash, chainId: wallet.chainId },
+        shareable: true,
       });
     } else {
-      showModal(TxModal, { message: "Transaction failed" });
+      showModal(Prompt, { message: "Transaction failed" });
     }
     /** reset ammount */
     resetField("amount");

@@ -3,7 +3,7 @@ import { app } from "constants/config";
 import { IS_TEST } from "constants/env";
 import { APIs } from "constants/urls";
 import { createAuthToken } from "helpers/createAuthToken";
-import { Coin, FetchedChain } from "types";
+import { Coin, FetchedChain, ReceiptPayload } from "types";
 
 type DonationMetrics = {
   largestDonationUsd: string; //"5.02134105";
@@ -68,7 +68,23 @@ export const apes = createApi({
         };
       },
     }),
+    receipt: builder.mutation<any, ReceiptPayload>({
+      query: (receiptPayload) => {
+        const { transactionId, ...restOfPayload } = receiptPayload;
+        return {
+          url: `v2/donation`,
+          params: { transactionId },
+          method: "PUT",
+          body: restOfPayload,
+        };
+      },
+    }),
   }),
 });
 
-export const { useMetricsQuery, useTokensQuery, useDonationLogMutation } = apes;
+export const {
+  useMetricsQuery,
+  useTokensQuery,
+  useDonationLogMutation,
+  useReceiptMutation,
+} = apes;
