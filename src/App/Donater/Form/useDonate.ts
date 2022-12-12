@@ -23,7 +23,7 @@ import { useDonationLogMutation } from "services/apes";
 
 export default function useDonate() {
   const {
-    reset,
+    resetField,
     handleSubmit,
     formState: { isSubmitting, isValidating },
   } = useFormContext<FV>();
@@ -43,6 +43,7 @@ export default function useDonate() {
       const { hash, recipient } = result;
 
       showModal(TxModal, { message: "Saving donation details.." });
+
       const res = await saveDonation({
         transactionId: hash,
         chainId: wallet.chainId,
@@ -65,8 +66,8 @@ export default function useDonate() {
     } else {
       showModal(TxModal, { message: "Transaction failed" });
     }
-    /** reset form */
-    reset();
+    /** reset ammount */
+    resetField("amount");
   };
 
   return { submit: handleSubmit(submit), isSubmitting, isValidating };
@@ -92,7 +93,7 @@ async function sendTx(
       } else {
         msg = new MsgExecuteContract(wallet.address, coin.token_id, {
           transfer: {
-            uamount,
+            amount: uamount,
             recipient: recipient,
           },
         });
