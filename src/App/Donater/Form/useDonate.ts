@@ -40,14 +40,14 @@ export default function useDonate() {
       terraWallet! /** should be defined at this point */
     );
     if (result) {
-      const { hash, recipient } = result;
+      const { hash } = result;
 
       showModal(TxModal, { message: "Saving donation details.." });
 
       const res = await saveDonation({
         transactionId: hash,
         chainId: wallet.chainId,
-        walletAddress: recipient,
+        walletAddress: wallet.address,
         denomination: coin.symbol,
         amount: +amount,
       });
@@ -78,7 +78,7 @@ async function sendTx(
   _amount: string,
   wallet: ConnectedWallet,
   terraWallet: TConnectedWallet /** for posting terra tx TODO: tx.post should be part of generic wallet */
-): Promise<{ hash: string; recipient: string } | null> {
+): Promise<{ hash: string } | null> {
   const chain = chains[wallet.chainId];
   try {
     if (chain.type === "terra") {
@@ -99,7 +99,7 @@ async function sendTx(
         });
       }
       const { success, result } = await terraWallet.post({ msgs: [msg] });
-      return success ? { hash: result.txhash, recipient } : null;
+      return success ? { hash: result.txhash } : null;
       /** evm tx */
     } else {
       const wei_amount = ethers.utils.parseEther(`${_amount}`);
@@ -109,7 +109,7 @@ async function sendTx(
       );
       const tx: TransactionRequest = {
         from: wallet.address,
-        to: ApesAddresses.eth,
+        to: recipient,
         value: wei_amount,
       };
       const signer = provider.getSigner();
@@ -124,7 +124,7 @@ async function sendTx(
         );
         res = await ER20Contract.transfer(tx.to, tx.value);
       }
-      return { hash: res.hash, recipient };
+      return { hash: res.hash };
     }
   } catch (err) {
     console.log(err);
