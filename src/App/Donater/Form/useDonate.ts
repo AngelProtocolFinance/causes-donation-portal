@@ -40,7 +40,7 @@ export default function useDonate() {
       terraWallet! /** should be defined at this point */
     );
     if (result) {
-      const { hash, recipient } = result;
+      const { hash } = result;
 
       showModal(TxModal, { message: "Saving donation details.." });
 
