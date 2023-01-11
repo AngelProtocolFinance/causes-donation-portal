@@ -28,7 +28,7 @@ export default function TxModal({ message, tx, shareable }: Props) {
           <span className="text-xs uppercase">Tx hash:</span>
           <a
             className="text-blue-d1 hover:text-blue"
-            href={chains[tx.chainId].txExplorer + `/${tx.hash}`}
+            href={chains[tx.chainId].txExplorer + `${tx.hash}`}
             target="_blank"
           >
             {tx.hash.slice(0, 5)}...{tx.hash.slice(-5)}
