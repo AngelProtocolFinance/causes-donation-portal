@@ -1,4 +1,4 @@
-import angelLogo from "assets/icons/AP-Beta-logo.svg";
+import angelLogo from "assets/icons/angelgiving-beta-H-logo-wht.svg";
 import Wallet from "./Wallet";
 import { useEffect, useRef, useState } from "react";
 import ThemeToggle from "./ThemeToggle";
